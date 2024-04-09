@@ -1,55 +1,20 @@
-# The Carpentries Workbench Template R Markdown Lesson
+# OpenRefine for the Humanities
 
-This lesson is a template lesson that uses [The Carpentries Workbench][workbench].
+OpenRefine is a powerful free, open source tool for working with messy data: cleaning it; transforming it from one format into another; and extending it with web services and external data. This lesson was especially developed for researchers in the humanities who want to learn how to improve the quality of their research data. It is designed for participants with no pevious experience.
 
-## Note about lesson life cycle stage
-Although the `config.yaml` states the life cycle stage as pre-alpha, **the template is stable and ready to use**. The life cycle stage is preset to `"pre-alpha"` as this setting is appropriate for new lessons initialised using the template.
+## About
 
-## Create a new repository from this template
+This lesson is being developed as part of the joint project [HERMES](https://hermes-hub.de/) – Humanities Education in Research Data and Methods. It is funded by the [German Federal Ministry of Education and Research (BMBF)](https://www.bmbf.de/bmbf/en/home/home_node.html) to establish a data competence centre for the humanities and cultural sciences.
 
-To use this template to start a new lesson repository, 
-make sure you're logged into Github.   
-Visit https://github.com/carpentries/workbench-template-rmd/generate
-and follow the instructions.
-Checking the 'Include all branches' option will save some time waiting for the first website build
-when your new repository is initialised.
 
-If you have any questions, contact [@tobyhodges](https://github.com/tobyhodges)
+## Authors
 
-## Configure a new lesson
+- [Julia Tolksdorf](https://github.com/jutol)
+- Golnaz Sarkar Farshi
+- Robert Zwick
 
-Follow the steps below to
-complete the initial configuration of a new lesson repository built from this template:
 
-1. **Make sure GitHub Pages is activated:**
-   navigate to _Settings_,
-   select _Pages_ from the left sidebar,
-   and make sure that `gh-pages` is selected as the branch to build from.
-   If no `gh-pages` branch is available, check _Actions_ to see if the first
-   website build workflows are still running.
-   The branch should become available when those have completed.
-1. **Adjust the `config.yaml` file:**
-   this file contains global parameters for your lesson site.
-   Individual fields within the file are documented with comments (beginning with `#`)
-   At minimum, you should adjust all the fields marked 'FIXME':
-   - `title`
-   - `created`
-   - `keywords`
-   - `life_cycle` (the default, _pre-alpha_, is the appropriate for brand new lessons)
-   - `contact`
-1. **Annotate the repository** with site URL and topic tags:
-   navigate back to the repository landing page and
-   click on the gear wheel/cog icon (similar to ⚙️) 
-   at the top-right of the _About_ box.
-   Check the "Use your GitHub Pages website" option,
-   and [add some keywords and other annotations to describe your lesson](https://cdh.carpentries.org/the-carpentries-incubator.html#topic-tags)
-   in the _Topics_ field.
-   At minimum, these should include:
-   - `lesson`
-   - the life cycle of the lesson (e.g. `pre-alpha`)
-   - the human language the lesson is written in (e.g. `deutsch`)
-1. **Adjust the name of the `.Rproj` file.**
-   It is simplest to make this match the name of the repository.
+## TODO
 1. **Adjust the 
    `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, and `LICENSE.md` files**
    as appropriate for your project.
@@ -71,4 +36,3 @@ complete the initial configuration of a new lesson repository built from this te
    [relevant information about your lesson](https://carpentries.github.io/lesson-development-training/collaborating-newcomers.html#readme)**
    and delete this section.
 
-[workbench]: https://carpentries.github.io/sandpaper-docs/
