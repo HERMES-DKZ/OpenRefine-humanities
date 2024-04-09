@@ -17,7 +17,7 @@ title: 'OpenRefine for the Humanities'
 created: 2024-04-05
 
 # Comma-separated list of keywords for the lesson
-keywords: 'digital humanities, data, lesson, data cleaning, data-tranformation' # FIXME
+keywords: 'digital humanities, data, lesson, data cleaning, data-tranformation, pre-alpha, english' # FIXME
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
@@ -27,7 +27,7 @@ life_cycle: 'pre-alpha'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/carpentries/workbench-template-rmd' # FIXME
+source: 'https://github.com/HERMES-DKZ/OpenRefine-humanities'
 
 # Default branch of your lesson
 branch: 'main'
@@ -60,6 +60,8 @@ contact: 'github@hermes-hub.de'
 # Order of episodes in your lesson
 episodes: 
 - introduction.Rmd
+- exporting-data.Rmd
+- resources-for-self-study.Rmd
 
 # Information for Learners
 learners: 
