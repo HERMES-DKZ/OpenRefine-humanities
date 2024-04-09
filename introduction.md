@@ -1,7 +1,7 @@
 ---
-title: "Using RMarkdown"
-teaching: 10
-exercises: 2
+title: "Introduction"
+teaching: 0
+exercises: 0
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
