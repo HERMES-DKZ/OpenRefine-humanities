@@ -60,6 +60,8 @@ contact: 'github@hermes-hub.de'
 # Order of episodes in your lesson
 episodes: 
 - introduction.Rmd
+- reconciling.Rmd
+- exporting-cleaning-steps.Rmd
 - exporting-data.Rmd
 - resources-for-self-study.Rmd
 
