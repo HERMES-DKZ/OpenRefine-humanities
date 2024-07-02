@@ -1,18 +1,23 @@
 # OpenRefine for the Humanities
 
-OpenRefine is a powerful free, open source tool for working with messy data: cleaning it; transforming it from one format into another; and extending it with web services and external data. This lesson was especially developed for researchers in the humanities who want to learn how to improve the quality of their research data. It is designed for participants with no pevious experience.
+[OpenRefine](https://openrefine.org/) is a powerful free, open source tool for working with messy data: cleaning it; transforming it from one format into another; and extending it with web services and external data. This lesson is  developed especially for researchers in the humanities who want to learn how to improve the quality of their research data. It is designed for participants with no pevious experience.
+The rendered lesson can be found [here](https://hermes-dkz.github.io/OpenRefine-humanities/).
 
 ## About
 
-This lesson is being developed as part of the joint project [HERMES](https://hermes-hub.de/) – Humanities Education in Research Data and Methods. It is funded by the [German Federal Ministry of Education and Research (BMBF)](https://www.bmbf.de/bmbf/en/home/home_node.html) to establish a data competence centre for the humanities and cultural sciences.
+This lesson is being developed as part of the joint project [HERMES](https://hermes-hub.de/) – Humanities Education in Research, Data, and Methods. It is funded by the [German Federal Ministry of Education and Research (BMBF)](https://www.bmbf.de/bmbf/en/home/home_node.html) to establish a data competence centre for the humanities and cultural sciences.
 
 
 ## Authors
 
 - [Julia Tolksdorf](https://github.com/jutol)
-- Golnaz Sarkar Farshi
-- Robert Zwick
+- [Golnaz Sarkar Farshi](https://github.com/Goli-SF)
+- [Robert Zwick](https://github.com/orgs/robertzwick)
+- [Corinna Berg](https://github.com/orgs/KassieBee)
+- Ksenia Stanicka-Brzezicka
 
+## Attribution
+This lesson template is derived from work that is Copyright (c) [The Carpentries](https://carpentries.org/))
 
 ## TODO
 1. **Adjust the 
