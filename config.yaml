@@ -33,7 +33,7 @@ source: 'https://github.com/HERMES-DKZ/OpenRefine-humanities'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'github@hermes-hub.de'
+contact: 'julia.tolksdorf@hs-mainz.de'
 
 # Navigation ------------------------------------------------
 #
