@@ -2,12 +2,7 @@
 title: "Contributor Code of Conduct"
 ---
 
-As contributors and maintainers of this project,
-we pledge to follow the [The Carpentries Code of Conduct][coc].
+In future this lesson will be integrated in [The Carpentries Incubator](https://github.com/carpentries-incubator), therefor we, as contributors and maintainers of this project, agree to abide by [The Carpentries Code of Conduct][coc]. 
 
 Instances of abusive, harassing, or otherwise unacceptable behavior
-may be reported by following our [reporting guidelines][coc-reporting].
-
-
-[coc-reporting]: https://docs.carpentries.org/topic_folders/policies/incident-reporting.html
-[coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
+may be reported by contacting the autors.
