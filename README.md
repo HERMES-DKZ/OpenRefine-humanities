@@ -1,43 +1,35 @@
 # OpenRefine for the Humanities
+[OpenRefine](https://openrefine.org/) is a powerful free, open-source tool for working with messy data: cleaning it; transforming it from one format to another; and extending it with web services and external data. This lesson is being developed specifically for researchers in the humanities and cultural studies, with the goal of becoming part of a future humanities curriculum within the [Data Carpentry](https://datacarpentry.org/) lesson program. It is designed for learners with no prior experience. This lesson is visible at: (https://hermes-dkz.github.io/OpenRefine-humanities/).
 
-[OpenRefine](https://openrefine.org/) is a powerful free, open source tool for working with messy data: cleaning it; transforming it from one format into another; and extending it with web services and external data. This lesson is  developed especially for researchers in the humanities who want to learn how to improve the quality of their research data. It is designed for participants with no pevious experience.
-The rendered lesson can be found [here](https://hermes-dkz.github.io/OpenRefine-humanities/).
 
-## About
+## Contributing
+At this very early stage of lesson development, external contributions are not yet being processed. However, errors can be reported via [issues](https://github.com/HERMES-DKZ/OpenRefine-humanities/issues). Once the first release is published, contributions will be warmly welcomed, and the contributing workflow will be shared here.
 
-This lesson is being developed as part of the joint project [HERMES](https://hermes-hub.de/) – Humanities Education in Research, Data, and Methods. It is funded by the [German Federal Ministry of Education and Research (BMBF)](https://www.bmbf.de/bmbf/en/home/home_node.html) to establish a data competence centre for the humanities and cultural sciences.
+
+## Acknowledgements
+Contents of the already existing lessons on Open Refine in the Data Carpentry and Library Carpentry were reused:
+* [Library Carpentry](https://librarycarpentry.github.io/lc-open-refine/)
+* [Data Carpentry – Ecology Curriculum](https://datacarpentry.github.io/OpenRefine-ecology-lesson/)
+* [Data Carpentry – Social Science Curriculum](https://datacarpentry.github.io/openrefine-socialsci/)
+
+This lesson utilizes a slightly modified sample from the [Metropolitan Museum of Art's Open Access Initiative](https://www.metmuseum.org/about-the-met/policies-and-documents/open-access) dataset. The original dataset is available as an [Open Access CSV](https://github.com/metmuseum/openaccess) and is provided under the [Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/) license.
+
+
+## Funding
+This lesson is being developed as part of the joint project [HERMES](https://hermes-hub.de/) – Humanities Education in Research, Data, and Methods. HERMES is funded by the [German Federal Ministry of Education and Research (BMBF)](https://www.bmbf.de/bmbf/en/home/home_node.html) by grants from the European Union.
 
 
 ## Authors
-
-- [Julia Tolksdorf](https://github.com/jutol)
+- [Julia Tolksdorf](https://github.com/jutol) (Maintainer)
 - [Golnaz Sarkar Farshi](https://github.com/Goli-SF)
 - [Robert Zwick](https://github.com/orgs/robertzwick)
 - [Corinna Berg](https://github.com/orgs/KassieBee)
 - Ksenia Stanicka-Brzezicka
 
-## Attribution
-This lesson template is derived from work that is Copyright (c) [The Carpentries](https://carpentries.org/))
 
-## TODO
-1. **Adjust the 
-   `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, and `LICENSE.md` files**
-   as appropriate for your project.
-   -  `CODE_OF_CONDUCT.md`: 
-      if you are using this template for a project outside The Carpentries,
-      you should adjust this file to describe 
-      who should be contacted with Code of Conduct reports,
-      and how those reports will be handled.
-   -  `CONTRIBUTING.md`:
-      depending on the current state and maturity of your project,
-      the contents of the template Contributing Guide may not be appropriate.
-      You should adjust the file to help guide contributors on how best
-      to get involved and make an impact on your lesson.
-   -  `LICENSE.md`:
-      in line with the terms of the CC-BY license,
-      you should ensure that the copyright information 
-      provided in the license file is accurate for your project.
-1. **Update this README with 
-   [relevant information about your lesson](https://carpentries.github.io/lesson-development-training/collaborating-newcomers.html#readme)**
-   and delete this section.
+## License
+Lesson content is published with a [CC-BY license](LICENSE.md).
 
+
+## Contact
+Please get in touch with [Julia Tolksdorf](https://github.com/jutol) with any questions about this lesson.
