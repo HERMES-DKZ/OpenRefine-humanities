@@ -1,5 +1,5 @@
 # OpenRefine for the Humanities
-[OpenRefine](https://openrefine.org/) is a powerful free, open-source tool for working with messy data: cleaning it; transforming it from one format to another; and extending it with web services and external data. This lesson is being developed specifically for researchers in the humanities and cultural studies, with the goal of becoming part of a future humanities curriculum within the [Data Carpentry](https://datacarpentry.org/) lesson program. It is designed for learners with no prior experience. This lesson is visible at: (https://hermes-dkz.github.io/OpenRefine-humanities/).
+[OpenRefine](https://openrefine.org/) is a powerful free, open-source tool for working with messy data: cleaning it; transforming it from one format to another; and extending it with web services and external data. This lesson is being developed specifically for researchers in the humanities and cultural studies, with the goal of becoming part of a future humanities curriculum within the [Data Carpentry](https://datacarpentry.org/) lesson program. It is designed for learners with no prior experience. This lesson is visible at: https://hermes-dkz.github.io/OpenRefine-humanities/.
 
 
 ## Contributing
