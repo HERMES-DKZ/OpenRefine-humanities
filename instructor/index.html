@@ -197,12 +197,19 @@
                   <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         Summary and Schedule
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#learning-objectives">Learning objectives</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -302,22 +309,28 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
-<div class="section level1">
-<h1 id="openrefine-for-the-humanities">OpenRefine for the Humanities<a class="anchor" aria-label="anchor" href="#openrefine-for-the-humanities"></a></h1>
+
 <p>OpenRefine is a powerful free, open source tool for working with
 messy data: cleaning it; transforming it from one format into another;
 and extending it with web services and external data. This lesson was
 especially developed for researchers in the humanities who want to learn
 how to improve the quality of their research data. It is designed for
 participants with no pevious experience.</p>
-<ul><li>Objective 1</li>
-<li>Objective 2</li>
+<section><h2 class="section-heading" id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a></h2>
+<hr class="half-width"><p>By the end of this lesson, you will be able to:</p>
+<ul><li>start a new OpenRefine project and import data</li>
+<li>work with a subset of your data with the help of facets and
+filters</li>
+<li>correct errors and reduce variations in your data through facets and
+clustering</li>
+<li>transform your data for future analysis</li>
+<li>use undo and redo actions of your cleaning steps</li>
+<li>enrich your data with the help of reconciliation service</li>
+<li>save and export cleaned data as well as data cleaning steps</li>
 </ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></div>
-
-      <section id="schedule"><table class="table table schedule table-striped" role="presentation"><tbody><tr><td></td><td><a href="#setup">Setup Instructions</a></td><td> Download files required for the lesson</td>
+ --></section><section id="schedule"><table class="table table schedule table-striped" role="presentation"><tbody><tr><td></td><td><a href="#setup">Setup Instructions</a></td><td> Download files required for the lesson</td>
           </tr><tr><td>
 <span class="visually-hidden">Duration: </span>00h 00m
 </td>
@@ -380,72 +393,107 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>FIXME: Setup instructions live in this document. Please specify the
-tools and the data sets the Learner needs to have installed.</p>
-<section><h2 class="section-heading" id="data-sets">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a></h2>
-<hr class="half-width"><!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
---><p>Download the <a href="https://example.com/FIXME" class="external-link">data zip file</a>
-and unzip it to your Desktop</p>
-</section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
-<hr class="half-width"><div id="details" class="callout discussion">
+      </section><section id="setup"><div id="dataset" class="callout prereq">
 <div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
+<i class="callout-icon" data-feather="check"></i>
 </div>
-<div id="details" class="callout-inner">
-<h3 class="callout-title">Details</h3>
+<div id="dataset" class="callout-inner">
+<h3 class="callout-title">Dataset</h3>
 <div class="callout-content">
-<p>Setup for different systems can be presented in dropdown menus via a
-<code>spoiler</code> tag. They will join to this discussion block, so
-you can give a general overview of the software used in this lesson here
-and fill out the individual operating systems (and potentially add more,
-e.g. online setup) in the solutions blocks.</p>
+<p>The dataset used in this lesson is a subset of the <a href="https://www.metmuseum.org/about-the-met/policies-and-documents/open-access" class="external-link">Metropolitan
+Museum of Art’s Open Access Initiative</a> dataset with information
+about the objects in the Metropolitan Museum of Art (e.g. title,
+culture, artist biography) It has been reduced in the number of columns
+and intentionally ‘messed up’ a little bit.</p>
+<p>Download the csv <a href="../episodes/data/met_dataset_oa.csv">data
+file</a> to your Computer.</p>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+<div id="software-setup" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<div id="software-setup" class="callout-inner">
+<h3 class="callout-title">Software Setup</h3>
+<div class="callout-content">
+<p>For this lesson you will need OpenRefine and a web browser. Note:
+OpenRefine is a Java program that runs on your machine (not in the
+cloud). It runs inside your browser, but no web connection is
+needed.</p>
+<ol style="list-style-type: decimal"><li>Check that you have Firefox, Edge, Opera or Chrome, Chromium, Safari
+browsers installed and set as your default browser. OpenRefine runs in
+your default browser. It will not run correctly in Internet Explorer.
+Sometimes it even has some issues with Firefox.</li>
+<li>Download the software from <a href="https://openrefine.org/download" class="external-link">openrefine.org/download</a> and
+check below for further instructions depending on your operating
+system</li>
+</ol><div class="tabs">
+<nav><div id="nav-tab-1" class="nav nav-tabs" role="tablist">
+<button class="nav-link active" id="nav-tab-1-1" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-1" type="button" role="tab" aria-controls="nav-tabpanel-1-1" aria-selected="true">
+  <h3 class="tab-header" id="nav-tab-heading-1-1">
   Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
-<div class="accordion-body">
-<p>Use PuTTY</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+<button class="nav-link" id="nav-tab-1-2" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-2" type="button" role="tab" aria-controls="nav-tabpanel-1-2" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-1-2">
   MacOS
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
-<div class="accordion-body">
-<p>Use Terminal.app</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
-  <h3 class="accordion-header" id="headingSpoiler3">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+<button class="nav-link" id="nav-tab-1-3" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-3" type="button" role="tab" aria-controls="nav-tabpanel-1-3" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-1-3">
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
-<div class="accordion-body">
-<p>Use Terminal</p>
+</div>
+</nav><div id="nav-tabContent-1" class="tab-content">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
+<ol style="list-style-type: decimal"><li>Unzip the downloaded file into a directory by right-clicking and
+selecting “Extract…”. Name that directory something like
+OpenRefine.</li>
+<li>Go to your newly created OpenRefine directory.</li>
+<li>Launch OpenRefine by double clicking on <code>openrefine.exe</code>
+(this will launch a black command prompt window first; ignore this
+window, and wait for OpenRefine to launch in the web browser, which is
+where you will interact with the program).</li>
+</ol><ul><li>If Windows displays a blue notification titled
+<code>Microsoft Defender SmartScreen prevented an unrecognized app from starting</code>,
+click on <code>More info</code> and then click on
+<code>Run anyway</code>.</li>
+</ul><ol start="4" style="list-style-type: decimal"><li>If you are using a different browser, or OpenRefine does not
+automatically open for you, point your browser at <a href="https://127.0.0.1:3333/" class="external-link">http://127.0.0.1:3333/</a> or <a href="https://localhost:3333" class="external-link">http://localhost:3333</a> to launch the
+program.</li>
+</ol></div>
+<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
+<ol style="list-style-type: decimal"><li>Unzip the downloaded file into a directory by double-clicking it.
+Name that directory something like OpenRefine.</li>
+<li>Go to your newly created OpenRefine directory.</li>
+<li>Drag the OpenRefine icon into Applications folder, and
+<code>Ctrl-click/Open…</code> it.</li>
+</ol><ul><li>If Mac shows a notification when you try to run the program that it
+cannot verify the developer, click <code>Cancel</code>. Then,
+<code>Right-click</code> or <code>Ctrl-click</code> the icon and select
+<code>Open</code>. The notification will now have an <code>Open</code>
+button. If it does not allow to open the program, repeat the process and
+there will be an <code>Open</code> button the second time. For
+additional details, consult the <a href="https://docs.openrefine.org/manual/installing#install-or-upgrade-openrefine" class="external-link">OpenRefine
+installation guide</a>.</li>
+</ul><ol start="4" style="list-style-type: decimal"><li>If you are using a different browser, or OpenRefine does not
+automatically open for you, point your browser at <a href="https://127.0.0.1:3333/" class="external-link">http://127.0.0.1:3333/</a> or <a href="https://localhost:3333" class="external-link">http://localhost:3333</a> to launch the
+program</li>
+</ol></div>
+<div id="nav-tabpanel-1-3" class="tab-pane" aria-labelledby="nav-tab-1-3" role="tabpanel">
+<ol style="list-style-type: decimal"><li>Unzip the downloaded file into a directory. Name that directory
+something like OpenRefine.</li>
+<li>Navigate to your newly created OpenRefine directory using the
+command line.</li>
+<li>Type <code>./refine</code> into the terminal within the OpenRefine
+directory</li>
+<li>If you are using a different browser, or OpenRefine does not
+automatically open for you, point your browser at <a href="https://127.0.0.1:3333/" class="external-link">http://127.0.0.1:3333/</a> or <a href="https://localhost:3333" class="external-link">http://localhost:3333</a> to launch the
+program.</li>
+</ol></div>
+</div>
 </div>
 </div>
 </div>
@@ -454,7 +502,9 @@ e.g. online setup) in the solutions blocks.</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
+
+
+      </section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="../instructor/introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
