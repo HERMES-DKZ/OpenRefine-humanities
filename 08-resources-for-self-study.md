@@ -1,5 +1,5 @@
 ---
-title: "Resources for future self-study"
+title: "Resources for Future Self-study"
 teaching: 0
 exercises: 0
 ---

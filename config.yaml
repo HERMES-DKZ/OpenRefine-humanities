@@ -59,11 +59,14 @@ contact: 'julia.tolksdorf@hs-mainz.de'
 
 # Order of episodes in your lesson
 episodes: 
-- introduction.Rmd
-- reconciling.Rmd
-- exporting-cleaning-steps.Rmd
-- exporting-data.Rmd
-- resources-for-self-study.Rmd
+- 01-introduction.Rmd
+- 02-import-data.Rmd
+- 03-exploring-data.Rmd
+- 04-transforming-data.Rmd
+- 05-filter-and-sort-data.Rmd
+- 06-reconciling-data.Rmd
+- 07-exporting-data-and-cleaning-steps.Rmd
+- 08-resources-for-self-study.Rmd
 
 # Information for Learners
 learners: 
