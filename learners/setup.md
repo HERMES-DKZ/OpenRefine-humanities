@@ -4,6 +4,9 @@ title: Setup
 
 ## Getting started
 
+To follow this lesson, you must have OpenRefine installed on your computer and download a data file.
+
+
 :::::::::::   prereq
 
 ## Dataset
@@ -16,6 +19,7 @@ Download the csv [data file](https://hermes-dkz.github.io/OpenRefine-humanities/
 ::::::::::::::::::::
 
 :::::::::::   prereq
+
 ## Software Setup
 
 For this lesson you will need OpenRefine and a web browser. 
@@ -58,4 +62,16 @@ Note: OpenRefine is a Java program that runs on your machine (not in the cloud).
 
 ::::::::::::::::::::::::
 
+### Getting help
+
+If you encounter problems installing or running OpenRefine, a good source of support is the [OpenRefine mailing list and user forum](https://forum.openrefine.org).
+Include your operating system when searching to find the most relevant answers for your issue, such as threads related to [Windows](https://forum.openrefine.org/search?q=windows), [macOS](https://forum.openrefine.org/search?q=macOS), or [Linux](https://forum.openrefine.org/search?q=linux).
+
+You may also want to check the [Stack Overflow OpenRefine tag](https://stackoverflow.com/questions/tagged/openrefine).
+
+If you want to know more details about installation, upgrades and configuration the [installing manual of OpenRefine](https://openrefine.org/docs/manual/installing) is a good resource.
 ::::::::::::::::::::
+
+### Exiting OpenRefine
+
+To exit OpenRefine, close all the browser tabs or windows, then navigate to the command line window. To close this window and ensure OpenRefine exits properly, hold down [control] and press [c] on your keyboard. This will save all changes to your projects.
