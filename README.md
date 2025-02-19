@@ -21,10 +21,8 @@ This lesson is being developed as part of the joint project [HERMES](https://her
 
 ## Authors
 - [Julia Tolksdorf](https://github.com/jutol) (Maintainer)
-- [Golnaz Sarkar Farshi](https://github.com/Goli-SF)
 - [Robert Zwick](https://github.com/robertzwick)
-- [Corinna Berg](https://github.com/KassieBee)
-- [Ksenia Stanicka-Brzezicka](https://github.com/kseniastanicka)
+
 
 
 ## License
