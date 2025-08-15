@@ -427,9 +427,6 @@ OpenRefine?</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h2>
-<hr class="half-width">
 <div id="discussion-do-you-often-work-with-digital-data-in-your-research-your-studies-or-your-work" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
@@ -487,8 +484,8 @@ of Modern Art (MoMA). This real-world data will help you learn how to
 use OpenRefine to solve common problems in humanities research. Even if
 you have never worked with data before, you will see how OpenRefine can
 make your research easier, more accurate, and more enjoyable.</p>
-<p>Much of your time as a researcher will be spent in the initial ‘data
-wrangling’ stage, where you need to organize and clean your data before
+<p>Much of your time as a researcher will be spent in the initial
+cleaning stage, where you need to organize and clean your data before
 you can analyze it. It’s not always the most exciting part, but it is
 essential. With OpenRefine, you will learn how to think about data
 organization and develop practices for more effective data cleaning. By
@@ -515,14 +512,9 @@ your research more accurate, efficient, and enjoyable.</li>
 </ul>
 </div>
 </div>
-</div>
-<!--
-Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use.
- -->
-</section></section><section id="aio-02-import-data"><p>Content from <a href="02-import-data.html">Importing Data and Getting to Know the OpenRefine User Interface</a></p>
+</div></section><section id="aio-02-import-data"><p>Content from <a href="02-import-data.html">Importing Data and Getting to Know the OpenRefine User Interface</a></p>
 <hr>
-<p>Last updated on 2025-07-01 |
+<p>Last updated on 2025-08-15 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/02-import-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -536,7 +528,9 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>TODO</li>
+<li>How do I start a new project in OpenRefine?</li>
+<li>How do I import a CSV file?</li>
+<li>What options and settings are available during import?</li>
 </ul>
 </div>
 </div>
@@ -546,13 +540,75 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>TODO</li>
+<li>Start a new OpenRefine project.</li>
+<li>Import data from a CSV file</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
+<p>To begin working with your data in OpenRefine, you first need to
+create a new project. Imagine you have downloaded a CSV file containing
+a sample of the Museum of Modern Art (MoMA) collection. This file might
+include information about artworks, artists, dates, and more—ready to be
+explored and cleaned.</p>
+<p>When you open OpenRefine in your web browser, you are greeted by
+these start page.</p>
+<figure><img src="img/01_data_import.png" alt="Import Data Window" class="figure mx-auto d-block"><div class="figcaption">Import Data Window</div>
+</figure><p>There are already various options in the left-hand bar. You can:</p>
+<ul>
+<li>Create a new project and load data.</li>
+<li>Open an existing project.</li>
+<li>Import an existing project.</li>
+<li>Change the language of OpenRefine.</li>
+<li>Manage extensions.</li>
+</ul>
+<p>We will not be looking at extensions in this lesson, but they offer
+the possibility to customise OpenRefine in even greater detail and
+expand it with additional functions. We click on <em>Create Project</em>
+and then on <em>Get data from</em> * <strong><em>This
+Computer</em></strong> . Here we click on <em>Browse</em> and search for
+our file, select it and click on <em>next</em> . OpenRefine will show
+you a preview of your data, allowing you to check that everything looks
+correct before you proceed.</p>
+<p>Below the data preview, we now find various settings options for how
+the data should be loaded. This has a direct effect on the preview,
+allowing us to check immediately whether the settings have been selected
+correctly. This is important when files have special formats, so that
+they can be converted into the correct table structure. For example, if
+your CSV uses a separator other than a comma (for example, a semicolon
+or tab), you can specify this so that columns are recognized correctly.
+Sometimes, data files include extra header lines or notes at the top.
+You can tell OpenRefine to skip these lines, so only the actual data is
+imported. For Excel files, you can select which sheet to import. For
+CSVs, you can preview and adjust how columns are interpreted. Once you
+are happy with the preview and settings, you can give your project a
+name and click <em>Create Project</em>. In our case everything should be
+fine and we can go on without chaniging any settings. OpenRefine will
+load your data into its workspace, displaying it in a clear, table-like
+view.</p>
+<figure><img src="img/02_start.png" alt="Import Data Window" class="figure mx-auto d-block"><div class="figcaption">Import Data Window</div>
+</figure><p>The user interface is designed to be intuitive. In general, it is
+structured so that we can see the data we currently have access to in
+the large main window in the middle. There, we can set how many rows we
+want to see at once and whether we want to see <em>rows</em> or
+<em>records</em> displayed. We will understand what this difference
+means later. The arrows next to the column labels open the functions
+that OpenRefine offers us for changing and processing our data. These
+always refer to the column we open them from. On the left-hand side, we
+can see exactly what we can apply or what we have created. We will also
+clarify and understand this in detail in a moment. The
+<em>Undo/Redo</em> column allows us to undo steps, but also to export
+and reuse entire processing pipelines. In the upper right corner, there
+are additional options where we can create a new project or export our
+current data. The <em>Help</em> button takes us directly to the
+OpenRefine documentation. There, all functions are also described in
+detail.</p>
+<p>By starting with a CSV file from the MoMA dataset, you have taken the
+first step toward organizing and understanding your data. OpenRefine’s
+flexible import options and user-friendly interface make it easy to get
+started, no matter your technical background.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -560,8 +616,14 @@ any links that you are not going to use.
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>
-</li></ul>
+<ul>
+<li>You can import data from different different formats in
+OpenRefine</li>
+<li>Adjust import settings to ensure your data is read correctly and
+preview the results before starting.</li>
+<li>Functions to work with your data are used from the <em>Arrow
+Buttons</em> next to the collumn header</li>
+</ul>
 </div>
 </div>
 </div></section><section id="aio-03-exploring-data"><p>Content from <a href="03-exploring-data.html">Exploring Data</a></p>
