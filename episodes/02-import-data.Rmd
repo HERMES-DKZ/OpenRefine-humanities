@@ -26,7 +26,9 @@ To begin working with your data in OpenRefine, you first need to create a new pr
 
 When you open OpenRefine in your web browser, you are greeted by these start page. 
 
+
 ![Import Data Window](img/01_data_import.png)
+
 
 There are already various options in the left-hand bar. You can:
 
@@ -46,7 +48,9 @@ For Excel files, you can select which sheet to import. For CSVs, you can preview
 Once you are happy with the preview and settings, you can give your project a name and click *Create Project*. In our case everything should be fine and we can go on without chaniging any settings.
 OpenRefine will load your data into its workspace, displaying it in a clear, table-like view. 
 
+
 ![Import Data Window](img/02_start.png)
+
 
 The user interface is designed to be intuitive. In general, it is structured so that we can see the data we currently have access to in the large main window in the middle. There, we can set how many rows we want to see at once and whether we want to see *rows* or *records* displayed. We will understand what this difference means later. The arrows next to the column labels open the functions that OpenRefine offers us for changing and processing our data. These always refer to the column we open them from. On the left-hand side, we can see exactly what we can apply or what we have created. We will also clarify and understand this in detail in a moment. The *Undo/Redo* column allows us to undo steps, but also to export and reuse entire processing pipelines. 
 In the upper right corner, there are additional options where we can create a new project or export our current data. The *Help* button takes us directly to the OpenRefine documentation. There, all functions are also described in detail.
