@@ -224,12 +224,24 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         3. Exploring Data
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#facets">Facets</a></li>
+<li><a href="#text-facet">Text Facet</a></li>
+<li><a href="#rows-records-and-multi-valued-cells">Rows, Records, and Multi-Valued Cells</a></li>
+<li><a href="#rejoining-values-optional">Rejoining Values (Optional)</a></li>
+<li><a href="#numeric-facet">Numeric Facet</a></li>
+<li><a href="#timeline-facet">Timeline Facet</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -337,7 +349,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exploring Data</h1>
-        <p>Last updated on 2025-07-01 |
+        <p>Last updated on 2025-08-18 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/03-exploring-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -356,7 +368,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>TODO</li>
+<ul><li>What options does OpenRefine offer for data exploration?</li>
+<li>What is a facet and how does it help me explore data?</li>
+<li>How do facets differ from filters?</li>
 </ul></div>
 </div>
 </div>
@@ -364,12 +378,200 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>TODO</li>
+<ul><li>Define faceting and identify when to use it.</li>
+<li>Create a basic Text facet to get an overview of values in a
+column.</li>
+<li>Use Split multi-valued cells to prepare data for accurate faceting
+and later analysis.</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
+<p>When we work with data in OpenRefine, one of the first challenges is
+to make sense of the information that has been imported. Looking at rows
+of raw data rarely gives us much insight, especially if the dataset is
+large. What we need is a way of quickly summarizing values, spotting
+patterns, and finding potential problems such as inconsistent spellings
+or unexpected categories.</p>
+<p>OpenRefine provides a set of tools for this under the name
+<strong>facets</strong>. Faceting allows us to group together all of the
+different values that appear in a column and to see how often they
+occur. A facet creates a kind of “interactive summary” of the data: it
+lists all unique values in a column, shows how many times each one
+appears, and lets us filter the table to only those rows that match.
+This makes it possible to move from a confusing spreadsheet view to a
+clear overview with just a few clicks. We also already have the option
+of performing some cleaning tasks on the data set, even though this is
+not the main purpose of this tool.</p>
+<section><h2 class="section-heading" id="facets">Facets<a class="anchor" aria-label="anchor" href="#facets"></a></h2>
+<hr class="half-width"><p>It is useful to distinguish between <strong>facets</strong> and
+<strong>filters</strong>. Both are ways of focusing on a subset of the
+data, but they work differently. A filter is like a search box: you type
+in a word or part of a word, and OpenRefine hides all rows that do not
+match. A facet, by contrast, gives you an overview of <em>all</em> the
+distinct values in a column and lets you select them interactively.</p>
+<p>For example, in the Museum of Modern Art dataset, the column
+<code>Department</code> might contain categories such as “Architecture
+&amp; Design,” “Painting &amp; Sculpture,” or “Drawings &amp; Prints.” A
+<strong>text facet</strong> on this column will immediately show you how
+many artworks belong to each department. By clicking on one or several
+values in the facet, you can quickly restrict your view to only those
+artworks, and then easily switch back to the full dataset.</p>
+</section><section><h2 class="section-heading" id="text-facet">Text Facet<a class="anchor" aria-label="anchor" href="#text-facet"></a></h2>
+<hr class="half-width"><p>Let us try this in practice. Once your MoMA sample dataset is loaded,
+find the column named <code>Department</code>. Open the column menu with
+the small awrrow next to the column name and choose <strong>Facet → Text
+facet</strong>. A new panel will appear on the left side of the
+screen.</p>
+<p>In this panel you now see a list of all the different departments
+represented in your data, along with the number of artworks in each. You
+might see something like:</p>
+<ul><li>Drawings and Prints (412)<br></li>
+<li>Architecture &amp; Design (163)<br></li>
+<li>Painting &amp; Sculpture (228)</li>
+</ul><p>The numbers will vary depending on your sample, but the idea is
+always the same: OpenRefine has grouped all artworks by their department
+and counted them. You can now click on one department to see only those
+rows in the table, or select multiple values to combine them by clicking
+<strong>include</strong>.</p>
+<p>In the different departments, you can see that there is both ‘Film’
+and ‘Films’. Here, it is important to know whether this is a mistake or
+whether these are deliberately two different categories. In our example,
+this is clearly a spelling mistake, which we can correct right here. In
+practice, it is often difficult to assess whether these are mistakes or
+deliberate category names. This makes it important to be familiar with
+the data and the underlying real concepts in order to be able to clean
+them up. To do clean this mistake, we click on ‘Edit’ next to “Films”
+and remove the ‘s’, which applies to every line. We have now completed
+our first clean-up.</p>
+<p>This simple step immediately transforms a spreadsheet with hundreds
+of rows into a clear summary of categories and also helps to detect
+first inconsistencies.</p>
+</section><section><h2 class="section-heading" id="rows-records-and-multi-valued-cells">Rows, Records, and Multi-Valued Cells<a class="anchor" aria-label="anchor" href="#rows-records-and-multi-valued-cells"></a></h2>
+<hr class="half-width"><p>Up to this point, we have assumed that every cell in a column
+contains only a single value. In real-world data, however, that is often
+not the case. In the MoMA dataset, the <code>Artist</code> column
+sometimes contains two or more names, separated by a comma. For example,
+one artwork might have its artist recorded as:</p>
+<p>Pablo Picasso, Georges Braque</p>
+<p>This is problematic for faceting. If we apply a text facet to the
+<code>Artist</code> column as it stands, OpenRefine will treat the
+entire string above as one value. The facet will then list “Pablo
+Picasso; Georges Braque” as if it were a single artist, which is clearly
+not what we want. What we need instead is to treat
+<code>Pablo Picasso</code> and <code>Georges Braque</code> as separate
+values, each counted individually.</p>
+<p>To understand what happens when we correct this, it helps to know
+about the distinction between <strong>Rows</strong> and
+<strong>Records</strong> in OpenRefine. By default, data is displayed as
+rows, one after the other. But OpenRefine can also treat a group of rows
+as belonging to the same <strong>record</strong>. When we split a cell
+that contains multiple values, OpenRefine creates additional rows within
+the same record. That means the number of rows goes up, but the number
+of records stays the same.</p>
+<p>Let us now prepare the <code>Artist</code> column for faceting by
+splitting its multi-valued cells.</p>
+<ol style="list-style-type: decimal"><li>First, look through a few rows in the <code>Artist</code> column and
+identify whether any cells contain more than one artist. These are
+usually separated by a comma (<code>,</code>) in the MoMA dataset.</li>
+<li>Switch to <strong>Records view</strong> (at the top left of the
+grid, choose “Show as: Records”). This makes it easier to see what
+happens after the split.</li>
+<li>Open the column menu for <code>Artist</code>, choose <strong>Edit
+cells → Split multi-valued cells…</strong>. Enter the seperator
+<code>,</code> in the box, and click OK. Ignore the opther options.</li>
+<li>OpenRefine now divides each cell containing multiple artists into
+separate rows. The total number of rows increases, but the record count
+stays constant.</li>
+<li>Create a <strong>Text facet</strong> on <code>Artist</code> again.
+This time you will see the names of individual artists listed
+separately. Each can now be counted and selected on its own.</li>
+</ol><div id="exercise-split-multi-valued-cells" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-split-multi-valued-cells" class="callout-inner">
+<h3 class="callout-title">Exercise: Split multi-valued cells</h3>
+<div class="callout-content">
+<p>It is important to note that OpenRefine only splits the column you
+apply the function to. Other columns are left untouched. This means that
+if another column also contains multiple values that correspond to those
+in <code>Artist</code>, you need to split that column separately, for
+example <code>Nationality</code>. Look in the data and split the other
+columns if needed.</p>
+</div>
+</div>
+</div>
+<p>This small step has a big impact: it ensures that our summaries and
+analyses represent the data correctly. Instead of hiding two names
+inside one cell, we now see each artist clearly and can identify
+patterns such as which artists appear most often in the dataset.</p>
+</section><section><h2 class="section-heading" id="rejoining-values-optional">Rejoining Values (Optional)<a class="anchor" aria-label="anchor" href="#rejoining-values-optional"></a></h2>
+<hr class="half-width"><p>Sometimes you may want to put the data back into its original form.
+After cleaning or analyzing, OpenRefine allows you to join split rows
+back into a single cell. To do this, return to the column menu, select
+<strong>Edit cells → Join multi-valued cells…</strong>, and specify a
+separator such as a pipe character (<code>|</code>). This is useful if
+you need to export the data in a more compact form later. And remember:
+if you make a mistake during splitting or joining, the
+<strong>Undo/Redo</strong> panel always lets you return to an earlier
+step.</p>
+</section><section><h2 class="section-heading" id="numeric-facet">Numeric Facet<a class="anchor" aria-label="anchor" href="#numeric-facet"></a></h2>
+<hr class="half-width"><p>Numeric facets are designed for columns that contain numbers, such as
+dimensions of artworks. They let you interactively explore ranges of
+values with a histogram and slider.</p>
+<p>Let us try this out with the <code>Height (cm)</code> column from the
+MoMA dataset. Open the column menu and choose <strong>Facet → Numeric
+facet</strong>. You might expect to see a histogram, but instead,
+OpenRefine shows only a message such as “No numeric values.” This tells
+us that the values in the column are not actually recognized as numbers,
+even though they look like numbers in the table.</p>
+<p>This situation is common when importing data: numbers are often
+stored as <strong>strings</strong> (that is, as text), so OpenRefine
+does not treat them as numeric values. We need to convert them
+first.</p>
+<p>To fix this, open the column menu for <code>Height (cm)</code> again
+and choose:<br><strong>Edit cells → Common transforms → To number</strong>.</p>
+<p>OpenRefine now attempts to parse each cell in that column as a
+number. If the value is a valid number, the cell is converted; if not
+(for example, if the cell is empty or contains text like “unknown”), it
+becomes a blank cell.</p>
+<p>You will see a small change in the formatting of the numbers: they
+are now right-aligned, which is OpenRefine’s way of indicating that they
+are numeric rather than text.</p>
+<p>With the column properly converted, repeat the earlier step:<br><strong>Facet → Numeric facet</strong>.</p>
+<p>This time, OpenRefine shows a histogram with a slider. The histogram
+groups all the height values into ranges, giving you an overview of how
+artworks are distributed by size.</p>
+<p>By dragging the slider handles, you can focus on particular ranges.
+For example, you might restrict the view to artworks shorter than 20 cm,
+or zoom in on those taller than 300 cm. This is especially helpful for
+spotting unusual values. If you see a very high number, such as “20000
+cm,” that might indicate a data entry error.</p>
+<p>Numeric facets therefore serve two purposes at once: they help you
+explore distributions, and they highlight anomalies that need
+cleaning.</p>
+</section><section><h2 class="section-heading" id="timeline-facet">Timeline Facet<a class="anchor" aria-label="anchor" href="#timeline-facet"></a></h2>
+<hr class="half-width"><p>Some columns represent dates, such as <code>DateAcquired</code> or
+the year of creation of the artwork. For these, OpenRefine offers the
+<strong>Timeline facet</strong>.</p>
+<p>Before you can use a timeline facet, you need to ensure that the
+column is stored as a <strong>date type</strong>. You can do this by
+choosing <strong>Edit cells → Common transforms → To date</strong> from
+the column menu. Once converted, you can create a <strong>Timeline
+facet</strong>.</p>
+<p>The result looks similar to the numeric facet but with dates on the
+horizontal axis. OpenRefine displays a histogram showing how many rows
+fall into each time period. You can then drag the slider handles to
+focus on a specific date range.</p>
+<p>For example, a timeline facet on <code>DateAcquired</code> could
+reveal when most of the artworks in your sample entered the MoMA
+collection. You might see peaks in certain decades, which may correspond
+to acquisition campaigns or curatorial trends. By selecting a particular
+time range, you can then explore only those artworks acquired during
+that period.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -385,10 +587,7 @@
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="02-import-data.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="04-transforming-data.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -446,8 +645,8 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/03-exploring-data.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/03-exploring-data.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2025-07-01",
-  "datePublished": "2025-08-15"
+  "dateModified": "2025-08-18",
+  "datePublished": "2025-08-18"
 }
 
   </script><script>
