@@ -1,3 +1,25 @@
+---
+title: "Custom Facets and GREL"
+teaching: 0
+exercises: 0
+---
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- When do we need a custom facet instead of a built-in one?  
+- How can GREL help us filter or transform data more flexibly?  
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Understand what a custom facet is and how it differs from standard facets.  
+- Learn to write simple GREL expressions for filtering and transformation.  
+- Apply a custom facet on the **Artist** column to distinguish between single and multiple creators.  
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 So far, we have explored facets that you can create by clicking through the menu—text, numeric, and timeline facets. These are powerful, but sometimes our exploration or cleaning task needs a rule that isn’t built in. In those cases, OpenRefine lets us define our own facets using **GREL** (*General Refine Expression Language*).
 
 GREL looks like code, but many useful expressions are short and readable. You can think of them as tiny instructions that tell OpenRefine how to interpret or transform the value currently in a cell (that value is referred to as `value` inside GREL). Every funciton we already used could be written in GREL as well, but to make things eaisier the most common functions are already built it.
