@@ -280,7 +280,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="04-transforming-data.html">4. Transforming Data</a>
+        <a href="04-custom-facets-and-grel.html">4. Custom Facets and GREL</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -292,7 +292,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-filter-and-sort-data.html">5. Filtering and Sorting Data</a>
+        <a href="05-clustering.html">5. Transforming Data</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -738,9 +738,9 @@ our first clean-up.</p>
 <p>This simple step immediately transforms a spreadsheet with hundreds
 of rows into a clear summary of categories and also helps to detect
 first inconsistencies.</p>
-</section><section><h2 class="section-heading" id="rows-records-and-multi-valued-cells">Rows, Records, and Multi-Valued Cells<a class="anchor" aria-label="anchor" href="#rows-records-and-multi-valued-cells"></a>
-</h2>
-<hr class="half-width">
+<div class="section level3">
+<h3 id="rows-records-and-multi-valued-cells">Rows, Records, and Multi-Valued Cells<a class="anchor" aria-label="anchor" href="#rows-records-and-multi-valued-cells"></a>
+</h3>
 <p>Up to this point, we have assumed that every cell in a column
 contains only a single value. In real-world data, however, that is often
 not the case. In the MoMA dataset, the <code>Artist</code> column
@@ -802,18 +802,17 @@ columns if needed.</p>
 analyses represent the data correctly. Instead of hiding two names
 inside one cell, we now see each artist clearly and can identify
 patterns such as which artists appear most often in the dataset.</p>
-</section><section><h2 class="section-heading" id="rejoining-values-optional">Rejoining Values (Optional)<a class="anchor" aria-label="anchor" href="#rejoining-values-optional"></a>
-</h2>
-<hr class="half-width">
+</div>
+<div class="section level3">
+<h3 id="rejoining-values">Rejoining Values<a class="anchor" aria-label="anchor" href="#rejoining-values"></a>
+</h3>
 <p>Sometimes you may want to put the data back into its original form.
 After cleaning or analyzing, OpenRefine allows you to join split rows
 back into a single cell. To do this, return to the column menu, select
 <strong>Edit cells → Join multi-valued cells…</strong>, and specify a
-separator such as a pipe character (<code>|</code>). This is useful if
-you need to export the data in a more compact form later. And remember:
-if you make a mistake during splitting or joining, the
-<strong>Undo/Redo</strong> panel always lets you return to an earlier
-step.</p>
+separator such as a comma character again (<code>,</code>). This is
+useful if you need to export the data in a more compact form later.</p>
+</div>
 </section><section><h2 class="section-heading" id="numeric-facet">Numeric Facet<a class="anchor" aria-label="anchor" href="#numeric-facet"></a>
 </h2>
 <hr class="half-width">
@@ -872,6 +871,25 @@ collection. You might see peaks in certain decades, which may correspond
 to acquisition campaigns or curatorial trends. By selecting a particular
 time range, you can then explore only those artworks acquired during
 that period.</p>
+</section><section><h2 class="section-heading" id="scatterplot-facet">Scatterplot Facet<a class="anchor" aria-label="anchor" href="#scatterplot-facet"></a>
+</h2>
+<hr class="half-width">
+<p>Sometimes we want to explore the relationship between <strong>two
+numeric columns</strong> at the same time. For this, OpenRefine provides
+the <strong>Scatterplot facet</strong>.</p>
+<p>To create one, you need to apply it to a numeric column (for instance
+<code>Height (cm)</code>), and then choose a second numeric column for
+the other axis (for example <code>Width (cm)</code>). OpenRefine will
+then display a scatterplot diagram, where each point corresponds to one
+row (in this case, one artwork).</p>
+<p>Looking at the scatterplot can help you see whether there are
+clusters of values or unusual outliers. For example, if most works have
+height and width under 200 cm, but one point is far out at 500 cm by 800
+cm, that tells you there is either a very large artwork or possibly an
+error in the data.</p>
+<p>The scatterplot facet is not as commonly used as the text or numeric
+facet, but it is a powerful way to visualize relationships directly
+within OpenRefine without having to export the data to another tool.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -888,11 +906,11 @@ that period.</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-04-transforming-data"><p>Content from <a href="04-transforming-data.html">Transforming Data</a></p>
+</section></section><section id="aio-04-custom-facets-and-grel"><p>Content from <a href="04-custom-facets-and-grel.html">Custom Facets and GREL</a></p>
 <hr>
-<p>Last updated on 2025-07-01 |
+<p>Last updated on 2025-08-18 |
 
-        <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/04-transforming-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/04-custom-facets-and-grel.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -905,7 +923,9 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>TODO</li>
+<li>When do we need a custom facet instead of a built-in one?<br>
+</li>
+<li>How can GREL help us filter or transform data more flexibly?</li>
 </ul>
 </div>
 </div>
@@ -915,29 +935,155 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>TODO</li>
+<li>Understand what a custom facet is and how it differs from standard
+facets.<br>
+</li>
+<li>Learn to write simple GREL expressions for filtering and
+transformation.<br>
+</li>
+<li>Apply a custom facet on the <strong>Artist</strong> column to
+distinguish between single and multiple creators.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="keypoints1" class="callout keypoints">
+<p>So far, we have explored facets that you can create by clicking
+through the menu—text, numeric, and timeline facets. These are powerful,
+but sometimes our exploration or cleaning task needs a rule that isn’t
+built in. In those cases, OpenRefine lets us define our own facets using
+<strong>GREL</strong> (<em>General Refine Expression Language</em>).</p>
+<p>GREL looks like code, but many useful expressions are short and
+readable. You can think of them as tiny instructions that tell
+OpenRefine how to interpret or transform the value currently in a cell
+(that value is referred to as <code>value</code> inside GREL). Every
+funciton we already used could be written in GREL as well, but to make
+things eaisier the most common functions are already built it.</p>
+<p>If, for example, we now want to examine our data set to see which
+works of art were created by only one or by then one, we could create a
+custom facet to filter by this criteria.</p>
+<div id="question-how-could-we-filter-the-column-to-find-out-whether-one-or-more-people-were-involved-in-creating-a-work-of-art" class="callout discussion">
 <div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
+<i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
+<span class="callout-header">Discussion</span>
+<div id="question-how-could-we-filter-the-column-to-find-out-whether-one-or-more-people-were-involved-in-creating-a-work-of-art" class="callout-inner">
+<h3 class="callout-title">Question: How could we filter the column to
+find out whether one or more people were involved in creating a work of
+art??</h3>
 <div class="callout-content">
-<ul><li>
-</li></ul>
+<p>Look at the column and consider how cells that contain one or more
+values differ. We can then use GREL to filter based on this
+difference.</p>
 </div>
 </div>
-</div></section><section id="aio-05-filter-and-sort-data"><p>Content from <a href="05-filter-and-sort-data.html">Filtering and Sorting Data</a></p>
+</div>
+<section><h2 class="section-heading" id="creating-a-custom-facet-with-grel">Creating a Custom Facet with GREL<a class="anchor" aria-label="anchor" href="#creating-a-custom-facet-with-grel"></a>
+</h2>
+<hr class="half-width">
+<ol style="list-style-type: decimal">
+<li><p><strong>Open the column menu</strong> for
+<strong><code>Artist</code></strong>.</p></li>
+<li><p>Choose <strong>Facet → Custom text facet…</strong></p></li>
+<li>
+<p>In the dialog, type the following GREL expression:</p>
+<pre class="grel"><code><span><span class="fu">value.contains</span><span class="op">(</span><span class="st">","</span><span class="op">)</span></span></code></pre>
+<p>This asks, “Does the cell contain a comma?” For each row, OpenRefine
+evaluates the expression and returns either <code>true</code> or
+<code>false</code>.</p>
+</li>
+<li><p>Click <strong>OK</strong>. In the left panel, you now see a facet
+with two buckets: <code>true</code> and <code>false</code>.</p></li>
+</ol>
+<p>That’s it—you just created a logic-based facet that the standard
+menus couldn’t provide.</p>
+<blockquote>
+<p><strong>Why this works:</strong> A Custom Facet runs your expression
+on every row, groups the results, and lets you filter by the outcome.
+You can write tests that return booleans
+(<code>true</code>/<code>false</code>), strings (e.g., normalized
+categories), or even numbers—OpenRefine will facet whatever the
+expression returns.</p>
+</blockquote>
+<div id="callout-grel-functions" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="callout-grel-functions" class="callout-inner">
+<h3 class="callout-title">Callout: GREL-Functions</h3>
+<div class="callout-content">
+<ul>
+<li>
+<code>value.toLowercase()</code> – lowercase the text.</li>
+<li>
+<code>value.toUppercase()</code> – uppercase the text.</li>
+<li>
+<code>value.trim()</code> – remove spaces at start/end.</li>
+<li>
+<code>value.length()</code> – number of characters.</li>
+<li>
+<code>value.contains("text")</code> – <code>true</code> if “text”
+occurs.</li>
+<li>
+<code>value.startsWith("A")</code>, <code>value.endsWith(".")</code>
+– prefix/suffix checks.</li>
+<li>
+<code>value.replace("old","new")</code> – literal replace.</li>
+<li>
+<code>value.replace(/\s+/," ")</code> – regex replace (collapse
+multiple spaces).</li>
+<li>
+<code>value.split(";")</code> – split into an array on
+<code>;</code>.</li>
+<li>
+<code>array.join("|")</code> – join array back to a string.</li>
+</ul>
+<div class="section level3">
+<h3 id="type-conversion">Type &amp; Conversion<a class="anchor" aria-label="anchor" href="#type-conversion"></a>
+</h3>
+<ul>
+<li>
+<code>value.toNumber()</code> – parse numbers (non-numeric becomes
+blank).</li>
+<li>
+<code>value.toDate()</code> – parse dates (useful before Timeline
+facets).</li>
+<li>
+<code>value.toString()</code> – convert back to text.</li>
+<li>
+<code>isBlank(value)</code> – <code>true</code> for
+empty/whitespace-only.</li>
+<li>
+<code>isNull(value)</code> – <code>true</code> for null values
+(missing).</li>
+<li>
+<code>type(value)</code> – returns “string”, “number”, “date”,
+etc.</li>
+<li>
+<code>value.toDate()</code> – parse a date (from strings like
+<code>1954-05-01</code>).</li>
+<li>
+<code>value.toDate().toString("yyyy")</code> – format the date to
+year.</li>
+<li>
+<code>now()</code> – current date/time (useful for
+comparisons).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-05-clustering"><p>Content from <a href="05-clustering.html">Transforming Data</a></p>
 <hr>
-<p>Last updated on 2025-07-01 |
+<p>Last updated on 2025-08-18 |
 
-        <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/05-filter-and-sort-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/05-clustering.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
