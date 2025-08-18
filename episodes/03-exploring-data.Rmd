@@ -51,7 +51,7 @@ To do clean this mistake, we click on ‘Edit’ next to “Films” and remove 
 This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
 
 
-## Rows, Records, and Multi-Valued Cells
+### Rows, Records, and Multi-Valued Cells
 
 Up to this point, we have assumed that every cell in a column contains only a single value. In real-world data, however, that is often not the case. In the MoMA dataset, the `Artist` column sometimes contains two or more names, separated by a comma. For example, one artwork might have its artist recorded as:
 
@@ -84,10 +84,9 @@ This small step has a big impact: it ensures that our summaries and analyses rep
 
 
 
-## Rejoining Values (Optional)
+### Rejoining Values
 
-Sometimes you may want to put the data back into its original form. After cleaning or analyzing, OpenRefine allows you to join split rows back into a single cell. To do this, return to the column menu, select **Edit cells → Join multi-valued cells…**, and specify a separator such as a pipe character (`|`). This is useful if you need to export the data in a more compact form later. And remember: if you make a mistake during splitting or joining, the **Undo/Redo** panel always lets you return to an earlier step.
-
+Sometimes you may want to put the data back into its original form. After cleaning or analyzing, OpenRefine allows you to join split rows back into a single cell. To do this, return to the column menu, select **Edit cells → Join multi-valued cells…**, and specify a separator such as a comma character again (`,`). This is useful if you need to export the data in a more compact form later.
 
 
 
@@ -130,6 +129,15 @@ For example, a timeline facet on `DateAcquired` could reveal when most of the ar
 
 
 
+## Scatterplot Facet
+
+Sometimes we want to explore the relationship between **two numeric columns** at the same time. For this, OpenRefine provides the **Scatterplot facet**.  
+
+To create one, you need to apply it to a numeric column (for instance `Height (cm)`), and then choose a second numeric column for the other axis (for example `Width (cm)`). OpenRefine will then display a scatterplot diagram, where each point corresponds to one row (in this case, one artwork).  
+
+Looking at the scatterplot can help you see whether there are clusters of values or unusual outliers. For example, if most works have height and width under 200 cm, but one point is far out at 500 cm by 800 cm, that tells you there is either a very large artwork or possibly an error in the data.  
+
+The scatterplot facet is not as commonly used as the text or numeric facet, but it is a powerful way to visualize relationships directly within OpenRefine without having to export the data to another tool.
 
 
 
