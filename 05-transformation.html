@@ -252,7 +252,8 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#edit-columns">Edit Columns</a></li>
+        <ul><li><a href="#transformation-with-grel">Transformation with GREL</a></li>
+<li><a href="#edit-columns">Edit Columns</a></li>
 <li><a href="#clustering">Clustering</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -396,41 +397,47 @@ compact string. Typical examples in your file look like:</p>
 (American, born Italy. 1919–2013)
 (American, born Germany. 1886–1969)
 (French, 1857–1927)
-(Ivorian, 1923–2014)
-
-
-As previously noted, some columns also contain information about multiple artists, which is why we first need to split them.
-
-::::::::::::: discussion
-
-### Discussion: By which seperator can we split the ArtistBio Column?
-
-It may happen that different data items are not separated by a comma or a semicolon, in which case creativity is required to determine how to resolve these data items.
-
-::::::::::::::::::::
-
-::::::::::::::::: solution
-
-### SOLUTION ()
-
-You can separate the data at the string ") (".
-
-::::::::::::::::::::::::::
-
-
-Next, we will simplify the text, then split nationality from the remaining details, and finally use clustering to review and standardize the results.
-
-
-## Transformation with GREL
-
-We start with a so called literal replacement.
-
-1. Open the column menu for **ArtistBio**.
-2. Choose **Edit cells → Transform…**.
-3. Enter:
-
-```grel
-value.replace("(", "").replace(")", "")</code></pre>
+(Ivorian, 1923–2014)</code></pre>
+<p>As previously noted, some columns also contain information about
+multiple artists, which is why we first need to split them.</p>
+<div id="discussion-by-which-seperator-can-we-split-the-artistbio-column" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="discussion-by-which-seperator-can-we-split-the-artistbio-column" class="callout-inner">
+<h3 class="callout-title">Discussion: By which seperator can we split
+the ArtistBio Column?</h3>
+<div class="callout-content">
+<p>It may happen that different data items are not separated by a comma
+or a semicolon, in which case creativity is required to determine how to
+resolve these data items.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  SOLUTION ()
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<p>You can separate the data at the string “) (”.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Next, we will simplify the text, then split nationality from the
+remaining details, and finally use clustering to review and standardize
+the results.</p>
+<section><h2 class="section-heading" id="transformation-with-grel">Transformation with GREL<a class="anchor" aria-label="anchor" href="#transformation-with-grel"></a></h2>
+<hr class="half-width"><p>We start with a so called literal replacement.</p>
+<ol style="list-style-type: decimal"><li>Open the column menu for <strong>ArtistBio</strong>.</li>
+<li>Choose <strong>Edit cells → Transform…</strong>.</li>
+<li>Enter:</li>
+</ol><pre class="grel"><code>value.replace("(", "").replace(")", "")</code></pre>
 <ol start="4" style="list-style-type: decimal"><li>Click <strong>OK</strong>.</li>
 </ol><p><strong>What this does:</strong> It deletes <code>(</code> and
 <code>)</code> everywhere and leaves the rest untouched. More precisely,
@@ -443,52 +450,55 @@ results in the character being deleted.</p>
 <pre><code>American, born 1936
 American, born Italy. 1919–2013
 French, 1857–1927</code></pre>
-<div id="callout" class="callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="callout" class="callout-inner">
-<h3 class="callout-title">CALLOUT ()</h3>
+<div class="callout-inner">
 <div class="callout-content">
 <p>Add a quick <strong>Text facet</strong> on <em>ArtistBio</em> to
 confirm that parentheses are gone.</p>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="edit-columns">Edit Columns<a class="anchor" aria-label="anchor" href="#edit-columns"></a></h2>
-<hr class="half-width"><p>The cleaned values are generally in the form:</p>
-<pre><code>Nationality, rest</code></pre>
-<p>We can split at the first comma to separate nationality from
-birth/death or other notes.</p>
-<ol style="list-style-type: decimal"><li>Column menu <strong>ArtistBio → Edit column → Split into several
-columns…</strong>
-</li>
-<li>
-<strong>Separator:</strong> <code>,</code>
-</li>
-<li>
-<strong>Split into</strong>: leave default (OpenRefine will create
-<strong>ArtistBio 1</strong> and <strong>ArtistBio 2</strong>).</li>
-<li>
-<strong>OK</strong>.</li>
-</ol><p>You should now have:</p>
-<ul><li>
-<strong>ArtistBio 1</strong> → nationality (e.g.,
-<code>American</code>, <code>French</code>, <code>Ivorian</code>,
-…)</li>
-<li>
-<strong>ArtistBio 2</strong> → remaining info (e.g.,
-<code>born 1936</code>, <code>born Germany. 1886–1969</code>,
-<code>1857–1927</code>)</li>
-</ul></section><section><h2 class="section-heading" id="clustering">Clustering<a class="anchor" aria-label="anchor" href="#clustering"></a></h2>
+</section><section><h2 class="section-heading" id="edit-columns">Edit Columns<a class="anchor" aria-label="anchor" href="#edit-columns"></a></h2>
+<hr class="half-width"><p>So far, we have applied transformations that modified the contents of
+cells and rows. But OpenRefine also allows us to restructure and
+transform our data through columns. For example creating new columns
+from existing ones. When working with tables, it makes sense to process
+them in such a way that each cell contains only one piece of
+information. This is useful if you want to analyze or clean different
+parts of the data separately, instead of working in one long text
+string.</p>
+<p>The values, at the moment, are generally in the form:</p>
+<pre><code>&lt;Nationality&gt;, &lt;rest&gt;</code></pre>
+<p>By splitting at the comma, we can move the nationality into its own
+column and leave the rest (birth/death information, places, etc.) in
+another. This makes it much easier to work with later.</p>
+<ol style="list-style-type: decimal"><li>Open the column menu ArtistBio → Edit column → Split into several
+columns…</li>
+<li>Separator: “,”</li>
+<li>Split into: leave the default (OpenRefine will automatically create
+ArtistBio 1 and ArtistBio 2 … ArtistBio X).</li>
+<li>Confirm with OK.</li>
+</ol><p>After splitting, your dataset will look something like this:</p>
+<ul><li><p>ArtistBio 1 → nationality (e.g., American, French, Ivorian,
+…)</p></li>
+<li><p>ArtistBio 2 → the remaining details (e.g., born 1936, born
+Germany. 1886–1969, 1857–1927)</p></li>
+</ul><p>If cells have more then one comma, OpenRefine will create as much
+columns as needed. This step shows how OpenRefine is not only about
+cleaning text but also about reshaping your data, which is just as
+important when preparing a dataset for analysis.</p>
+</section><section><h2 class="section-heading" id="clustering">Clustering<a class="anchor" aria-label="anchor" href="#clustering"></a></h2>
 <hr class="half-width"><p>Even after splitting, the second part (ArtistBio 2) still contains a
 mix of formats:</p>
-<p>born 1936</p>
-<p>born Italy. 1919–2013</p>
-<p>1857–1927</p>
-<p>1923–2014</p>
-<p>This is where clustering helps.</p>
+<ul><li><p>born 1936</p></li>
+<li><p>born Italy. 1919–2013</p></li>
+<li><p>1857–1927</p></li>
+<li><p>1923–2014</p></li>
+</ul><p>This is where clustering helps.</p>
 <div class="section level4">
 <h4 id="what-is-clustering">What is clustering?<a class="anchor" aria-label="anchor" href="#what-is-clustering"></a></h4>
 <p>Imagine you have a long list of words that are almost—but not
