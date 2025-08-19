@@ -13,9 +13,9 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Remove literal characters (parentheses) with simple GREL replacements (no regex).
-- Split **ArtistBio** into nationality and life‑dates using **Edit column → Split into several columns…**
-- Inspect and normalize the second part (**ArtistBio 2**) with **Cluster and edit… (Key collision → Metaphone3)**.
+- Remove literal characters with GREL replacements.
+- Split **ArtistBio** into nationality and life‑dates 
+- Inspect and normalize a column.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
