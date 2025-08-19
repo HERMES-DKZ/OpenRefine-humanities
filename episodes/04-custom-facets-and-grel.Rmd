@@ -72,9 +72,6 @@ That’s it—you just created a logic-based facet that the standard menus could
 * `value.replace(/\s+/," ")` – regex replace (collapse multiple spaces).
 * `value.split(";")` – split into an array on `;`.
 * `array.join("|")` – join array back to a string.
-
-### Type & Conversion
-
 * `value.toNumber()` – parse numbers (non-numeric becomes blank).
 * `value.toDate()` – parse dates (useful before Timeline facets).
 * `value.toString()` – convert back to text.

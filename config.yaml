@@ -63,7 +63,7 @@ episodes:
 - 02-import-data.Rmd
 - 03-exploring-data.Rmd
 - 04-custom-facets-and-grel.Rmd
-- 05-clustering.Rmd
+- 05-transformation.Rmd- 
 - 06-reconciling-data.Rmd
 - 07-exporting-data-and-cleaning-steps.Rmd
 - 08-resources-for-self-study.Rmd
