@@ -29,6 +29,7 @@ Facets help us *find* patterns; transformations and clustering help us *fix* the
 (American, born Germany. 1886–1969)
 (French, 1857–1927)
 (Ivorian, 1923–2014)
+```
 
 
 As previously noted, some columns also contain information about multiple artists, which is why we first need to split them.
@@ -75,9 +76,8 @@ American, born 1936
 American, born Italy. 1919–2013
 French, 1857–1927
 ```
-::::::::::::::::: callout
 
-### CALLOUT ()
+::::::::::::::::: callout
 
 Add a quick **Text facet** on *ArtistBio* to confirm that parentheses are gone.
 
@@ -86,37 +86,41 @@ Add a quick **Text facet** on *ArtistBio* to confirm that parentheses are gone.
 
 ## Edit Columns 
 
-The cleaned values are generally in the form:
+So far, we have applied transformations that modified the contents of cells and rows. But OpenRefine also allows us to restructure and transform our data through columns. For example creating new columns from existing ones. When working with tables, it makes sense to process them in such a way that each cell contains only one piece of information. This is useful if you want to analyze or clean different parts of the data separately, instead of working in one long text string. 
+
+The values, at the moment, are generally in the form:
 
 ```
-Nationality, rest
+<Nationality>, <rest>
 ```
 
-We can split at the first comma to separate nationality from birth/death or other notes.
+By splitting at the comma, we can move the nationality into its own column and leave the rest (birth/death information, places, etc.) in another. This makes it much easier to work with later.
 
-1. Column menu **ArtistBio → Edit column → Split into several columns…**
-2. **Separator:** `,`
-3. **Split into**: leave default (OpenRefine will create **ArtistBio 1** and **ArtistBio 2**).
-4. **OK**.
+1. Open the column menu ArtistBio → Edit column → Split into several columns…
+2. Separator: ","
+3. Split into: leave the default (OpenRefine will automatically create ArtistBio 1 and ArtistBio 2 ... ArtistBio X).
+4. Confirm with OK.
 
-You should now have:
+After splitting, your dataset will look something like this:
 
-* **ArtistBio 1** → nationality (e.g., `American`, `French`, `Ivorian`, …)
-* **ArtistBio 2** → remaining info (e.g., `born 1936`, `born Germany. 1886–1969`, `1857–1927`)
+- ArtistBio 1 → nationality (e.g., American, French, Ivorian, …)
 
+- ArtistBio 2 → the remaining details (e.g., born 1936, born Germany. 1886–1969, 1857–1927)
+
+If cells have more then one comma, OpenRefine will create as much columns as needed. This step shows how OpenRefine is not only about cleaning text but also about reshaping your data, which is just as important when preparing a dataset for analysis.
 
 
 ## Clustering
 
 Even after splitting, the second part (ArtistBio 2) still contains a mix of formats:
 
-born 1936
+- born 1936
 
-born Italy. 1919–2013
+- born Italy. 1919–2013
 
-1857–1927
+- 1857–1927
 
-1923–2014
+- 1923–2014
 
 This is where clustering helps.
 
@@ -141,6 +145,7 @@ This is how OpenRefine groups values that are close enough, even if not exactly 
 2. Method: Key collision
 
 3. Keying function: Metaphone 3
+
 
 
 
