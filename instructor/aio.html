@@ -292,7 +292,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-clustering.html">5. Transforming Data</a>
+        <a href="05-transformation.html">5. Transforming Data</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -908,7 +908,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-04-custom-facets-and-grel"><p>Content from <a href="04-custom-facets-and-grel.html">Custom Facets and GREL</a></p>
 <hr>
-<p>Last updated on 2025-08-18 |
+<p>Last updated on 2025-08-19 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/04-custom-facets-and-grel.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
@@ -1039,11 +1039,6 @@ multiple spaces).</li>
 <code>;</code>.</li>
 <li>
 <code>array.join("|")</code> – join array back to a string.</li>
-</ul>
-<div class="section level3">
-<h3 id="type-conversion">Type &amp; Conversion<a class="anchor" aria-label="anchor" href="#type-conversion"></a>
-</h3>
-<ul>
 <li>
 <code>value.toNumber()</code> – parse numbers (non-numeric becomes
 blank).</li>
@@ -1074,16 +1069,15 @@ comparisons).</li>
 </div>
 </div>
 </div>
-</div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-05-clustering"><p>Content from <a href="05-clustering.html">Transforming Data</a></p>
+</section></section><section id="aio-05-transformation"><p>Content from <a href="05-transformation.html">Transforming Data</a></p>
 <hr>
-<p>Last updated on 2025-08-18 |
+<p>Last updated on 2025-08-19 |
 
-        <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/05-clustering.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/05-transformation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1096,7 +1090,10 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>TODO</li>
+<li>How can we clean and standardize <strong>ArtistBio</strong> values
+in OpenRefine?</li>
+<li>What is the difference between <em>finding</em> issues (facets) and
+<em>fixing</em> them (transformations &amp; clustering)?</li>
 </ul>
 </div>
 </div>
@@ -1106,25 +1103,183 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>TODO</li>
+<li>Remove literal characters (parentheses) with simple GREL
+replacements (no regex).</li>
+<li>Split <strong>ArtistBio</strong> into nationality and life‑dates
+using <strong>Edit column → Split into several columns…</strong>
+</li>
+<li>Inspect and normalize the second part (<strong>ArtistBio 2</strong>)
+with <strong>Cluster and edit… (Key collision →
+Metaphone3)</strong>.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="keypoints1" class="callout keypoints">
+<p>Facets help us <em>find</em> patterns; transformations and clustering
+help us <em>fix</em> them consistently. In the MoMA sample, the column
+<strong>ArtistBio</strong> stores nationality plus life information in a
+compact string. Typical examples in your file look like:</p>
+<pre><code>(American, born 1936)
+(American, born Italy. 1919–2013)
+(American, born Germany. 1886–1969)
+(French, 1857–1927)
+(Ivorian, 1923–2014)
+
+
+As previously noted, some columns also contain information about multiple artists, which is why we first need to split them.
+
+::::::::::::: discussion
+
+### Discussion: By which seperator can we split the ArtistBio Column?
+
+It may happen that different data items are not separated by a comma or a semicolon, in which case creativity is required to determine how to resolve these data items.
+
+::::::::::::::::::::
+
+::::::::::::::::: solution
+
+### SOLUTION ()
+
+You can separate the data at the string ") (".
+
+::::::::::::::::::::::::::
+
+
+Next, we will simplify the text, then split nationality from the remaining details, and finally use clustering to review and standardize the results.
+
+
+## Transformation with GREL
+
+We start with a so called literal replacement.
+
+1. Open the column menu for **ArtistBio**.
+2. Choose **Edit cells → Transform…**.
+3. Enter:
+
+```grel
+value.replace("(", "").replace(")", "")</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Click <strong>OK</strong>.</li>
+</ol>
+<p><strong>What this does:</strong> It deletes <code>(</code> and
+<code>)</code> everywhere and leaves the rest untouched. More precisely,
+it replaces the characters with nothing. The value.replace() function
+requires two inputs, which are passed in parentheses. One is the
+character to be replaced, and the other is the character with which it
+is replaced. In our case, we simply leave the second part blank, which
+results in the character being deleted.</p>
+<p>After this step, examples look like:</p>
+<pre><code>American, born 1936
+American, born Italy. 1919–2013
+French, 1857–1927</code></pre>
+<div id="callout" class="callout">
 <div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
+<i class="callout-icon" data-feather="bell"></i>
 </div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
+<span class="callout-header">Callout</span>
+<div id="callout" class="callout-inner">
+<h3 class="callout-title">CALLOUT ()</h3>
 <div class="callout-content">
-<ul><li>
-</li></ul>
+<p>Add a quick <strong>Text facet</strong> on <em>ArtistBio</em> to
+confirm that parentheses are gone.</p>
 </div>
 </div>
-</div></section><section id="aio-06-reconciling-data"><p>Content from <a href="06-reconciling-data.html">Reconciling Data with External Data Sources</a></p>
+</div>
+<section><h2 class="section-heading" id="edit-columns">Edit Columns<a class="anchor" aria-label="anchor" href="#edit-columns"></a>
+</h2>
+<hr class="half-width">
+<p>The cleaned values are generally in the form:</p>
+<pre><code>Nationality, rest</code></pre>
+<p>We can split at the first comma to separate nationality from
+birth/death or other notes.</p>
+<ol style="list-style-type: decimal">
+<li>Column menu <strong>ArtistBio → Edit column → Split into several
+columns…</strong>
+</li>
+<li>
+<strong>Separator:</strong> <code>,</code>
+</li>
+<li>
+<strong>Split into</strong>: leave default (OpenRefine will create
+<strong>ArtistBio 1</strong> and <strong>ArtistBio 2</strong>).</li>
+<li>
+<strong>OK</strong>.</li>
+</ol>
+<p>You should now have:</p>
+<ul>
+<li>
+<strong>ArtistBio 1</strong> → nationality (e.g.,
+<code>American</code>, <code>French</code>, <code>Ivorian</code>,
+…)</li>
+<li>
+<strong>ArtistBio 2</strong> → remaining info (e.g.,
+<code>born 1936</code>, <code>born Germany. 1886–1969</code>,
+<code>1857–1927</code>)</li>
+</ul></section><section><h2 class="section-heading" id="clustering">Clustering<a class="anchor" aria-label="anchor" href="#clustering"></a>
+</h2>
+<hr class="half-width">
+<p>Even after splitting, the second part (ArtistBio 2) still contains a
+mix of formats:</p>
+<p>born 1936</p>
+<p>born Italy. 1919–2013</p>
+<p>1857–1927</p>
+<p>1923–2014</p>
+<p>This is where clustering helps.</p>
+<div class="section level4">
+<h4 id="what-is-clustering">What is clustering?<a class="anchor" aria-label="anchor" href="#what-is-clustering"></a>
+</h4>
+<p>Imagine you have a long list of words that are almost—but not
+quite—the same: colour, color, colr. A computer can group them together
+by applying a rule that says “treat things that sound or look similar as
+if they belonged to one bucket.” That’s clustering. OpenRefine offers
+different clustering methods. They don’t just compare characters
+literally but transform them into simplified “keys.” Rows with the same
+key end up in the same cluster.</p>
+<p>You can think of it like:</p>
+<ul>
+<li>Writing all words in block capitals and removing vowels: COLOR and
+COLOUR both become CLR.</li>
+<li>Or sounding the word out loud: Smith and Smyth both sound like
+SMITH.</li>
+</ul>
+<p>This is how OpenRefine groups values that are close enough, even if
+not exactly the same.</p>
+</div>
+<div class="section level4">
+<h4 id="how-to-use-it-here">How to use it here:<a class="anchor" aria-label="anchor" href="#how-to-use-it-here"></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li><p>Column menu ArtistBio 2 → Edit cells → Cluster and edit…</p></li>
+<li><p>Method: Key collision</p></li>
+<li><p>Keying function: Metaphone 3</p></li>
+</ol>
+</div>
+<div class="section level4">
+<h4 id="what-youll-see">What you’ll see<a class="anchor" aria-label="anchor" href="#what-youll-see"></a>
+</h4>
+<p>In the clustering window, OpenRefine shows suggested groups of
+values. For example:</p>
+<ul>
+<li><p>born Germany. 1886–1969 might be grouped with slight spelling
+variants like born Germany 1886-1969.</p></li>
+<li><p>Different years won’t cluster together, but you’ll see repeated
+phrases like born Italy or born Germany.</p></li>
+<li><p>Plain ranges like 1857–1927 won’t be grouped with 1923–2014,
+because the numbers differ, but you can still skim them
+quickly.</p></li>
+</ul>
+<p>Clustering is not about fixing everything automatically. It’s about
+seeing the patterns and deciding what you want to merge. For example,
+you might merge born Germany. 1886–1969 and born Germany 1886–1969 into
+one consistent form.</p>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</div>
+</section></section><section id="aio-06-reconciling-data"><p>Content from <a href="06-reconciling-data.html">Reconciling Data with External Data Sources</a></p>
 <hr>
 <p>Last updated on 2025-07-01 |
 
