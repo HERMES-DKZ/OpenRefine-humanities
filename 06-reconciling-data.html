@@ -118,11 +118,11 @@
   OpenRefine for the Humanities
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: NaN%" class="percentage">
-    NaN%
+<aside class="col-md-12 lesson-progress"><div style="width: 0%" class="percentage">
+    0%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: NaN%" aria-valuenow="NaN" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 0%" aria-valuenow="0" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -251,12 +251,19 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         6. Reconciling Data with External Data Sources
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#reconciling-with-openrefine">Reconciling with OpenRefine</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -337,7 +344,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reconciling Data with External Data Sources</h1>
-        <p>Last updated on 2025-07-01 |
+        <p>Last updated on 2025-08-19 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/06-reconciling-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -356,7 +363,10 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>TODO</li>
+<ul><li>What does it mean to reconcile data?</li>
+<li>Why is reconciliation useful in humanities research?</li>
+<li>How can we use OpenRefine to enrich our dataset with identifiers and
+structured information?</li>
 </ul></div>
 </div>
 </div>
@@ -364,12 +374,140 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>TODO</li>
+<ul><li>Understand the concept of data reconciliation.</li>
+<li>Reconcile names and places.</li>
+<li>Add stable identifiers (IDs).</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
+<p>So far, we have used OpenRefine to <em>look at</em> and
+<em>clean</em> our dataset: splitting columns, removing unwanted
+characters, and clustering values. These steps improve the quality of
+our data, but our values are still <strong>just strings</strong>, plain
+text without a deeper connection to knowledge outside our file.</p>
+<p><strong>Reconciliation</strong> is the process of linking these
+strings to <strong>stable, external identifiers</strong> in authority
+databases such as <strong>Wikidata</strong>, the <strong>Getty
+vocabularies</strong>, or other domain-specific repositories. Instead of
+simply having the text <code>Pablo Picasso</code>, reconciliation can
+connect our cell to the unique Wikidata item <a href="https://www.wikidata.org/wiki/Q5593" class="external-link"><code>Q5593</code></a>. This
+turns our dataset into something that can be connected and compared with
+other datasets and research around the world.</p>
+<p>You can think of reconciliation as asking a librarian: <em>“I have
+this name written here – which exact person in your catalog does it
+refer to?”</em> The librarian might return a short stack of cards with
+possible matches, and you confirm the right one. Once linked, the
+reference is unambiguous and stable.</p>
+<p>In humanities datasets, names and places are central. But names are
+often ambiguous:</p>
+<ul><li>
+<strong>Variant spellings</strong>: <code>Shakespeare</code>,
+<code>Shakespear</code>, <code>Shakspeare</code>
+</li>
+<li>
+<strong>Common names</strong>: <code>John Smith</code>
+</li>
+<li>
+<strong>Different languages</strong>: <code>Munich</code>
+vs. <code>München</code>
+</li>
+</ul><p>If we keep these as plain text, any comparison across collections or
+projects becomes unreliable. But if we reconcile to shared identifiers
+(like Wikidata QIDs), we can:</p>
+<ul><li>Connect our dataset to others, regardless of spelling
+differences.</li>
+<li>Enrich our data with structured information (e.g., dates of birth,
+countries, occupations).</li>
+<li>Support reproducible analysis by referring to stable, citable
+identifiers rather than local labels.</li>
+</ul><p>Reconciliation therefore transforms a local, isolated dataset into
+part of a larger <em>knowledge graph</em>.</p>
+<section><h2 class="section-heading" id="reconciling-with-openrefine">Reconciling with OpenRefine<a class="anchor" aria-label="anchor" href="#reconciling-with-openrefine"></a></h2>
+<hr class="half-width"><p>OpenRefine makes reconciliation simple and interactive:</p>
+<ul><li>It provides built-in or addable reconciliation services (such as
+Wikidata).</li>
+<li>It lets you review and confirm matches cell by cell, or accept
+high-confidence matches in bulk.</li>
+<li>It allows you to pull in identifiers, labels, and even additional
+properties as new columns.</li>
+</ul><p>This combination of automation and human oversight is powerful: the
+machine proposes matches, but the researcher remains in control of what
+is accepted.</p>
+<p>We will reconcile two columns in our dataset:</p>
+<ol style="list-style-type: decimal"><li>
+<strong><code>Artist</code></strong> – the name of the artist.</li>
+<li>
+<strong><code>Nationality</code></strong> – the country information
+we previously separated from the biography.</li>
+</ol><div class="section level3">
+<h3 id="reconciling-the-artist-column">Reconciling the <code>Artist</code> column<a class="anchor" aria-label="anchor" href="#reconciling-the-artist-column"></a></h3>
+<ol style="list-style-type: decimal"><li>Open the menu on <strong><code>Artist</code></strong> →
+<strong>Reconcile → Start reconciling…</strong>
+</li>
+<li>Select <strong>Wikidata</strong> as the reconciliation service. If
+it does not appear, add it via <em>Add Standard Service…</em> and paste
+the URL: <code>https://wikidata.reconci.link/en/api</code>.</li>
+<li>In the type field, type and select <strong>Human (Q5)</strong>. This
+tells Wikidata we are looking specifically for people.</li>
+<li>Click <strong>Start reconciling</strong>.</li>
+</ol><p>OpenRefine now sends each name in the column to Wikidata and
+retrieves possible matches.</p>
+</div>
+<div class="section level3">
+<h3 id="reviewing-the-matches">Reviewing the matches<a class="anchor" aria-label="anchor" href="#reviewing-the-matches"></a></h3>
+<p>If the assignment is clear the reconciliation is complete. However,
+it is often the case that it is not clear and requires manual checking.
+If there are several candidates to choose from and OpenRefine is unsure
+which one is correct, all options are displayed in the respective cell.
+Hovering over one of the names will display some information to help you
+decide which person is correct. You can also go directly to the entire
+database page to obtain even more information. Once you have found the
+correct person, you can either reconcile all cells with this name or
+just this one.</p>
+<p>This is like being handed several possible business cards for the
+same name. Your task is to select the one that fits the person in your
+dataset.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>Use birth/death dates and occupations in the description to
+disambiguate common names.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="adding-identifiers">Adding identifiers<a class="anchor" aria-label="anchor" href="#adding-identifiers"></a></h3>
+<p>The links now looks very good and can already be used in OpenRefine.
+However, if we export the file, the reconciliation disappears again, as
+in its current state it only works in OpenRefine itself. We therefore
+need to add another column with the assigned ID so that it can also be
+used outside of OpenRefine. We do this as follows:</p>
+<ol style="list-style-type: decimal"><li>Column menu → <strong><code>Artist</code> → Reconcile → Add entry
+identifiers column</strong>.</li>
+<li>Give it a name, for example <strong>Artist_ID</strong>.</li>
+<li>Click <strong>OK</strong>.</li>
+</ol><p>Now, every artist is linked to a stable identifier.</p>
+</div>
+<div class="section level3">
+<h3 id="reconciling-the-nationality-column-countries">Reconciling the <code>Nationality</code> column (countries)<a class="anchor" aria-label="anchor" href="#reconciling-the-nationality-column-countries"></a></h3>
+<p>Now we can reconcile these values as well:</p>
+<ol style="list-style-type: decimal"><li>Column menu → <strong><code>Nationality</code> → Reconcile → Start
+reconciling…</strong>
+</li>
+<li>Choose <strong>Wikidata</strong>.</li>
+<li>Set the type to <strong>Country (Q6256)</strong>.</li>
+<li>Start reconciliation.</li>
+</ol><p>This ensures that different spellings or forms like <code>USA</code>,
+<code>United States</code>, and <code>United States of America</code>
+all link to the same stable identifier: <a href="https://www.wikidata.org/wiki/Q30" class="external-link">United States of America
+(Q30)</a>.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -377,18 +515,23 @@
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>
-</li></ul></div>
+<ul><li>Reconciliation links text strings to unique identifiers in external
+databases.</li>
+<li>This makes your dataset more precise, reusable, and comparable
+across projects.</li>
+<li>OpenRefine provides a structured workflow for reconciliation:
+propose → review → confirm → enrich.</li>
+<li>The human researcher stays in control: machines suggest, but you
+decide.</li>
+</ul></div>
 </div>
 </div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-
-
-
-      </div> <!-- / div.lesson-content -->
+</div>
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="05-transformation.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="07-exporting-data-and-cleaning-steps.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -446,7 +589,7 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/06-reconciling-data.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/06-reconciling-data.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2025-07-01",
+  "dateModified": "2025-08-19",
   "datePublished": "2025-08-19"
 }
 
