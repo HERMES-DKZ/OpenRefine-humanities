@@ -1096,14 +1096,10 @@ in OpenRefine?</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Remove literal characters (parentheses) with simple GREL
-replacements (no regex).</li>
-<li>Split <strong>ArtistBio</strong> into nationality and life‑dates
-using <strong>Edit column → Split into several columns…</strong>
-</li>
-<li>Inspect and normalize the second part (<strong>ArtistBio 2</strong>)
-with <strong>Cluster and edit… (Key collision →
-Metaphone3)</strong>.</li>
+<li>Remove literal characters with GREL replacements.</li>
+<li>Split <strong>ArtistBio</strong> into nationality and
+life‑dates</li>
+<li>Inspect and normalize a column.</li>
 </ul>
 </div>
 </div>
@@ -1143,7 +1139,7 @@ resolve these data items.</p>
   SOLUTION ()
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You can separate the data at the string “) (”.</p>
 </div>
