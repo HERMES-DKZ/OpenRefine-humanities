@@ -315,7 +315,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="07-exporting-data-and-cleaning-steps.html">7. Exporting and Saving Data and Cleaning Steps</a>
+        <a href="07-exporting-data-and-cleaning-steps.html">7. Undo, Redo, and Exporting Workflows</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -1493,9 +1493,9 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
 </div>
-</section></section><section id="aio-07-exporting-data-and-cleaning-steps"><p>Content from <a href="07-exporting-data-and-cleaning-steps.html">Exporting and Saving Data and Cleaning Steps</a></p>
+</section></section><section id="aio-07-exporting-data-and-cleaning-steps"><p>Content from <a href="07-exporting-data-and-cleaning-steps.html">Undo, Redo, and Exporting Workflows</a></p>
 <hr>
-<p>Last updated on 2025-07-01 |
+<p>Last updated on 2025-08-26 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/07-exporting-data-and-cleaning-steps.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1509,7 +1509,11 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>TODO</li>
+<li>How can we go back to an earlier step if we realize we made a
+mistake?<br>
+</li>
+<li>How can we save our cleaning process to repeat it later or share it
+with colleagues?</li>
 </ul>
 </div>
 </div>
@@ -1519,10 +1523,109 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>TODO</li>
+<li>Use the Undo/Redo panel in OpenRefine to reverse mistakes.<br>
+</li>
+<li>Export and Import workflows.<br>
+</li>
+<li>Understand the value of transparency and reproducibility in data
+cleaning.</li>
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+<p>When cleaning messy data, we rarely get everything right on the first
+try. In the earlier chapters of this lesson, we:</p>
+<ul>
+<li>Removed extra details from the <strong>ArtistBio</strong>
+column.<br>
+</li>
+<li>Split the column into separate parts, such as nationality.<br>
+</li>
+<li>Applied clustering to standardize values.<br>
+</li>
+<li>Reconciled artist names against an external authority.</li>
+</ul>
+<p>All of these steps helped us improve our dataset. But what if, after
+clustering, we realize that some merges were wrong? Or what if we decide
+later that splitting the ArtistBio column at commas wasn’t the best
+idea? Instead of starting all over again, OpenRefine allows us to
+<strong>step backwards</strong> and explore different alternatives.</p>
+<section><h2 class="section-heading" id="undoredo">Undo/Redo<a class="anchor" aria-label="anchor" href="#undoredo"></a>
+</h2>
+<hr class="half-width">
+<p>On the left-hand side of the OpenRefine interface, you will find the
+<strong>Undo/Redo</strong> panel. This panel lists every action you have
+taken since the project was created. Each action has a short label, such
+as <em>“Text transform on 2000 cells…</em> or <em>“Split multu-valued
+cells in column nationality”</em>.</p>
+<ol style="list-style-type: decimal">
+<li>Click on the <strong>Undo/Redo</strong> tab in the left
+sidebar.<br>
+</li>
+<li>You will see a list of all your steps in order. The most recent one
+is at the bottom.<br>
+</li>
+<li>By selecting an earlier step in the list, you can roll the dataset
+back to exactly how it looked at that moment.</li>
+</ol>
+<p>This is like having a <em>time machine</em> for your dataset: you can
+test transformations freely without the fear of making permanent
+mistakes. And if you change your mind, you can always jump back to any
+earlier state.</p>
+<p><strong>Example:</strong> After splitting the ArtistBio column into
+multiple parts, you might notice that the country information was
+separated cleanly, but the century data became fragmented and less
+useful. Using Undo/Redo, you can jump back to the step <em>before</em>
+the split and try a different approach.</p>
+</section><section><h2 class="section-heading" id="exporting-and-importing-workflows">Exporting and Importing Workflows<a class="anchor" aria-label="anchor" href="#exporting-and-importing-workflows"></a>
+</h2>
+<hr class="half-width">
+<p>Undo/Redo does more than let you move backwards. It also keeps track
+of your entire cleaning process as a set of instructions. OpenRefine can
+export these instructions as a <strong>JSON file</strong>. This file is
+not the cleaned data itself, but the <em>recipe</em> of how the cleaning
+was done with the used data.</p>
+<ol style="list-style-type: decimal">
+<li>Go to the <strong>Undo/Redo</strong> panel.<br>
+</li>
+<li>Click on the link <strong>Extract…</strong>.<br>
+</li>
+<li>A dialog will open showing all the steps in JSON format. You can
+select which steps to include.<br>
+</li>
+<li>Click <strong>Copy to clipboard</strong> or save the JSON to a
+file.</li>
+</ol>
+<p>Later, you or someone else can <strong>import</strong> this workflow
+into another OpenRefine project:</p>
+<ol style="list-style-type: decimal">
+<li>In the Undo/Redo panel of the other project, click
+<strong>Apply…</strong>.<br>
+</li>
+<li>Paste the JSON recipe or upload the file.<br>
+</li>
+<li>OpenRefine will replay the exact same steps on the new dataset.</li>
+</ol>
+<p>This feature is especially powerful in humanities research, where
+transparency and reproducibility are essential. Instead of describing
+vaguely what was done, we can share the precise workflow that produced
+our dataset. Other researchers can review it, replicate it, or adapt it
+to their own data.</p>
+<div id="callout-workflows-as-reusable-recipes" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="callout-workflows-as-reusable-recipes" class="callout-inner">
+<h3 class="callout-title">Callout: Workflows as Reusable Recipes</h3>
+<div class="callout-content">
+<p>Think of Undo/Redo export files as <strong>recipes</strong>. Just
+like a recipe tells you how to combine ingredients to bake a cake, an
+OpenRefine workflow tells you how to transform raw data into a cleaned
+dataset. If you don’t like the taste, you can always tweak the
+recipe.</p>
 </div>
 </div>
 </div>
@@ -1533,11 +1636,23 @@ any links that you are not going to use.
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>
-</li></ul>
+<ul>
+<li>OpenRefine records every transformation you make.<br>
+</li>
+<li>The <strong>Undo/Redo</strong> panel lets you move backward and
+forward through your cleaning process.<br>
+</li>
+<li>Workflows can be exported as JSON and reapplied to other projects,
+ensuring transparency and reproducibility.</li>
+</ul>
 </div>
 </div>
-</div></section><section id="aio-08-resources-for-self-study"><p>Content from <a href="08-resources-for-self-study.html">Resources for Future Self-study</a></p>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-08-resources-for-self-study"><p>Content from <a href="08-resources-for-self-study.html">Resources for Future Self-study</a></p>
 <hr>
 <p>Last updated on 2025-07-01 |
 
