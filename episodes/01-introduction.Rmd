@@ -6,7 +6,7 @@ exercises: 0
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-+ What is OpenRefine and how can it help with messy data your research?
++ What is OpenRefine and how can it help with messy data?
 + What kinds of tasks and analyses can you perform with OpenRefine?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -41,7 +41,7 @@ OpenRefine supports a wide range of data formats, including CSV, Excel, and JSON
 
 Throughout this lesson, you will use a sample dataset from the Museum of Modern Art (MoMA). This real-world data will help you learn how to use OpenRefine to solve common problems in humanities research. Even if you have never worked with data before, you will see how OpenRefine can make your research easier, more accurate, and more enjoyable.
 
-Much of your time as a researcher will be spent in the initial cleaning stage, where you need to organize and clean your data before you can analyze it. It’s not always the most exciting part, but it is essential. With OpenRefine, you will learn how to think about data organization and develop practices for more effective data cleaning. By the end of this lesson, you will feel confident using OpenRefine to clean, explore, and analyze your own data. You don’t need to be a technical expert—just curious and willing to try something new.
+Much of your time as a researcher will be spent in the initial cleaning stage, where you need to organize and clean your data before you can analyze it. It’s not always the most exciting part, but it is essential. With OpenRefine, you will learn how to think about data organization and develop practices for more effective data cleaning. By the end of this lesson, you will feel confident using OpenRefine to clean, explore, and analyze your own data. You don’t need to be a technical expert, just curious and willing to try something new.
 
 Let’s get started!
 
