@@ -11,10 +11,10 @@ To follow this lesson, you must have OpenRefine installed on your computer and d
 
 ## Dataset
 
-The dataset used in this lesson is a subset of the [Metropolitan Museum of Art's Open Access Initiative](https://www.metmuseum.org/about-the-met/policies-and-documents/open-access) dataset with information about the objects in the Metropolitan Museum of Art (e.g. title, culture, artist biography).
+The dataset used in this lesson is a subset of the [Museum of Modern Art Collection](https://github.com/MuseumofModernArt/collection) dataset.
 It has been reduced in the number of columns and intentionally 'messed up' a little bit.
 
-Download the csv [data file](https://hermes-dkz.github.io/OpenRefine-humanities/data/met_dataset_oa.csv) to your Computer.
+Download the csv [data file](https://hermes-dkz.github.io/OpenRefine-humanities/data/moma_subset.csv) to your Computer.
 
 ::::::::::::::::::::
 
