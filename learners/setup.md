@@ -25,8 +25,8 @@ Download the csv [data file](https://hermes-dkz.github.io/OpenRefine-humanities/
 For this lesson you will need OpenRefine and a web browser. 
 Note: OpenRefine is a Java program that runs on your machine (not in the cloud). It runs inside your browser, but no web connection is needed.
 
-1. Check that you have Firefox, Edge, Opera or Chrome, Chromium, Safari browsers installed and set as your default browser. OpenRefine runs in your default browser. It will not run correctly in Internet Explorer. Sometimes it even has some issues with Firefox.
-2. Download the software from [openrefine.org/download](https://openrefine.org/download) and check below for further instructions depending on your operating system
+1. Check that you have Firefox, Edge, Opera, Chrome, Chromium or Safari installed and set as your default browser. OpenRefine only runs in your default browser. It will not run correctly in Internet Explorer. Sometimes it even has some issues with Firefox.
+2. Download the software from [openrefine.org/download](https://openrefine.org/download) and check below for further instructions depending on your operating system.
 
 
 :::::::::::::::: tab
