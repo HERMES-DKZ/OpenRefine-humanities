@@ -12,7 +12,8 @@ Contents of the already existing lessons on Open Refine in the Data Carpentry an
 * [Data Carpentry – Ecology Curriculum](https://datacarpentry.github.io/OpenRefine-ecology-lesson/)
 * [Data Carpentry – Social Science Curriculum](https://datacarpentry.github.io/openrefine-socialsci/)
 
-This lesson utilizes a slightly modified sample from the [Metropolitan Museum of Art's Open Access Initiative](https://www.metmuseum.org/about-the-met/policies-and-documents/open-access) dataset. The original dataset is available as an [Open Access CSV](https://github.com/metmuseum/openaccess) and is provided under the [Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/) license.
+
+This lesson utilizes a slightly modified dataset from the [Museum of Modern Art Collection](https://www.moma.org/collection/). The original dataset is available in this [GitHub repository](https://github.com/MuseumofModernArt/collection) or under this [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.17182342.svg)](http://dx.doi.org/10.5281/zenodo.17182342). It is provided under the [Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/) license.
 
 
 ## Funding
