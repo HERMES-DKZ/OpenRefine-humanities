@@ -337,7 +337,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to OpenRefine</h1>
-        <p>Last updated on 2025-11-11 |
+        <p>Last updated on 2025-11-17 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/01-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -382,8 +382,9 @@ OpenRefine?</li>
 <h3 class="callout-title">Discussion: Do you often work with digital
 data in your research, your studies or your work?</h3>
 <div class="callout-content">
-<p>For example, cleaning it, processing it, converting it or analysing
-it?</p>
+<p>For example, cleaning it, processing it, converting it or analyzing
+it? Do you have an idea what problems could arise when working with
+data, especially external data?</p>
 </div>
 </div>
 </div>
@@ -403,13 +404,15 @@ opens in your web browser, providing a user-friendly interface that
 guides you through each step. Working in your web browser might be
 confusing, but nothing of your data will be in the internet, everything
 runs local.</p>
+<div class="section level3">
+<h3 id="advantages-of-openrefine">Advantages of OpenRefine<a class="anchor" aria-label="anchor" href="#advantages-of-openrefine"></a></h3>
 <p>With OpenRefine, you can import your data, discover patterns, fix
 mistakes, and transform your information so it’s ready for analysis or
 sharing. You don’t need to know how to code or use complicated software.
 OpenRefine is built for researchers who want to focus on their work, not
 on technical details.</p>
 <p>One of the strengths of OpenRefine is its ability to help you explore
-your data and perform simple analyses right from the start. You can
+your data and perform simple analysis right from the start. You can
 quickly filter and sort your data, group similar entries, and visualize
 distributions to spot trends or outliers. This makes it easy to get a
 sense of your dataset before diving deeper into research questions. You
@@ -425,6 +428,9 @@ add-ons and custom scripts, giving you even more possibilities. The
 active community around OpenRefine has developed many plugins that add
 new features, such as connecting to other data sources, exporting to
 different formats, or automating repetitive tasks.</p>
+</div>
+<div class="section level3">
+<h3 id="our-dataset">Our Dataset<a class="anchor" aria-label="anchor" href="#our-dataset"></a></h3>
 <p>Throughout this lesson, you will use a sample dataset from the Museum
 of Modern Art (MoMA). This real-world data will help you learn how to
 use OpenRefine to solve common problems in humanities research. Even if
@@ -438,7 +444,74 @@ organization and develop practices for more effective data cleaning. By
 the end of this lesson, you will feel confident using OpenRefine to
 clean, explore, and analyze your own data. You don’t need to be a
 technical expert, just curious and willing to try something new.</p>
-<p>Let’s get started!</p>
+<div id="challenge-spot-the-messy-data" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="challenge-spot-the-messy-data" class="callout-inner">
+<h3 class="callout-title">Challenge: Spot the Messy Data</h3>
+<div class="callout-content">
+<p>Look at the small sample below. It contains only a few records from
+the MoMA dataset you will work with later.<br>
+Identify anything that might cause problems during analysis.</p>
+<table class="table"><colgroup><col width="24%"><col width="16%"><col width="8%"><col width="7%"><col width="6%"><col width="5%"><col width="6%"><col width="24%"></colgroup><thead><tr class="header"><th>Title</th>
+<th>Artist</th>
+<th>Nationality</th>
+<th>BeginDate</th>
+<th>EndDate</th>
+<th>Gender</th>
+<th>Date</th>
+<th>Medium</th>
+</tr></thead><tbody><tr class="odd"><td>Figuier</td>
+<td>Eugène Atget</td>
+<td>French</td>
+<td>1857</td>
+<td>1927</td>
+<td>male</td>
+<td>n.d.</td>
+<td>Albumen silver print</td>
+</tr><tr class="even"><td>Beach Runner (Clara)</td>
+<td>Nicole Eisenman</td>
+<td>(American)</td>
+<td>1965</td>
+<td>0</td>
+<td>female</td>
+<td>2014</td>
+<td>Oil on canvas</td>
+</tr><tr class="odd"><td>“Untitled”</td>
+<td>Felix Gonzalez-Torres</td>
+<td>(American)</td>
+<td>1957</td>
+<td>1996</td>
+<td>male</td>
+<td>1990</td>
+<td>Three stacks of photolithographs</td>
+</tr><tr class="even"><td>Untitled</td>
+<td>Man Ray</td>
+<td>American</td>
+<td>1890</td>
+<td>1976</td>
+<td>male</td>
+<td>1930</td>
+<td>Gelatin silver print</td>
+</tr><tr class="odd"><td>«KO» N° 165 from Alphabet Bété</td>
+<td>Frédéric Bruly Bouabré</td>
+<td>Ivorian</td>
+<td>1923</td>
+<td>2014</td>
+<td>male</td>
+<td>1991</td>
+<td>Colored pencil on board</td>
+</tr></tbody></table><p><strong>Questions to discuss:</strong></p>
+<ol style="list-style-type: decimal"><li>What inconsistencies or formatting issues can you spot?<br></li>
+<li>Which values might make filtering or sorting difficult?<br></li>
+<li>Are there entries where you would want to investigate further before
+analysis?<br></li>
+<li>Why might these issues matter later in OpenRefine?</li>
+</ol></div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -461,6 +534,7 @@ your research more accurate, efficient, and enjoyable.</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 
 
 
@@ -522,8 +596,8 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/01-introduction.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/01-introduction.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2025-11-11",
-  "datePublished": "2025-11-11"
+  "dateModified": "2025-11-17",
+  "datePublished": "2025-11-17"
 }
 
   </script><script>
