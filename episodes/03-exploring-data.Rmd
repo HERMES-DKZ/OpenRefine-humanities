@@ -35,7 +35,7 @@ For example, in the Museum of Modern Art dataset, the column `Department` might 
 
 ## Text Facet
 
-Let us try this in practice. Once your MoMA sample dataset is loaded, find the column named `Department`. Open the column menu with the small awrrow next to the column name and choose **Facet → Text facet**. A new panel will appear on the left side of the screen.  
+Let us try this in practice. Once your MoMA sample dataset is loaded, find the column named `Department`. Open the column menu with the small arrow next to the column name and choose **Facet → Text facet**. A new panel will appear on the left side of the screen.  
 
 In this panel you now see a list of all the different departments represented in your data, along with the number of artworks in each. You might see something like:
 
@@ -65,7 +65,7 @@ Let us now prepare the `Artist` column for faceting by splitting its multi-value
 
 1. First, look through a few rows in the `Artist` column and identify whether any cells contain more than one artist. These are usually separated by a comma (`,`) in the MoMA dataset.
 2. Switch to **Records view** (at the top left of the grid, choose “Show as: Records”). This makes it easier to see what happens after the split.
-3. Open the column menu for `Artist`, choose **Edit cells → Split multi-valued cells…**. Enter the seperator `,` in the box, and click OK. Ignore the opther options.
+3. Open the column menu for `Artist`, choose **Edit cells → Split multi-valued cells…**. Enter the separator `,` in the box, and click OK. Ignore the other options.
 4. OpenRefine now divides each cell containing multiple artists into separate rows. The total number of rows increases, but the record count stays constant.
 5. Create a **Text facet** on `Artist` again. This time you will see the names of individual artists listed separately. Each can now be counted and selected on its own.
 
@@ -80,7 +80,7 @@ Look in the data and split the other columns if needed.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-This small step has a big impact: it ensures that our summaries and analyses represent the data correctly. Instead of hiding two names inside one cell, we now see each artist clearly and can identify patterns such as which artists appear most often in the dataset.
+This small step has a big impact: it ensures that our summaries and analysis represent the data correctly. Instead of hiding two names inside one cell, we now see each artist clearly and can identify patterns such as which artists appear most often in the dataset.
 
 
 
