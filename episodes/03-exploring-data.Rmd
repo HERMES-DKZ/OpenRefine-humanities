@@ -147,26 +147,11 @@ The scatterplot facet is not as commonly used as the text or numeric facet, but 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- 
+- Facets provide an interactive overview of the values in a column and help you explore your data.
+- Multi-valued cells must be split before accurate faceting is possible.
+- Numeric and Timeline facets require converting text values into numbers or dates first.
+- Scatterplot facets help explore relationships between two numeric columns.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
