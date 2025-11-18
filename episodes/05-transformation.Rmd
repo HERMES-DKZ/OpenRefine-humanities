@@ -6,7 +6,7 @@ exercises: 0
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How can we clean and standardize **ArtistBio** values in OpenRefine?
+- How can we clean and standardize the **ArtistBio** values in OpenRefine?
 - What is the difference between *finding* issues (facets) and *fixing* them (transformations & clustering)?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -14,14 +14,13 @@ exercises: 0
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Remove literal characters with GREL replacements.
-- Split **ArtistBio** into nationality and life‑dates 
+- Split **ArtistBio** into nationality and life-dates.
 - Inspect and normalize a column.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
-Facets help us *find* patterns; transformations and clustering help us *fix* them consistently. In the MoMA sample, the column **ArtistBio** stores nationality plus life information in a compact string. Typical examples in your file look like:
+Facets help us *find* patterns; transformations and clustering help us *fix* them consistently.  
+In the MoMA sample, the column **ArtistBio** stores nationality plus life information in a compact string. Typical examples look like:
 
 ```
 (American, born 1936)
@@ -31,12 +30,13 @@ Facets help us *find* patterns; transformations and clustering help us *fix* the
 (Ivorian, 1923–2014)
 ```
 
+This is a fairly typical situation in cultural data: multiple pieces of information are packed into a single field, sometimes with inconsistent separators or formatting.
 
-As previously noted, some columns also contain information about multiple artists, which is why we first need to split them.
+As mentioned before, some rows contain information about **multiple artists**, so we must ensure the rows are split correctly before working with this column.
 
 ::::::::::::: discussion
 
-### Discussion: By which seperator can we split the ArtistBio Column?
+### Discussion: By which separator can we split the ArtistBio column?
 
 It may happen that different data items are not separated by a comma or a semicolon, in which case creativity is required to determine how to resolve these data items.
 
@@ -44,19 +44,17 @@ It may happen that different data items are not separated by a comma or a semico
 
 ::::::::::::::::: solution
 
-### SOLUTION ()
+### Solution
 
-You can separate the data at the string ") (".
+You can separate the data at the string `) (`.
 
 ::::::::::::::::::::::::::
 
-
 Next, we will simplify the text, then split nationality from the remaining details, and finally use clustering to review and standardize the results.
-
 
 ## Transformation with GREL
 
-We start with a so called literal replacement.
+We start with a literal replacement to remove parentheses. This is a very common first step in cleaning, because parentheses, brackets, or punctuation often only serve visual use, not analytical use.
 
 1. Open the column menu for **ArtistBio**.
 2. Choose **Edit cells → Transform…**.
@@ -67,98 +65,142 @@ value.replace("(", "").replace(")", "")
 ```
 4. Click **OK**.
 
-**What this does:** It deletes `(` and `)` everywhere and leaves the rest untouched. More precisely, it replaces the characters with nothing. The value.replace() function requires two inputs, which are passed in parentheses. One is the character to be replaced, and the other is the character with which it is replaced. In our case, we simply leave the second part blank, which results in the character being deleted.
+#### What this does
 
-After this step, examples look like:
+The expression consists of two chained `replace()` calls. Each `replace(old, new)` looks for a specific character or substring and replaces it with something else. Because the second argument is an empty string, the character is completely removed.
+
+OpenRefine processes the expression for **each cell**:
+
+- `(` becomes nothing  
+- `)` becomes nothing  
+- everything else stays as-is  
+
+This kind of literal replacement is safe because parentheses are *not* meaningful content—they only frame the information.
+
+After this step, values change from:
+
+```
+(American, born 1936)
+```
+
+to:
 
 ```
 American, born 1936
-American, born Italy. 1919–2013
-French, 1857–1927
 ```
 
 ::::::::::::::::: callout
 
 Add a quick **Text facet** on *ArtistBio* to confirm that parentheses are gone.
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::::
 
 
-## Edit Columns 
 
-So far, we have applied transformations that modified the contents of cells and rows. But OpenRefine also allows us to restructure and transform our data through columns. For example creating new columns from existing ones. When working with tables, it makes sense to process them in such a way that each cell contains only one piece of information. This is useful if you want to analyze or clean different parts of the data separately, instead of working in one long text string. 
+## Edit Columns  
 
-The values, at the moment, are generally in the form:
+So far, we have transformed the *content* of a cell. But sometimes the data is best cleaned by **restructuring** it, splitting one column into multiple columns.
+
+The current pattern is:
 
 ```
 <Nationality>, <rest>
 ```
 
-By splitting at the comma, we can move the nationality into its own column and leave the rest (birth/death information, places, etc.) in another. This makes it much easier to work with later.
+To isolate the nationality, we split at the comma. This is good practice: each column ideally contains **one type of information** (a principle often called “tidy data”).
 
-1. Open the column menu ArtistBio → Edit column → Split into several columns…
-2. Separator: ","
-3. Split into: leave the default (OpenRefine will automatically create ArtistBio 1 and ArtistBio 2 ... ArtistBio X).
-4. Confirm with OK.
+1. Open the column menu: ArtistBio → **Edit column → Split into several columns…**
+2. Separator: `,`
+3. Split into: *leave the default*
+4. Confirm with **OK**
 
-After splitting, your dataset will look something like this:
+Afterward you get:
 
-- ArtistBio 1 → nationality (e.g., American, French, Ivorian, …)
+- **ArtistBio 1** → nationality (“American”, “French”, “Ivorian”, …)
+- **ArtistBio 2** → biographical details (“born 1936”, “1857–1927”, …)
 
-- ArtistBio 2 → the remaining details (e.g., born 1936, born Germany. 1886–1969, 1857–1927)
-
-If cells have more then one comma, OpenRefine will create as much columns as needed. This step shows how OpenRefine is not only about cleaning text but also about reshaping your data, which is just as important when preparing a dataset for analysis.
+If a cell contains more than one comma, OpenRefine will generate more columns (ArtistBio 3, ArtistBio 4, …). This shows how splitting is both powerful and potentially revealing—sometimes extra commas indicate noise or irregular formatting.
 
 
 ## Clustering
 
-Even after splitting, the second part (ArtistBio 2) still contains a mix of formats:
+Even after splitting, the remaining biographical information still varies greatly:
 
-- born 1936
+- `born 1936`
+- `born Italy. 1919–2013`
+- `1857–1927`
+- `1923–2014`
+- variations in punctuation and spacing  
+- different types of dash characters  
 
-- born Italy. 1919–2013
+These inconsistencies make it hard to analyze the data reliably.
 
-- 1857–1927
+Clustering is one of OpenRefine’s most powerful tools for identifying and normalizing such variations—especially when the inconsistencies appear similar but not identical.
 
-- 1923–2014
+### What is clustering?
 
-This is where clustering helps.
+Clustering is OpenRefine’s way of grouping together text values that *look* or *sound* similar.  
+It does this by reducing each value to a **“key”** based on a transformation.
 
-#### What is clustering?
+For example:
 
-Imagine you have a long list of words that are almost—but not quite—the same: colour, color, colr. A computer can group them together by applying a rule that says “treat things that sound or look similar as if they belonged to one bucket.” That’s clustering.
-OpenRefine offers different clustering methods. They don’t just compare characters literally but transform them into simplified “keys.” Rows with the same key end up in the same cluster.
+- You might remove vowels and make everything uppercase:  
+  “Color” → “CLR”, “Colour” → “CLR” → **match**
 
-You can think of it like:
+- Or you might use phonetic rules:  
+  “Smith” → “SM0”, “Smyth” → “SM0” → **match**
 
-- Writing all words in block capitals and removing vowels: COLOR and COLOUR both become CLR. 
-- Or sounding the word out loud: Smith and Smyth both sound like SMITH. 
+A “keying function” transforms two strings that *should* be the same into the **same key**, even if their spellings differ slightly. There are many more clustering methods, all of which can recognise different patterns. It helps to understand these in order to find the right method, but often it is enough to try them out and proceed step by step.
 
-This is how OpenRefine groups values that are close enough, even if not exactly the same.
+OpenRefine uses this idea to suggest groups of values you may want to merge.
+
+#### How to use it here
+
+1. Open: ArtistBio 2 → **Edit cells → Cluster and edit…**
+2. Method: **Key collision**
+3. Keying function: **Metaphone 3**
+
+#### More detailed explanation
+
+- **Key collision** compares transformed keys. If two values produce the same key, they fall into the same cluster.
+- **Metaphone 3** is a phonetic algorithm—it groups text based on how it sounds rather than how it is spelled.
+  This is useful for cases like:  
+  `born Germany. 1886–1969`  
+  `born Germany 1886-1969`  
+  → punctuation differs, but the core phrase is the same.
+
+For numeric ranges (like dates), clustering won’t combine values with different numbers—e.g., `1857–1927` and `1923–2014` remain separate.  
+But clustering will show you repeated structures, such as:
+
+- “born Italy”
+- “born Germany”
+- “born 19XX”
+
+This helps you spot repeated phrases and standardize them if needed.
+
+### What you'll see
+
+The clustering window shows one line per suggested cluster:
+
+- On the left: variations of a similar value  
+- On the right: a field where you choose the unified form
+
+You can then decide:
+
+- **Merge and reformat them** into a consistent style  
+- **Ignore** clusters if the variations are meaningful  
+- **Edit only some entries**  
+
+Clustering never changes anything automatically. **You are in control**—OpenRefine simply helps you notice patterns you would otherwise miss.
+
+This makes clustering extremely effective for cleaning humanities datasets, where controlled vocabulary is uncommon and metadata comes from diverse sources.
 
 
+::::::::::::::::::::::::::::::::::::: keypoints
 
-#### How to use it here:
+- Transformations modify the *content* of cells, while column operations reshape the *structure* of the dataset.
+- Literal GREL replacements help remove unwanted characters and prepare text for further processing.
+- Splitting columns separates different types of information, making the data easier to analyze and clean.
+- Clustering identifies similar but inconsistently written values and supports manual standardization.
 
-1. Column menu ArtistBio 2 → Edit cells → Cluster and edit…
-
-2. Method: Key collision
-
-3. Keying function: Metaphone 3
-
-
-
-
-#### What you’ll see
-
-In the clustering window, OpenRefine shows suggested groups of values. For example:
-
-- born Germany. 1886–1969 might be grouped with slight spelling variants like born Germany 1886-1969.
-
-- Different years won’t cluster together, but you’ll see repeated phrases like born Italy or born Germany.
-
-- Plain ranges like 1857–1927 won’t be grouped with 1923–2014, because the numbers differ, but you can still skim them quickly.
-
-Clustering is not about fixing everything automatically. It’s about seeing the patterns and deciding what you want to merge. For example, you might merge born Germany. 1886–1969 and born Germany 1886–1969 into one consistent form.
-
-
+::::::::::::::::::::::::::::::::::::::::::::::::
