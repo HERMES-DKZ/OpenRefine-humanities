@@ -243,7 +243,9 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#creating-a-custom-facet-with-grel">Creating a Custom Facet with GREL</a></li>
+        <ul><li><a href="#what-is-grel">What Is GREL?</a></li>
+<li><a href="#creating-a-custom-facet-with-grel">Creating a Custom Facet with GREL</a></li>
+<li><a href="#example-detecting-unusually-long-titles">Example: Detecting Unusually Long Titles</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -344,7 +346,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Custom Facets and GREL</h1>
-        <p>Last updated on 2025-11-11 |
+        <p>Last updated on 2025-11-18 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/04-custom-facets-and-grel.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -413,7 +415,24 @@ difference.</p>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="creating-a-custom-facet-with-grel">Creating a Custom Facet with GREL<a class="anchor" aria-label="anchor" href="#creating-a-custom-facet-with-grel"></a></h2>
+<section><h2 class="section-heading" id="what-is-grel">What Is GREL?<a class="anchor" aria-label="anchor" href="#what-is-grel"></a></h2>
+<hr class="half-width"><p><strong>GREL</strong> stands for <strong>General Refine Expression
+Language</strong>.<br>
+It is a small, specialized language used inside OpenRefine to:</p>
+<ul><li>inspect cell values<br></li>
+<li>transform text and numbers<br></li>
+<li>check conditions<br></li>
+<li>extract patterns<br></li>
+<li>create new values on the fly</li>
+</ul><p>Even though GREL looks a bit like programming, most expressions are
+short, simple, and intuitive.<br>
+You don’t need prior coding experience. GREL is designed to help you
+express small, precise rules for working with messy data.</p>
+<p>Every OpenRefine transformation you perform through the menu could
+also be written in GREL.<br>
+The menu, we are using, simply provides shortcuts for the most common
+actions.</p>
+</section><section><h2 class="section-heading" id="creating-a-custom-facet-with-grel">Creating a Custom Facet with GREL<a class="anchor" aria-label="anchor" href="#creating-a-custom-facet-with-grel"></a></h2>
 <hr class="half-width"><ol style="list-style-type: decimal"><li><p><strong>Open the column menu</strong> for
 <strong><code>Artist</code></strong>.</p></li>
 <li><p>Choose <strong>Facet → Custom text facet…</strong></p></li>
@@ -428,14 +447,68 @@ evaluates the expression and returns either <code>true</code> or
 with two buckets: <code>true</code> and <code>false</code>.</p></li>
 </ol><p>That’s it—you just created a logic-based facet that the standard
 menus couldn’t provide.</p>
-<blockquote>
 <p><strong>Why this works:</strong> A Custom Facet runs your expression
 on every row, groups the results, and lets you filter by the outcome.
 You can write tests that return booleans
 (<code>true</code>/<code>false</code>), strings (e.g., normalized
 categories), or even numbers—OpenRefine will facet whatever the
 expression returns.</p>
+</section><section><h2 class="section-heading" id="example-detecting-unusually-long-titles">Example: Detecting Unusually Long Titles<a class="anchor" aria-label="anchor" href="#example-detecting-unusually-long-titles"></a></h2>
+<hr class="half-width"><p>Another common task during data exploration is to identify values
+that <em>might</em> need attention based on their length. Very long
+artwork titles may indicate:</p>
+<ul><li>combined fields<br></li>
+<li>metadata copied incorrectly<br></li>
+<li>multiple titles in one cell<br></li>
+<li>comments included inside the field</li>
+</ul><p>We can create a custom facet to group titles into “short” and “long”
+categories.</p>
+<ol style="list-style-type: decimal"><li><p>Open the column menu for
+<strong><code>Title</code></strong><br></p></li>
+<li><p>Choose <strong>Facet → Custom text facet…</strong><br></p></li>
+<li>
+<p>Enter this GREL expression:</p>
+<pre class="grel"><code>if(value.length() &gt; 40, "long title", "short title")</code></pre>
+</li>
+</ol><p>This expression checks the length of each title: - If the title has
+more than 40 characters → <code>"long title"</code><br>
+- Otherwise → <code>"short title"</code></p>
+<p>OpenRefine will show two groups: - <strong>long title</strong><br>
+- <strong>short title</strong></p>
+<p>This allows you to quickly check whether <strong>unexpectedly long
+titles</strong> need to be cleaned, split, or reviewed.</p>
+<p>You can adjust the number (40) depending on what makes sense for your
+dataset.</p>
+<p>In this example, we use a more complex GREL expression:</p>
+<pre class="grel"><code>if(value.length() &gt; 40, "long title", "short title")</code></pre>
+<p>Compared to the earlier expression
+(<code>value.contains(",")</code>), this one does more than simply check
+the cell’s content and return <code>true</code> or <code>false</code>.
+Here, the expression not only <strong>inspects</strong> the value but
+also <strong>creates a new category</strong> based on a condition.</p>
+<p>This expression works in two steps:</p>
+<ol style="list-style-type: decimal"><li><p><strong>Inspect the cell:</strong><br><code>value.length()</code> calculates how many characters the title
+contains.</p></li>
+<li>
+<p><strong>Produce a new output:</strong><br>
+The <code>if()</code> function checks whether the condition is true
+(<code>value.length() &gt; 40</code>).</p>
+<ul><li>If true → it returns <code>"long title"</code>.<br></li>
+<li>If false → it returns <code>"short title"</code>.</li>
+</ul></li>
+</ol><p>What’s important is that these two labels do <strong>not</strong>
+exist in the dataset.<br>
+They are created <strong>entirely by the GREL expression</strong>, and
+OpenRefine then groups rows based on these newly generated values.</p>
+<p>This shows a key idea of custom facets:</p>
+<blockquote>
+<p>Custom facets do not have to group by the original cell contents;
+they can group by <strong>computed values</strong> that you define using
+GREL.</p>
 </blockquote>
+<p>That is why the expression in this example includes more than just
+<code>value</code>. We are not only checking the cell, but actively
+creating a classification that helps us explore the data.</p>
 <div id="callout-grel-functions" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -494,6 +567,25 @@ year.</li>
 <li>
 <code>now()</code> – current date/time (useful for
 comparisons).</li>
+</ul></div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul><li>Custom facets group data using <strong>computed results</strong>
+from a GREL expression, not only the original cell values.<br></li>
+<li>GREL is a lightweight language that allows you to <strong>inspect,
+transform, and classify</strong> data inside OpenRefine.<br></li>
+<li>Custom facets let you ask flexible questions about your data, such
+as identifying multiple creators or unusually long titles.<br></li>
+<li>With conditional expressions like <code>if()</code>, you can define
+<strong>new categories</strong> that support deeper exploration and
+data-quality checks.</li>
 </ul></div>
 </div>
 </div>
@@ -559,7 +651,7 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/04-custom-facets-and-grel.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/04-custom-facets-and-grel.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2025-11-11",
+  "dateModified": "2025-11-18",
   "datePublished": "2025-11-18"
 }
 
