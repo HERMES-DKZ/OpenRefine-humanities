@@ -8,7 +8,6 @@ In scientific research, data is rarely perfect. Information is often collected f
 
 Before you can draw meaningful conclusions from your data, it is essential to clean and organize it. This process helps ensure that your analysis is accurate and reliable. OpenRefine is designed to make this step easier, even for those with no technical background. With OpenRefine, you can quickly identify and fix errors, standardize formats, and prepare your data for further research.
 
-This lesson was especially developed for researchers in the humanities who want to learn how to improve the quality of their research data. It is designed for participants with no previous experience.
 
 ## Learning objectives
 
