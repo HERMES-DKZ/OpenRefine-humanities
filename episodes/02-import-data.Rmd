@@ -1,6 +1,6 @@
 ---
 title: "Importing Data and Getting to Know the OpenRefine User Interface"
-teaching: 0
+teaching: 15
 exercises: 0
 ---
 
@@ -14,23 +14,22 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-+ Start a new OpenRefine project.
++ Create a new OpenRefine project
 + Import data from a CSV file
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Importing Data
 
 
-
-To begin working with your data in OpenRefine, you first need to create a new project. Imagine you have downloaded a CSV file containing a sample of the Museum of Modern Art (MoMA) collection. This file might include information about artworks, artists, dates, and more—ready to be explored and cleaned.
-
-When you open OpenRefine in your web browser, you are greeted by these start page. 
+When you start OpenRefine, a window in your web browser (at the address [http://127.0.0.1:3333/](https://127.0.0.1:3333/)) will open and you are greeted by the start page. 
 
 
-![Import Data Window](fig/01_data_import.png)
+![Screenshot of the Import Data Window](fig/01_data_import.png)
 
 
-There are already various options in the left-hand bar. You can:
+There are various options in the left-hand bar. You can:
 
 + Create a new project and load data.
 + Open an existing project.
@@ -38,29 +37,82 @@ There are already various options in the left-hand bar. You can:
 + Change the language of OpenRefine. 
 + Manage extensions. 
 
-We will not be looking at extensions in this lesson, but they offer the possibility to customize OpenRefine in even greater detail and expand it with additional functions. We click on *Create Project* and then on *Get data from* **This Computer** . Here we click on *Browse* and search for our file, select it and click on *next* .
-OpenRefine will show you a preview of your data, allowing you to check that everything looks correct before you proceed.
+:::::::::::::::::::::::::::::::::::::: instructor
 
-Below the data preview, we now find various settings options for how the data should be loaded. This has a direct effect on the preview, allowing us to check immediately whether the settings have been selected correctly. This is important when files have special formats, so that they can be converted into the correct table structure.
-For example, if your CSV uses a separator other than a comma (for example, a semicolon or tab), you can specify this so that columns are recognized correctly.
+If you have a non-English-speaking audience, you can point out the option to change the language of the user interface. However, this is not advisable for the workshop itself, as the explanations were written for the English user interface and it could otherwise be very confusing for the instructor and the audience.  
+We will not be looking at extensions in this lesson, but they offer the possibility to customize OpenRefine in even greater detail and expand it with additional functions.
+   
+:::::::::::::::::::::::::::::::::::::::::::::::::
+
+OpenRefine structures your work in *projects*. So to begin working, you first need to create a new project and import the Museum of Modern Art (MoMA) collection dataset. If you pause your work on the project (the data and the changes you made) and want to continue later on, you can choose `Open project`. If a colleague sends you an OpenRefine project, you can import it under `Import project`.
+
+
+    1. Click on `Create Project` and then on *Get data from* `This Computer`. 
+    2. Here click on `Browse`, locate the dataset `moma_subset.csv` on your computer and select it.
+    3. Click on `Next` and upload the data into OpenRefine.
+    4. On the next page OpenRefine will show you a preview of your data, allowing you to check that everything looks correct before you proceed.
+
+Below the data preview, you find various import settings for how the data should be loaded. These setting have a direct effect on the preview above, allowing us to check immediately whether the settings have been selected correctly. This is important when files have special formats, so that they can be converted into the correct table structure.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## What kinds of data files can I import?
+
+There are several options for getting your dataset into OpenRefine. You can import files in a variety of formats including:
+
+- Comma-separated values (CSV) or text-separated values (TSV)
+- Text files
+- JSON (javascript object notation)
+- XML (extensible markup language)
+- RDF (resource description framework)
+- OpenDocument spreadsheet (ODS) or Excel spreadsheet (XLS or XLSX)
+
+
+If needed, you can change the format on the left side under *Parse data as*. 
+For more information see the [Create a project by importing data](https://docs.openrefine.org/manual/starting#create-a-project-by-importing-data) page in the OpenRefine manual.  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+For example, if a CSV file uses a separator other than a comma (for example, a semicolon or tab), you can specify this under *Columns are separated by* so that columns are recognized correctly.
 Sometimes, data files include extra header lines or notes at the top. You can tell OpenRefine to skip these lines, so only the actual data is imported.
-For Excel files, you can select which sheet to import. For CSVs, you can preview and adjust how columns are interpreted.
-Once you are happy with the preview and settings, you can give your project a name and click *Create Project*. In our case everything should be fine and we can go on without changing any settings.
-OpenRefine will load your data into its workspace, displaying it in a clear, table-like view. 
+For Excel files, you can select which sheet to import. For CSVs, you can preview and adjust how columns are interpreted. There are many different options depending on the file format and the dataset. In our case, the default settings are sufficient.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Why import settings matter?
+
+Import settings determine how OpenRefine interprets your file and turns it into a table.
+If these settings are incorrect, data may be split into the wrong columns, rows may be skipped, or values may be read incorrectly. Correct settings help prevent problems later in your workflow and save time.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    5. Once you are happy with the preview and settings, you can change your project name above the preview and click `Create Project`.
+    6. OpenRefine will load your data into its workspace on the next page. 
+
+## Overview of the OpenRefine interface  
+![Screenshot of the user interface](fig/02_start.png)
 
 
-![Import Data Window](fig/02_start.png)
+The OpenRefine interface is organized around a central workspace. The main window displays the data in a table, with rows and columns similar to a spreadsheet: A row represents a record in your dataset, and every column represents a type of information. Above the table, you can choose how many rows are shown at once, and you can scroll through the columns within the table.
+
+:::::::::::::::::::::::::::::::::::::: instructor
+
+The row/record distinction will be shown in the next [chapter](https://hermes-dkz.github.io/OpenRefine-humanities/aio.html#rows-records-and-multi-valued-cells). For now, you can treat one row as one record.
+   
+:::::::::::::::::::::::::::::::::::::::::::::::::
+
+Each column header has a small arrow. Clicking this arrow opens a drop-down menu with actions that apply only to that column, such as sorting, faceting, and editing its values.
+
+On the left-hand side, the *Facet/Filter* panel shows all active filters and facets. These tools allow you to explore subsets of the data and to see how your actions affect the dataset. The *Undo/Redo* panel records every change applied to the data. From here, you can step backward or forward through your changes. You will use these panels in the next chapter. *Note: All changes are stored within the OpenRefine project; the original file remains unchanged.*
 
 
-The user interface is designed to be intuitive. In general, it is structured so that we can see the data we currently have access to in the large main window in the middle. There, we can set how many rows we want to see at once and whether we want to see *rows* or *records* displayed. We will understand what this difference means later. The arrows next to the column labels open the functions that OpenRefine offers us for changing and processing our data. These always refer to the column we open them from. On the left-hand side, we can see exactly what we can apply or what we have created. We will also clarify and understand this in detail in a moment. The *Undo/Redo* column allows us to undo steps, but also to export and reuse entire processing pipelines. 
-In the upper right corner, there are additional options where we can create a new project or export our current data. The *Help* button takes us directly to the OpenRefine documentation. There, all functions are also described in detail.
+Lastly, in the upper right corner, the menu provides access to project-level actions. When you click on `Open...`, you return to the start page. The *Help* button links to the official OpenRefine documentation. If you encounter problems working with OpenRefine in the future, the documentation is always a good first place to look for a solution.
 
-By starting with a CSV file from the MoMA dataset, you have taken the first step toward organizing and understanding your data. OpenRefine’s flexible import options and user-friendly interface make it easy to get started, no matter your technical background.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
-+ You can import data from different different formats in OpenRefine
-+ Adjust import settings to ensure your data is read correctly and preview the results before starting.
-+ Functions to work with your data are used from the *Arrow Buttons* next to the column header
++ OpenRefine organizes your work in projects
++ You can import data from different formats in OpenRefine
++ Adjust import settings to ensure your data is read correctly and preview the results before starting
++ Data operations are accessed from the drop-down menu in each column header
 
 ::::::::::::::::::::::::::::::::::::::::::::::

@@ -35,7 +35,7 @@ Good data organization is the foundation of any research project. In the humanit
 OpenRefine is a free, open-source tool designed to help you work with messy data. Think of OpenRefine as a workbench for your data, a place where you can clean, organize, and explore information, even if you have no technical background. OpenRefine runs locally on your computer and opens in your web browser, providing a user-friendly interface that guides you through each step. Working in your web browser might be confusing, but nothing of your data will be in the internet, everything runs local.
 
 
-### Advantages of OpenRefine
+## Advantages of OpenRefine
 
 With OpenRefine, you can import your data, discover patterns, fix mistakes, and transform your information so it’s ready for analysis or sharing. You don’t need to know how to code or use complicated software. OpenRefine is built for researchers who want to focus on their work, not on technical details.
 
@@ -44,7 +44,7 @@ One of the strengths of OpenRefine is its ability to help you explore your data 
 OpenRefine supports a wide range of data formats, including CSV, Excel, and JSON, and can connect to online sources and databases. Its reconciliation feature allows you to match your data against external databases, such as Wikidata, to enrich your dataset with additional information. Because OpenRefine is open source, it can be extended with add-ons and custom scripts, giving you even more possibilities. The active community around OpenRefine has developed many plugins that add new features, such as connecting to other data sources, exporting to different formats, or automating repetitive tasks.
 
 
-### Our Dataset
+## Our Dataset
 
 Throughout this lesson, you will use a sample dataset from the Museum of Modern Art (MoMA). This real-world data will help you learn how to use OpenRefine to solve common problems in humanities research. Even if you have never worked with data before, you will see how OpenRefine can make your research easier, more accurate, and more enjoyable.
 
