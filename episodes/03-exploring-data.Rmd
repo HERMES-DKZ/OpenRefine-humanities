@@ -9,13 +9,16 @@ exercises: 0
 - What options does OpenRefine offer for data exploration?
 - What is a facet and how does it help me explore data?
 - How do facets differ from filters?
+- What data types exist in OpenRefine?
   
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Define faceting and identify when to use it.
-- Create a basic Text facet to get an overview of values in a column.
+- Define filtering and identify when to use it.
+- Create a text facet to get an overview of values in a column.
+- Transform values from one data type to another.
 - Use Split multi-valued cells to prepare data for accurate faceting and later analysis.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -24,7 +27,7 @@ exercises: 0
 
 When we work with data in OpenRefine, one of the first challenges is to make sense of the information that has been imported. Looking at rows of raw data rarely gives us much insight, especially if the dataset is large. What we need is a way of quickly summarizing values, spotting patterns, and finding potential problems such as inconsistent spellings or unexpected categories.  
 
-OpenRefine provides a set of tools for this under the name **facets**. Faceting allows us to group together all of the different values that appear in a column and to see how often they occur. A facet creates a kind of “interactive summary” of the data: it lists all unique values in a column, shows how many times each one appears, and lets us filter the table to only those rows that match. This makes it possible to move from a confusing spreadsheet view to a clear overview with just a few clicks. We also already have the option of performing some cleaning tasks on the data set, even though this is not the main purpose of this tool.
+OpenRefine provides a set of tools for this under the name **facets**. Faceting allows us to group together all of the different values that appear in a column and to see how often they occur. A facet creates a kind of “interactive summary” of the data: it lists all unique values in a column, shows how many times each one appears, and lets us filter the table to only those rows that match. This makes it possible to move from a confusing spreadsheet view to a clear overview with just a few clicks. We also already have the option of performing some cleaning tasks on the dataset, even though this is not the main purpose of this tool.
 
 
 ## Facets
@@ -49,6 +52,11 @@ In the different departments, you can see that there is both ‘Film’ and ‘F
 To do clean this mistake, we click on ‘Edit’ next to “Films” and remove the ‘s’, which applies to every line. We have now completed our first clean-up.
 
 This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
+
+
+### Facet vs. Filters
+
+Paragraph about the difference between facets and filters.
 
 
 ### Rows, Records, and Multi-Valued Cells
