@@ -9,6 +9,7 @@ exercises: 0
 + How do I start a new project in OpenRefine?
 + How do I import a CSV file?
 + What options and settings are available during import?
++ How is the user interface structured?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -16,6 +17,7 @@ exercises: 0
 
 + Create a new OpenRefine project
 + Import data from a CSV file
++ Locate the main components of the user interface
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -46,11 +48,10 @@ We will not be looking at extensions in this lesson, but they offer the possibil
 
 OpenRefine structures your work in *projects*. So to begin working, you first need to create a new project and import the Museum of Modern Art (MoMA) collection dataset. If you pause your work on the project (the data and the changes you made) and want to continue later on, you can choose `Open project`. If a colleague sends you an OpenRefine project, you can import it under `Import project`.
 
-
-    1. Click on `Create Project` and then on *Get data from* `This Computer`. 
-    2. Here click on `Browse`, locate the dataset `moma_subset.csv` on your computer and select it.
-    3. Click on `Next` and upload the data into OpenRefine.
-    4. On the next page OpenRefine will show you a preview of your data, allowing you to check that everything looks correct before you proceed.
+1. Click on `Create Project` and then on *Get data from* `This Computer`. 
+2. Here click on `Browse`, locate the dataset `moma_subset.csv` on your computer and select it.
+3. Click on `Next` and upload the data into OpenRefine.
+4. On the next page OpenRefine will show you a preview of your data, allowing you to check that everything looks correct before you proceed.
 
 Below the data preview, you find various import settings for how the data should be loaded. These setting have a direct effect on the preview above, allowing us to check immediately whether the settings have been selected correctly. This is important when files have special formats, so that they can be converted into the correct table structure.
 
@@ -85,14 +86,14 @@ If these settings are incorrect, data may be split into the wrong columns, rows 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    5. Once you are happy with the preview and settings, you can change your project name above the preview and click `Create Project`.
-    6. OpenRefine will load your data into its workspace on the next page. 
+5. Once you are happy with the preview and settings, you can change your project name above the preview and click `Create Project`.
+6. OpenRefine will load your data into its workspace on the next page. 
 
 ## Overview of the OpenRefine interface  
 ![Screenshot of the user interface](fig/02_start.png)
 
 
-The OpenRefine interface is organized around a central workspace. The main window displays the data in a table, with rows and columns similar to a spreadsheet: A row represents a record in your dataset, and every column represents a type of information. Above the table, you can choose how many rows are shown at once, and you can scroll through the columns within the table.
+The OpenRefine interface is organized around a central workspace. The main window displays the data in a tabular format called the **grid**, with rows and columns similar to a spreadsheet: A row represents a record in your dataset, and every column represents a type of information. Above the table in the **grid header**, you can choose how many rows are shown at once, and you can scroll through the columns within the table.
 
 :::::::::::::::::::::::::::::::::::::: instructor
 
@@ -100,12 +101,11 @@ The row/record distinction will be shown in the next [chapter](https://hermes-dk
    
 :::::::::::::::::::::::::::::::::::::::::::::::::
 
-Each column header has a small arrow. Clicking this arrow opens a drop-down menu with actions that apply only to that column, such as sorting, faceting, and editing its values.
+Each column header has a small `arrow`. Clicking this `arrow` opens a drop-down menu with actions that apply only to that column, such as sorting, faceting, and editing its values: The actions you will learn about in the following chapters
 
-On the left-hand side, the *Facet/Filter* panel shows all active filters and facets. These tools allow you to explore subsets of the data and to see how your actions affect the dataset. The *Undo/Redo* panel records every change applied to the data. From here, you can step backward or forward through your changes. You will use these panels in the next chapter. *Note: All changes are stored within the OpenRefine project; the original file remains unchanged.*
+On the left-hand side, the `Facet/Filter` tab shows all active filters and facets. These tools allow you to explore the dataset and to see how your actions affect it. The `Undo/Redo` tab records every change you applied to the data. From here, you can step backward or forward through your changes. *Note: All changes are stored within the OpenRefine project; the original file remains unchanged.* You will use both tabs a lot in the following chapters.
 
-
-Lastly, in the upper right corner, the menu provides access to project-level actions. When you click on `Open...`, you return to the start page. The *Help* button links to the official OpenRefine documentation. If you encounter problems working with OpenRefine in the future, the documentation is always a good first place to look for a solution.
+Lastly, in the right corner of the **project bar**, the menu provides access to project-level actions. When you click on `Open...`, you return to the start page. The `Help` button links to the official OpenRefine documentation. If you encounter problems working with OpenRefine in the future, the documentation is always a good first place to look for a solution.
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints
@@ -113,6 +113,6 @@ Lastly, in the upper right corner, the menu provides access to project-level act
 + OpenRefine organizes your work in projects
 + You can import data from different formats in OpenRefine
 + Adjust import settings to ensure your data is read correctly and preview the results before starting
-+ Data operations are accessed from the drop-down menu in each column header
++ The main components of the user interface are the grid, the grid header, the project bar, and `Facet/Filter` as well as `Undo/Redo` tab
 
 ::::::::::::::::::::::::::::::::::::::::::::::

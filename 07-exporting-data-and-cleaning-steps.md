@@ -1,6 +1,6 @@
 ---
 title: "Undo, Redo, and Exporting Workflows"
-teaching: 0
+teaching: 10
 exercises: 0
 ---
 
@@ -13,7 +13,7 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Use the Undo/Redo panel in OpenRefine to reverse mistakes.  
+- Use the Undo/Redo tab in OpenRefine to reverse mistakes.  
 - Export and Import workflows.  
 - Understand the value of transparency and reproducibility in data cleaning.
 
@@ -33,9 +33,9 @@ All of these steps helped us improve our dataset. But what if, after clustering,
 
 ## Undo/Redo
 
-On the left-hand side of the OpenRefine interface, you will find the **Undo/Redo** panel. This panel lists every action you have taken since the project was created. Each action has a short label, such as *“Text transform on 2000 cells...* or *“Split multu-valued cells in column nationality”*.
+On the left-hand side of the OpenRefine interface, you will find the `Undo/Redo` tab. This tab lists every action you have taken since the project was created. Each action has a short label, such as *“Text transform on 2000 cells...* or *“Split multu-valued cells in column nationality”*.
 
-1. Click on the **Undo/Redo** tab in the left sidebar.  
+1. Click on the `Undo/Redo` tab in the left sidebar.  
 2. You will see a list of all your steps in order. The most recent one is at the bottom.  
 3. By selecting an earlier step in the list, you can roll the dataset back to exactly how it looked at that moment.  
 
@@ -48,34 +48,45 @@ This is like having a *time machine* for your dataset: you can test transformati
 
 Undo/Redo does more than let you move backwards. It also keeps track of your entire cleaning process as a set of instructions. OpenRefine can export these instructions as a **JSON file**. This file is not the cleaned data itself, but the *recipe* of how the cleaning was done with the used data. 
 
-1. Go to the **Undo/Redo** panel.  
-2. Click on the link **Extract...**.  
-3. A dialog will open showing all the steps in JSON format. You can select which steps to include.  
-4. Click **Copy to clipboard** or save the JSON to a file.  
+1. Go to the `Undo/Redo` tab.  
+2. Click on the button `Extract...`.  
+3. A dialog will open showing all the processing steps in JSON on the right side. You can select which steps to include into the JSON by selecting the checkboxes on the left side.  
+4. Save the processing steps to a JSON file by clicking `Export` or copy it manually to your clippord and into a file on your computer. 
 
 Later, you or someone else can **import** this workflow into another OpenRefine project:
 
-1. In the Undo/Redo panel of the other project, click **Apply...**.  
+1. In the `Undo/Redo` tab of the other project, click `Apply...`.  
 2. Paste the JSON recipe or upload the file.  
 3. OpenRefine will replay the exact same steps on the new dataset.  
 
-This feature is especially powerful in humanities research, where transparency and reproducibility are essential. Instead of describing vaguely what was done, we can share the precise workflow that produced our dataset. Other researchers can review it, replicate it, or adapt it to their own data.
+This feature is especially powerful research, where transparency and reproducibility are essential. Instead of describing vaguely what was done, we can share the precise workflow that produced our dataset. Other researchers can review it, replicate it, or adapt it to their own data.
 
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-### Callout: Workflows as Reusable Recipes
+### Workflows as Reusable Recipes
 
 Think of Undo/Redo export files as **recipes**. Just like a recipe tells you how to combine ingredients to bake a cake, an OpenRefine workflow tells you how to transform raw data into a cleaned dataset. If you don’t like the taste, you can always tweak the recipe.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Exporting data
+
+The cleaned dataset can be exported in different formats tsv, csv, html ... You find that options under `Export` on the right top of your workbench. Here you also have the option to export the whole OpenRefine project (data and processing steps) for sharing with colleagues or other use cases. In this case you select `OpenRefine project to archive file` and an tar.zip file will be downloaded. 
+
+
+::::::::::::::::::::::::::::::::::::: callout
+### Exporting pitfall
+
+Ensure that no filters are active so that the entire dataset is exported. You can check this by looking at the information above the table, for example, “10 matching rows (1999 in total)”. In this case, only the subset of 10 data rows will be exported. 
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - OpenRefine records every transformation you make.  
-- The **Undo/Redo** panel lets you move backward and forward through your cleaning process.  
+- The **Undo/Redo** tab lets you move backward and forward through your cleaning process.  
 - Workflows can be exported as JSON and reapplied to other projects, ensuring transparency and reproducibility.  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
