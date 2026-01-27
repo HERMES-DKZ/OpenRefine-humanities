@@ -119,11 +119,11 @@
   OpenRefine for the Humanities
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 100%" class="percentage">
-    100%
+<aside class="col-md-12 lesson-progress"><div style="width: 83%" class="percentage">
+    83%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 100%" aria-valuenow="100" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 83%" aria-valuenow="83" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -273,6 +273,7 @@
       <div class="accordion-body">
         <ul><li><a href="#undoredo">Undo/Redo</a></li>
 <li><a href="#exporting-and-importing-workflows">Exporting and Importing Workflows</a></li>
+<li><a href="#exporting-data">Exporting data</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -346,7 +347,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Undo, Redo, and Exporting Workflows</h1>
-        <p>Last updated on 2025-11-11 |
+        <p>Last updated on 2026-01-27 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/07-exporting-data-and-cleaning-steps.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -376,7 +377,7 @@ with colleagues?</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Use the Undo/Redo panel in OpenRefine to reverse mistakes.<br></li>
+<ul><li>Use the Undo/Redo tab in OpenRefine to reverse mistakes.<br></li>
 <li>Export and Import workflows.<br></li>
 <li>Understand the value of transparency and reproducibility in data
 cleaning.</li>
@@ -399,12 +400,11 @@ idea? Instead of starting all over again, OpenRefine allows us to
 <strong>step backwards</strong> and explore different alternatives.</p>
 <section><h2 class="section-heading" id="undoredo">Undo/Redo<a class="anchor" aria-label="anchor" href="#undoredo"></a></h2>
 <hr class="half-width"><p>On the left-hand side of the OpenRefine interface, you will find the
-<strong>Undo/Redo</strong> panel. This panel lists every action you have
-taken since the project was created. Each action has a short label, such
-as <em>“Text transform on 2000 cells…</em> or <em>“Split multu-valued
-cells in column nationality”</em>.</p>
-<ol style="list-style-type: decimal"><li>Click on the <strong>Undo/Redo</strong> tab in the left
-sidebar.<br></li>
+<code>Undo/Redo</code> tab. This tab lists every action you have taken
+since the project was created. Each action has a short label, such as
+<em>“Text transform on 2000 cells…</em> or <em>“Split multu-valued cells
+in column nationality”</em>.</p>
+<ol style="list-style-type: decimal"><li>Click on the <code>Undo/Redo</code> tab in the left sidebar.<br></li>
 <li>You will see a list of all your steps in order. The most recent one
 is at the bottom.<br></li>
 <li>By selecting an earlier step in the list, you can roll the dataset
@@ -424,36 +424,61 @@ of your entire cleaning process as a set of instructions. OpenRefine can
 export these instructions as a <strong>JSON file</strong>. This file is
 not the cleaned data itself, but the <em>recipe</em> of how the cleaning
 was done with the used data.</p>
-<ol style="list-style-type: decimal"><li>Go to the <strong>Undo/Redo</strong> panel.<br></li>
-<li>Click on the link <strong>Extract…</strong>.<br></li>
-<li>A dialog will open showing all the steps in JSON format. You can
-select which steps to include.<br></li>
-<li>Click <strong>Copy to clipboard</strong> or save the JSON to a
-file.</li>
+<ol style="list-style-type: decimal"><li>Go to the <code>Undo/Redo</code> tab.<br></li>
+<li>Click on the button <code>Extract...</code>.<br></li>
+<li>A dialog will open showing all the processing steps in JSON on the
+right side. You can select which steps to include into the JSON by
+selecting the checkboxes on the left side.<br></li>
+<li>Save the processing steps to a JSON file by clicking
+<code>Export</code> or copy it manually to your clippord and into a file
+on your computer.</li>
 </ol><p>Later, you or someone else can <strong>import</strong> this workflow
 into another OpenRefine project:</p>
-<ol style="list-style-type: decimal"><li>In the Undo/Redo panel of the other project, click
-<strong>Apply…</strong>.<br></li>
+<ol style="list-style-type: decimal"><li>In the <code>Undo/Redo</code> tab of the other project, click
+<code>Apply...</code>.<br></li>
 <li>Paste the JSON recipe or upload the file.<br></li>
 <li>OpenRefine will replay the exact same steps on the new dataset.</li>
-</ol><p>This feature is especially powerful in humanities research, where
-transparency and reproducibility are essential. Instead of describing
-vaguely what was done, we can share the precise workflow that produced
-our dataset. Other researchers can review it, replicate it, or adapt it
-to their own data.</p>
-<div id="callout-workflows-as-reusable-recipes" class="callout">
+</ol><p>This feature is especially powerful research, where transparency and
+reproducibility are essential. Instead of describing vaguely what was
+done, we can share the precise workflow that produced our dataset. Other
+researchers can review it, replicate it, or adapt it to their own
+data.</p>
+<div id="workflows-as-reusable-recipes" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="callout-workflows-as-reusable-recipes" class="callout-inner">
-<h3 class="callout-title">Callout: Workflows as Reusable Recipes</h3>
+<div id="workflows-as-reusable-recipes" class="callout-inner">
+<h3 class="callout-title">Workflows as Reusable Recipes</h3>
 <div class="callout-content">
 <p>Think of Undo/Redo export files as <strong>recipes</strong>. Just
 like a recipe tells you how to combine ingredients to bake a cake, an
 OpenRefine workflow tells you how to transform raw data into a cleaned
 dataset. If you don’t like the taste, you can always tweak the
 recipe.</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="exporting-data">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a></h2>
+<hr class="half-width"><p>The cleaned dataset can be exported in different formats tsv, csv,
+html … You find that options under <code>Export</code> on the right top
+of your workbench. Here you also have the option to export the whole
+OpenRefine project (data and processing steps) for sharing with
+colleagues or other use cases. In this case you select
+<code>OpenRefine project to archive file</code> and an tar.zip file will
+be downloaded.</p>
+<div id="exporting-pitfall" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="exporting-pitfall" class="callout-inner">
+<h3 class="callout-title">Exporting pitfall</h3>
+<div class="callout-content">
+<p>Ensure that no filters are active so that the entire dataset is
+exported. You can check this by looking at the information above the
+table, for example, “10 matching rows (1999 in total)”. In this case,
+only the subset of 10 data rows will be exported.</p>
 </div>
 </div>
 </div>
@@ -465,7 +490,7 @@ recipe.</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul><li>OpenRefine records every transformation you make.<br></li>
-<li>The <strong>Undo/Redo</strong> panel lets you move backward and
+<li>The <strong>Undo/Redo</strong> tab lets you move backward and
 forward through your cleaning process.<br></li>
 <li>Workflows can be exported as JSON and reapplied to other projects,
 ensuring transparency and reproducibility.</li>
@@ -536,7 +561,7 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/07-exporting-data-and-cleaning-steps.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/07-exporting-data-and-cleaning-steps.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2025-11-11",
+  "dateModified": "2026-01-27",
   "datePublished": "2026-01-27"
 }
 

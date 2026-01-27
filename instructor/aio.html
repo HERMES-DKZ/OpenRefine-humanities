@@ -627,7 +627,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-02-import-data"><p>Content from <a href="02-import-data.html">Importing Data and Getting to Know the OpenRefine User Interface</a></p>
 <hr>
-<p>Last updated on 2026-01-20 |
+<p>Last updated on 2026-01-27 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/02-import-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
@@ -645,6 +645,7 @@ any links that you are not going to use.
 <li>How do I start a new project in OpenRefine?</li>
 <li>How do I import a CSV file?</li>
 <li>What options and settings are available during import?</li>
+<li>How is the user interface structured?</li>
 </ul>
 </div>
 </div>
@@ -656,6 +657,7 @@ any links that you are not going to use.
 <ul>
 <li>Create a new OpenRefine project</li>
 <li>Import data from a CSV file</li>
+<li>Locate the main components of the user interface</li>
 </ul>
 </div>
 </div>
@@ -682,7 +684,7 @@ will open and you are greeted by the start page.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>If you have a non-English-speaking audience, you can point out the
 option to change the language of the user interface. However, this is
@@ -703,14 +705,16 @@ project (the data and the changes you made) and want to continue later
 on, you can choose <code>Open project</code>. If a colleague sends you
 an OpenRefine project, you can import it under
 <code>Import project</code>.</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">1.</span> Click on <span class="kw">`</span><span class="ex">Create</span> Project<span class="kw">`</span> and then on <span class="pp">*</span>Get data from<span class="pp">*</span> <span class="kw">`</span><span class="ex">This</span> Computer<span class="kw">`</span>. </span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">2.</span> Here click on <span class="kw">`</span><span class="ex">Browse</span><span class="kw">`</span>, locate the dataset <span class="kw">`</span><span class="ex">moma_subset.csv</span><span class="kw">`</span> on your computer and select it.</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">3.</span> Click on <span class="kw">`</span><span class="ex">Next</span><span class="kw">`</span> and upload the data into OpenRefine.</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">4.</span> On the next page OpenRefine will show you a preview of your data, allowing you to check that everything looks correct before you proceed.</span></code></pre>
-</div>
+<ol style="list-style-type: decimal">
+<li>Click on <code>Create Project</code> and then on <em>Get data
+from</em> <code>This Computer</code>.</li>
+<li>Here click on <code>Browse</code>, locate the dataset
+<code>moma_subset.csv</code> on your computer and select it.</li>
+<li>Click on <code>Next</code> and upload the data into OpenRefine.</li>
+<li>On the next page OpenRefine will show you a preview of your data,
+allowing you to check that everything looks correct before you
+proceed.</li>
+</ol>
 <p>Below the data preview, you find various import settings for how the
 data should be loaded. These setting have a direct effect on the preview
 above, allowing us to check immediately whether the settings have been
@@ -766,28 +770,29 @@ workflow and save time.</p>
 </div>
 </div>
 </div>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">5.</span> Once you are happy with the preview and settings, you can change your project name above the preview and click <span class="kw">`</span><span class="ex">Create</span> Project<span class="kw">`</span>.</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">6.</span> OpenRefine will load your data into its workspace on the next page. </span></code></pre>
-</div>
-</section><section><h2 class="section-heading" id="overview-of-the-openrefine-interface">Overview of the OpenRefine interface<a class="anchor" aria-label="anchor" href="#overview-of-the-openrefine-interface"></a>
+<ol start="5" style="list-style-type: decimal">
+<li>Once you are happy with the preview and settings, you can change
+your project name above the preview and click
+<code>Create Project</code>.</li>
+<li>OpenRefine will load your data into its workspace on the next
+page.</li>
+</ol></section><section><h2 class="section-heading" id="overview-of-the-openrefine-interface">Overview of the OpenRefine interface<a class="anchor" aria-label="anchor" href="#overview-of-the-openrefine-interface"></a>
 </h2>
 <hr class="half-width">
 <figure><img src="../fig/02_start.png" alt="Screenshot of the user interface" class="figure mx-auto d-block"><div class="figcaption">Screenshot of the user interface</div>
 </figure><p>The OpenRefine interface is organized around a central workspace. The
-main window displays the data in a table, with rows and columns similar
-to a spreadsheet: A row represents a record in your dataset, and every
-column represents a type of information. Above the table, you can choose
-how many rows are shown at once, and you can scroll through the columns
-within the table.</p>
+main window displays the data in a tabular format called the
+<strong>grid</strong>, with rows and columns similar to a spreadsheet: A
+row represents a record in your dataset, and every column represents a
+type of information. Above the table in the <strong>grid
+header</strong>, you can choose how many rows are shown at once, and you
+can scroll through the columns within the table.</p>
 <div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>The row/record distinction will be shown in the next <a href="https://hermes-dkz.github.io/OpenRefine-humanities/aio.html#rows-records-and-multi-valued-cells" class="external-link">chapter</a>.
 For now, you can treat one row as one record.</p>
@@ -795,23 +800,24 @@ For now, you can treat one row as one record.</p>
 </div>
 </div>
 </div>
-<p>Each column header has a small arrow. Clicking this arrow opens a
-drop-down menu with actions that apply only to that column, such as
-sorting, faceting, and editing its values.</p>
-<p>On the left-hand side, the <em>Facet/Filter</em> panel shows all
-active filters and facets. These tools allow you to explore subsets of
-the data and to see how your actions affect the dataset. The
-<em>Undo/Redo</em> panel records every change applied to the data. From
-here, you can step backward or forward through your changes. You will
-use these panels in the next chapter. <em>Note: All changes are stored
-within the OpenRefine project; the original file remains
-unchanged.</em></p>
-<p>Lastly, in the upper right corner, the menu provides access to
-project-level actions. When you click on <code>Open...</code>, you
-return to the start page. The <em>Help</em> button links to the official
-OpenRefine documentation. If you encounter problems working with
-OpenRefine in the future, the documentation is always a good first place
-to look for a solution.</p>
+<p>Each column header has a small <code>arrow</code>. Clicking this
+<code>arrow</code> opens a drop-down menu with actions that apply only
+to that column, such as sorting, faceting, and editing its values: The
+actions you will learn about in the following chapters</p>
+<p>On the left-hand side, the <code>Facet/Filter</code> tab shows all
+active filters and facets. These tools allow you to explore the dataset
+and to see how your actions affect it. The <code>Undo/Redo</code> tab
+records every change you applied to the data. From here, you can step
+backward or forward through your changes. <em>Note: All changes are
+stored within the OpenRefine project; the original file remains
+unchanged.</em> You will use both tabs a lot in the following
+chapters.</p>
+<p>Lastly, in the right corner of the <strong>project bar</strong>, the
+menu provides access to project-level actions. When you click on
+<code>Open...</code>, you return to the start page. The
+<code>Help</code> button links to the official OpenRefine documentation.
+If you encounter problems working with OpenRefine in the future, the
+documentation is always a good first place to look for a solution.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -824,8 +830,9 @@ to look for a solution.</p>
 <li>You can import data from different formats in OpenRefine</li>
 <li>Adjust import settings to ensure your data is read correctly and
 preview the results before starting</li>
-<li>Data operations are accessed from the drop-down menu in each column
-header</li>
+<li>The main components of the user interface are the grid, the grid
+header, the project bar, and <code>Facet/Filter</code> as well as
+<code>Undo/Redo</code> tab</li>
 </ul>
 </div>
 </div>
@@ -836,7 +843,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03-exploring-data"><p>Content from <a href="03-exploring-data.html">Exploring Data</a></p>
 <hr>
-<p>Last updated on 2025-11-17 |
+<p>Last updated on 2026-01-27 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/03-exploring-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
@@ -854,6 +861,7 @@ any links that you are not going to use.
 <li>What options does OpenRefine offer for data exploration?</li>
 <li>What is a facet and how does it help me explore data?</li>
 <li>How do facets differ from filters?</li>
+<li>What data types exist in OpenRefine?</li>
 </ul>
 </div>
 </div>
@@ -864,8 +872,9 @@ any links that you are not going to use.
 <h3 class="card-title">Objectives</h3>
 <ul>
 <li>Define faceting and identify when to use it.</li>
-<li>Create a basic Text facet to get an overview of values in a
-column.</li>
+<li>Define filtering and identify when to use it.</li>
+<li>Create a text facet to get an overview of values in a column.</li>
+<li>Transform values from one data type to another.</li>
 <li>Use Split multi-valued cells to prepare data for accurate faceting
 and later analysis.</li>
 </ul>
@@ -888,7 +897,7 @@ lists all unique values in a column, shows how many times each one
 appears, and lets us filter the table to only those rows that match.
 This makes it possible to move from a confusing spreadsheet view to a
 clear overview with just a few clicks. We also already have the option
-of performing some cleaning tasks on the data set, even though this is
+of performing some cleaning tasks on the dataset, even though this is
 not the main purpose of this tool.</p>
 <section><h2 class="section-heading" id="facets">Facets<a class="anchor" aria-label="anchor" href="#facets"></a>
 </h2>
@@ -942,6 +951,11 @@ our first clean-up.</p>
 <p>This simple step immediately transforms a spreadsheet with hundreds
 of rows into a clear summary of categories and also helps to detect
 first inconsistencies.</p>
+<div class="section level3">
+<h3 id="facet-vs--filters">Facet vs. Filters<a class="anchor" aria-label="anchor" href="#facet-vs--filters"></a>
+</h3>
+<p>Paragraph about the difference between facets and filters.</p>
+</div>
 <div class="section level3">
 <h3 id="rows-records-and-multi-valued-cells">Rows, Records, and Multi-Valued Cells<a class="anchor" aria-label="anchor" href="#rows-records-and-multi-valued-cells"></a>
 </h3>
@@ -1918,10 +1932,10 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-07-exporting-data-and-cleaning-steps"><p>Content from <a href="07-exporting-data-and-cleaning-steps.html">Undo, Redo, and Exporting Workflows</a></p>
 <hr>
-<p>Last updated on 2025-11-11 |
+<p>Last updated on 2026-01-27 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/07-exporting-data-and-cleaning-steps.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1947,7 +1961,7 @@ with colleagues?</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Use the Undo/Redo panel in OpenRefine to reverse mistakes.<br>
+<li>Use the Undo/Redo tab in OpenRefine to reverse mistakes.<br>
 </li>
 <li>Export and Import workflows.<br>
 </li>
@@ -1980,13 +1994,12 @@ idea? Instead of starting all over again, OpenRefine allows us to
 </h2>
 <hr class="half-width">
 <p>On the left-hand side of the OpenRefine interface, you will find the
-<strong>Undo/Redo</strong> panel. This panel lists every action you have
-taken since the project was created. Each action has a short label, such
-as <em>“Text transform on 2000 cells…</em> or <em>“Split multu-valued
-cells in column nationality”</em>.</p>
+<code>Undo/Redo</code> tab. This tab lists every action you have taken
+since the project was created. Each action has a short label, such as
+<em>“Text transform on 2000 cells…</em> or <em>“Split multu-valued cells
+in column nationality”</em>.</p>
 <ol style="list-style-type: decimal">
-<li>Click on the <strong>Undo/Redo</strong> tab in the left
-sidebar.<br>
+<li>Click on the <code>Undo/Redo</code> tab in the left sidebar.<br>
 </li>
 <li>You will see a list of all your steps in order. The most recent one
 is at the bottom.<br>
@@ -2012,44 +2025,71 @@ export these instructions as a <strong>JSON file</strong>. This file is
 not the cleaned data itself, but the <em>recipe</em> of how the cleaning
 was done with the used data.</p>
 <ol style="list-style-type: decimal">
-<li>Go to the <strong>Undo/Redo</strong> panel.<br>
+<li>Go to the <code>Undo/Redo</code> tab.<br>
 </li>
-<li>Click on the link <strong>Extract…</strong>.<br>
+<li>Click on the button <code>Extract...</code>.<br>
 </li>
-<li>A dialog will open showing all the steps in JSON format. You can
-select which steps to include.<br>
+<li>A dialog will open showing all the processing steps in JSON on the
+right side. You can select which steps to include into the JSON by
+selecting the checkboxes on the left side.<br>
 </li>
-<li>Click <strong>Copy to clipboard</strong> or save the JSON to a
-file.</li>
+<li>Save the processing steps to a JSON file by clicking
+<code>Export</code> or copy it manually to your clippord and into a file
+on your computer.</li>
 </ol>
 <p>Later, you or someone else can <strong>import</strong> this workflow
 into another OpenRefine project:</p>
 <ol style="list-style-type: decimal">
-<li>In the Undo/Redo panel of the other project, click
-<strong>Apply…</strong>.<br>
+<li>In the <code>Undo/Redo</code> tab of the other project, click
+<code>Apply...</code>.<br>
 </li>
 <li>Paste the JSON recipe or upload the file.<br>
 </li>
 <li>OpenRefine will replay the exact same steps on the new dataset.</li>
 </ol>
-<p>This feature is especially powerful in humanities research, where
-transparency and reproducibility are essential. Instead of describing
-vaguely what was done, we can share the precise workflow that produced
-our dataset. Other researchers can review it, replicate it, or adapt it
-to their own data.</p>
-<div id="callout-workflows-as-reusable-recipes" class="callout">
+<p>This feature is especially powerful research, where transparency and
+reproducibility are essential. Instead of describing vaguely what was
+done, we can share the precise workflow that produced our dataset. Other
+researchers can review it, replicate it, or adapt it to their own
+data.</p>
+<div id="workflows-as-reusable-recipes" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="callout-workflows-as-reusable-recipes" class="callout-inner">
-<h3 class="callout-title">Callout: Workflows as Reusable Recipes</h3>
+<div id="workflows-as-reusable-recipes" class="callout-inner">
+<h3 class="callout-title">Workflows as Reusable Recipes</h3>
 <div class="callout-content">
 <p>Think of Undo/Redo export files as <strong>recipes</strong>. Just
 like a recipe tells you how to combine ingredients to bake a cake, an
 OpenRefine workflow tells you how to transform raw data into a cleaned
 dataset. If you don’t like the taste, you can always tweak the
 recipe.</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="exporting-data">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
+</h2>
+<hr class="half-width">
+<p>The cleaned dataset can be exported in different formats tsv, csv,
+html … You find that options under <code>Export</code> on the right top
+of your workbench. Here you also have the option to export the whole
+OpenRefine project (data and processing steps) for sharing with
+colleagues or other use cases. In this case you select
+<code>OpenRefine project to archive file</code> and an tar.zip file will
+be downloaded.</p>
+<div id="exporting-pitfall" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="exporting-pitfall" class="callout-inner">
+<h3 class="callout-title">Exporting pitfall</h3>
+<div class="callout-content">
+<p>Ensure that no filters are active so that the entire dataset is
+exported. You can check this by looking at the information above the
+table, for example, “10 matching rows (1999 in total)”. In this case,
+only the subset of 10 data rows will be exported.</p>
 </div>
 </div>
 </div>
@@ -2063,7 +2103,7 @@ recipe.</p>
 <ul>
 <li>OpenRefine records every transformation you make.<br>
 </li>
-<li>The <strong>Undo/Redo</strong> panel lets you move backward and
+<li>The <strong>Undo/Redo</strong> tab lets you move backward and
 forward through your cleaning process.<br>
 </li>
 <li>Workflows can be exported as JSON and reapplied to other projects,
