@@ -1893,7 +1893,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-07-exporting-data-and-cleaning-steps"><p>Content from <a href="07-exporting-data-and-cleaning-steps.html">Undo, Redo, and Exporting Workflows</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-02 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/07-exporting-data-and-cleaning-steps.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1912,6 +1912,7 @@ mistake?<br>
 </li>
 <li>How can we save our cleaning process to repeat it later or share it
 with colleagues?</li>
+<li>How can we export the cleaned data.</li>
 </ul>
 </div>
 </div>
@@ -1921,42 +1922,26 @@ with colleagues?</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Use the Undo/Redo tab in OpenRefine to reverse mistakes.<br>
+<li>Use the Undo/Redo tab to reverse mistakes.<br>
 </li>
 <li>Export and Import workflows.<br>
 </li>
 <li>Understand the value of transparency and reproducibility in data
 cleaning.</li>
+<li>Export data in different formats.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>When cleaning messy data, we rarely get everything right on the first
-try. In the earlier chapters of this lesson, we:</p>
-<ul>
-<li>Removed extra details from the <strong>ArtistBio</strong>
-column.<br>
-</li>
-<li>Split the column into separate parts, such as nationality.<br>
-</li>
-<li>Applied clustering to standardize values.<br>
-</li>
-<li>Reconciled artist names against an external authority.</li>
-</ul>
-<p>All of these steps helped us improve our dataset. But what if, after
-clustering, we realize that some merges were wrong? Or what if we decide
-later that splitting the ArtistBio column at commas wasn’t the best
-idea? Instead of starting all over again, OpenRefine allows us to
-<strong>step backwards</strong> and explore different alternatives.</p>
 <section><h2 class="section-heading" id="undoredo">Undo/Redo<a class="anchor" aria-label="anchor" href="#undoredo"></a>
 </h2>
 <hr class="half-width">
 <p>On the left-hand side of the OpenRefine interface, you will find the
 <code>Undo/Redo</code> tab. This tab lists every action you have taken
 since the project was created. Each action has a short label, such as
-<em>“Text transform on 2000 cells…</em> or <em>“Split multu-valued cells
+<em>“Text transform on 2000 cells…</em> or <em>“Split multi-valued cells
 in column nationality”</em>.</p>
 <ol style="list-style-type: decimal">
 <li>Click on the <code>Undo/Redo</code> tab in the left sidebar.<br>
@@ -1970,7 +1955,8 @@ back to exactly how it looked at that moment.</li>
 <p>This is like having a <em>time machine</em> for your dataset: you can
 test transformations freely without the fear of making permanent
 mistakes. And if you change your mind, you can always jump back to any
-earlier state.</p>
+earlier state. When cleaning messy data, we rarely get everything right
+on the first try.</p>
 <p><strong>Example:</strong> After splitting the ArtistBio column into
 multiple parts, you might notice that the country information was
 separated cleanly, but the century data became fragmented and less
@@ -1981,9 +1967,9 @@ the split and try a different approach.</p>
 <hr class="half-width">
 <p>Undo/Redo does more than let you move backwards. It also keeps track
 of your entire cleaning process as a set of instructions. OpenRefine can
-export these instructions as a <strong>JSON file</strong>. This file is
-not the cleaned data itself, but the <em>recipe</em> of how the cleaning
-was done with the used data.</p>
+export these instructions as a <strong>JSON file</strong>. This file
+does not contain the cleaned data itself, but only the cleaning steps
+wich were applied to the data.</p>
 <ol style="list-style-type: decimal">
 <li>Go to the <code>Undo/Redo</code> tab.<br>
 </li>
@@ -1994,8 +1980,8 @@ right side. You can select which steps to include into the JSON by
 selecting the checkboxes on the left side.<br>
 </li>
 <li>Save the processing steps to a JSON file by clicking
-<code>Export</code> or copy it manually to your clippord and into a file
-on your computer.</li>
+<code>Export</code> or copy it manually to your clipbord and paste it
+into a file on your computer.</li>
 </ol>
 <p>Later, you or someone else can <strong>import</strong> this workflow
 into another OpenRefine project:</p>
@@ -2003,14 +1989,14 @@ into another OpenRefine project:</p>
 <li>In the <code>Undo/Redo</code> tab of the other project, click
 <code>Apply...</code>.<br>
 </li>
-<li>Paste the JSON recipe or upload the file.<br>
+<li>Paste the JSON code directly or upload the JSON file.<br>
 </li>
 <li>OpenRefine will replay the exact same steps on the new dataset.</li>
 </ol>
-<p>This feature is especially powerful research, where transparency and
-reproducibility are essential. Instead of describing vaguely what was
-done, we can share the precise workflow that produced our dataset. Other
-researchers can review it, replicate it, or adapt it to their own
+<p>This feature is especially powerful in research, where transparency
+and reproducibility are essential. Instead of describing vaguely what
+was done, we can share the precise workflow that produced our dataset.
+Other researchers can review it, replicate it, or adapt it to their own
 data.</p>
 <div id="workflows-as-reusable-recipes" class="callout">
 <div class="callout-square">
@@ -2031,13 +2017,15 @@ recipe.</p>
 </section><section><h2 class="section-heading" id="exporting-data">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
 </h2>
 <hr class="half-width">
-<p>The cleaned dataset can be exported in different formats tsv, csv,
-html … You find that options under <code>Export</code> on the right top
-of your workbench. Here you also have the option to export the whole
-OpenRefine project (data and processing steps) for sharing with
-colleagues or other use cases. In this case you select
-<code>OpenRefine project to archive file</code> and an tar.zip file will
-be downloaded.</p>
+<p>The cleaned dataset can be exported in different formats like
+<code>tsv</code>, <code>csv</code>, <code>html</code> depending on your
+further planned work with the data. You find these options under
+<code>Export</code> on the right side of the project bar. Here you also
+have the option to export the entire OpenRefine project (data and
+processing history) for sharing it with colleagues or as a project
+backup. In this case you select
+<code>OpenRefine project to archive file</code> and an archive file
+(<code>.tar.gz</code>) will be downloaded to your computer.</p>
 <div id="exporting-pitfall" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -2049,7 +2037,8 @@ be downloaded.</p>
 <p>Ensure that no filters are active so that the entire dataset is
 exported. You can check this by looking at the information above the
 table, for example, “10 matching rows (1999 in total)”. In this case,
-only the subset of 10 data rows will be exported.</p>
+only the subset of 10 data rows will be exported. Filters are easy to
+forget, especially when you have been exploring subsets of the data.</p>
 </div>
 </div>
 </div>
@@ -2147,7 +2136,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.4" class="external-link">sandpaper (0.18.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.5" class="external-link">sandpaper (0.18.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -2170,8 +2159,8 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/aio.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/aio.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2026-01-27",
-  "datePublished": "2026-01-27"
+  "dateModified": "2026-02-02",
+  "datePublished": "2026-02-02"
 }
 
   </script><script>
