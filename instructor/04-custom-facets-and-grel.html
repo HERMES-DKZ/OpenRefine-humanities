@@ -347,7 +347,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Custom Facets and GREL</h1>
-        <p>Last updated on 2025-11-18 |
+        <p>Last updated on 2026-02-24 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/04-custom-facets-and-grel.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -397,11 +397,12 @@ built in. In those cases, OpenRefine lets us define our own facets using
 readable. You can think of them as tiny instructions that tell
 OpenRefine how to interpret or transform the value currently in a cell
 (that value is referred to as <code>value</code> inside GREL). Every
-funciton we already used could be written in GREL as well, but to make
-things eaisier the most common functions are already built it.</p>
+function we already used could be written in GREL as well, but to make
+things easier the most common functions are already built in. The menu,
+we are using, simply provides shortcuts for the most common actions.</p>
 <p>If, for example, we now want to examine our data set to see which
-works of art were created by only one or by then one, we could create a
-custom facet to filter by this criteria.</p>
+works of art were created by only one or by more than one person, we
+could create a custom facet to filter by this criteria.</p>
 <div id="question-how-could-we-filter-the-column-to-find-out-whether-one-or-more-people-were-involved-in-creating-a-work-of-art" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
@@ -430,11 +431,8 @@ It is a small, specialized language used inside OpenRefine to:</p>
 </ul><p>Even though GREL looks a bit like programming, most expressions are
 short, simple, and intuitive.<br>
 You don’t need prior coding experience. GREL is designed to help you
-express small, precise rules for working with messy data.</p>
-<p>Every OpenRefine transformation you perform through the menu could
-also be written in GREL.<br>
-The menu, we are using, simply provides shortcuts for the most common
-actions.</p>
+express small, precise rules for working with messy data. Every
+transformation available in the menu is ultimately powered by GREL</p>
 </section><section><h2 class="section-heading" id="creating-a-custom-facet-with-grel">Creating a Custom Facet with GREL<a class="anchor" aria-label="anchor" href="#creating-a-custom-facet-with-grel"></a></h2>
 <hr class="half-width"><ol style="list-style-type: decimal"><li><p><strong>Open the column menu</strong> for
 <strong><code>Artist</code></strong>.</p></li>
@@ -448,8 +446,8 @@ evaluates the expression and returns either <code>true</code> or
 </li>
 <li><p>Click <strong>OK</strong>. In the left panel, you now see a facet
 with two buckets: <code>true</code> and <code>false</code>.</p></li>
-</ol><p>That’s it—you just created a logic-based facet that the standard
-menus couldn’t provide.</p>
+</ol><p>This creates a logic-based facet that is not available as a built-in
+option</p>
 <p><strong>Why this works:</strong> A Custom Facet runs your expression
 on every row, groups the results, and lets you filter by the outcome.
 You can write tests that return booleans
@@ -547,9 +545,6 @@ multiple spaces).</li>
 <li>
 <code>value.toNumber()</code> – parse numbers (non-numeric becomes
 blank).</li>
-<li>
-<code>value.toDate()</code> – parse dates (useful before Timeline
-facets).</li>
 <li>
 <code>value.toString()</code> – convert back to text.</li>
 <li>
@@ -656,7 +651,7 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/instructor/04-custom-facets-and-grel.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/instructor/04-custom-facets-and-grel.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2025-11-18",
+  "dateModified": "2026-02-24",
   "datePublished": "2026-02-24"
 }
 
