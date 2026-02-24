@@ -22,9 +22,9 @@ exercises: 0
 
 So far, we have explored facets that you can create by clicking through the menu—text, numeric, and timeline facets. These are powerful, but sometimes our exploration or cleaning task needs a rule that isn’t built in. In those cases, OpenRefine lets us define our own facets using **GREL** (*General Refine Expression Language*).
 
-GREL looks like code, but many useful expressions are short and readable. You can think of them as tiny instructions that tell OpenRefine how to interpret or transform the value currently in a cell (that value is referred to as `value` inside GREL). Every funciton we already used could be written in GREL as well, but to make things eaisier the most common functions are already built it.
+GREL looks like code, but many useful expressions are short and readable. You can think of them as tiny instructions that tell OpenRefine how to interpret or transform the value currently in a cell (that value is referred to as `value` inside GREL). Every function we already used could be written in GREL as well, but to make things easier the most common functions are already built in. The menu, we are using, simply provides shortcuts for the most common actions.
 
-If, for example, we now want to examine our data set to see which works of art were created by only one or by then one, we could create a custom facet to filter by this criteria.
+If, for example, we now want to examine our data set to see which works of art were created by only one or by more than one person, we could create a custom facet to filter by this criteria.
 
 ::::::::::::: discussion
 
@@ -50,9 +50,7 @@ It is a small, specialized language used inside OpenRefine to:
 
 Even though GREL looks a bit like programming, most expressions are short, simple, and intuitive.  
 You don't need prior coding experience. GREL is designed to help you express small, precise rules for working with messy data.
-
-Every OpenRefine transformation you perform through the menu could also be written in GREL.  
-The menu, we are using, simply provides shortcuts for the most common actions.
+Every transformation available in the menu is ultimately powered by GREL
 
 
 ## Creating a Custom Facet with GREL
@@ -71,7 +69,7 @@ The menu, we are using, simply provides shortcuts for the most common actions.
 
 4. Click **OK**. In the left panel, you now see a facet with two buckets: `true` and `false`.
 
-That’s it—you just created a logic-based facet that the standard menus couldn’t provide.
+This creates a logic-based facet that is not available as a built-in option
 
 **Why this works:** A Custom Facet runs your expression on every row, groups the results, and lets you filter by the outcome. You can write tests that return booleans (`true`/`false`), strings (e.g., normalized categories), or even numbers—OpenRefine will facet whatever the expression returns.
 
@@ -156,7 +154,6 @@ That is why the expression in this example includes more than just `value`. We a
 * `value.split(";")` – split into an array on `;`.
 * `array.join("|")` – join array back to a string.
 * `value.toNumber()` – parse numbers (non-numeric becomes blank).
-* `value.toDate()` – parse dates (useful before Timeline facets).
 * `value.toString()` – convert back to text.
 * `isBlank(value)` – `true` for empty/whitespace-only.
 * `isNull(value)` – `true` for null values (missing).
