@@ -573,7 +573,7 @@ analysis?<br>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul>
 <li>Missing data are sometimes represented by blank cells, N/A or
@@ -648,7 +648,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-02-import-data"><p>Content from <a href="02-import-data.html">Importing Data and Getting to Know the OpenRefine User Interface</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-24 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/02-import-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -675,9 +675,11 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Create a new OpenRefine project</li>
-<li>Import data from a CSV file</li>
-<li>Locate the main components of the user interface</li>
+<li>Create and configure a new OpenRefine project</li>
+<li>Evaluate import settings using the preview pane and import a CSV
+file</li>
+<li>Identify the core interface components and explain their
+functions</li>
 </ul>
 </div>
 </div>
@@ -687,9 +689,10 @@ any links that you are not going to use.
 <section><h2 class="section-heading" id="importing-data">Importing Data<a class="anchor" aria-label="anchor" href="#importing-data"></a>
 </h2>
 <hr class="half-width">
-<p>When you start OpenRefine, a window in your web browser (at the
-address <a href="https://127.0.0.1:3333/" class="external-link">http://127.0.0.1:3333/</a>)
-will open and you are greeted by the start page.</p>
+<p>In this episode, you will import the Metropolitan Museum dataset used
+throughout the lesson. To begin, open OpenRefine. When you start
+OpenRefine, a window in your web browser (at the address <a href="http://127.0.0.1:3333/" class="external-link">http://127.0.0.1:3333/</a>) will open and
+you are greeted by the start page.</p>
 <figure><img src="fig/01_data_import.png" alt="Screenshot of the Import Data Window" class="figure mx-auto d-block"><div class="figcaption">Screenshot of the Import Data Window</div>
 </figure><p>There are various options in the left-hand bar. You can:</p>
 <ul>
@@ -699,28 +702,28 @@ will open and you are greeted by the start page.</p>
 <li>Change the language of OpenRefine.</li>
 <li>Manage extensions.</li>
 </ul>
-<p>OpenRefine structures your work in <em>projects</em>. So to begin
-working, you first need to create a new project and import the Museum of
-Modern Art (MoMA) collection dataset. If you pause your work on the
-project (the data and the changes you made) and want to continue later
-on, you can choose <code>Open project</code>. If a colleague sends you
-an OpenRefine project, you can import it under
-<code>Import project</code>.</p>
+<p>OpenRefine structures your work in <em>projects</em>. To begin
+working, you first need to create a new project and import The Met
+dataset. If you pause your work on the project (the data and the changes
+you made) and want to continue later on, you can choose
+<code>Open project</code>. If a colleague sends you an OpenRefine
+project, you can import it under <code>Import project</code>.</p>
 <ol style="list-style-type: decimal">
 <li>Click on <code>Create Project</code> and then on <em>Get data
 from</em> <code>This Computer</code>.</li>
 <li>Here click on <code>Browse</code>, locate the dataset
-<code>moma_subset.csv</code> on your computer and select it.</li>
+<code>met_dataset_oa.csv</code> on your computer and select it.</li>
 <li>Click on <code>Next</code> and upload the data into OpenRefine.</li>
 <li>On the next page OpenRefine will show you a preview of your data,
 allowing you to check that everything looks correct before you
 proceed.</li>
 </ol>
 <p>Below the data preview, you find various import settings for how the
-data should be loaded. These setting have a direct effect on the preview
-above, allowing us to check immediately whether the settings have been
-selected correctly. This is important when files have special formats,
-so that they can be converted into the correct table structure.</p>
+data should be loaded. These settings have a direct effect on the
+preview above, allowing us to check immediately whether the settings
+have been selected correctly. This is especially important when files
+use non-standard formats, as incorrect settings may result in a
+distorted table structure.</p>
 <div id="what-kinds-of-data-files-can-i-import" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -746,15 +749,55 @@ a project by importing data</a> page in the OpenRefine manual.</p>
 </div>
 </div>
 </div>
-<p>For example, if a CSV file uses a separator other than a comma (for
-example, a semicolon or tab), you can specify this under <em>Columns are
-separated by</em> so that columns are recognized correctly. Sometimes,
-data files include extra header lines or notes at the top. You can tell
-OpenRefine to skip these lines, so only the actual data is imported. For
-Excel files, you can select which sheet to import. For CSVs, you can
-preview and adjust how columns are interpreted. There are many different
-options depending on the file format and the dataset. In our case, the
-default settings are sufficient.</p>
+<div id="challenge-import-as-interpretation" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-import-as-interpretation" class="callout-inner">
+<h3 class="callout-title">Challenge: Import as Interpretation</h3>
+<div class="callout-content">
+<p>Let’s test how sensitive the import process is to incorrect settings.
+Try changing the separator to a semicolon.</p>
+<p>In the import preview, change the column separator from comma to
+semicolon and observe the preview carefully.</p>
+<p><strong>Questions:</strong></p>
+<ol style="list-style-type: decimal">
+<li>How does the table structure change?</li>
+<li>How many columns are displayed now?</li>
+<li>Why does this happen?</li>
+<li>What would happen if you created the project without correcting this
+setting?</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<ol style="list-style-type: decimal">
+<li>The table structure collapses.</li>
+<li>Most or all values appear in a single column.</li>
+<li>This happens because the dataset is comma-separated. When the
+separator does not match the file structure, OpenRefine cannot divide
+the data into columns correctly.</li>
+<li>The dataset would be imported incorrectly, making further analysis
+difficult or impossible.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<p>Sometimes, data files include extra header lines or notes at the top.
+You can tell OpenRefine to skip these lines, so only the actual data is
+imported. For Excel files, you can select which sheet to import. For
+CSVs, you can preview and adjust how columns are interpreted. There are
+many different options depending on the file format and the dataset. In
+our case, the default settings are sufficient.</p>
 <div id="why-import-settings-matter" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -791,8 +834,8 @@ can scroll through the columns within the table.</p>
 
 <p>Each column header has a small <code>arrow</code>. Clicking this
 <code>arrow</code> opens a drop-down menu with actions that apply only
-to that column, such as sorting, faceting, and editing its values: The
-actions you will learn about in the following chapters</p>
+to that column, such as sorting, faceting, and editing its values: These
+are the actions you will learn about in the following chapters</p>
 <p>On the left-hand side, the <code>Facet/Filter</code> tab shows all
 active filters and facets. These tools allow you to explore the dataset
 and to see how your actions affect it. The <code>Undo/Redo</code> tab
@@ -805,8 +848,10 @@ chapters.</p>
 menu provides access to project-level actions. When you click on
 <code>Open...</code>, you return to the start page. The
 <code>Help</code> button links to the official OpenRefine documentation.
-If you encounter problems working with OpenRefine in the future, the
-documentation is always a good first place to look for a solution.</p>
+If you encounter problems in the future, the official documentation is a
+useful starting point.</p>
+<p>Now that we have successfully imported the dataset and understood the
+interface, we can begin exploring the data itself.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -816,7 +861,8 @@ documentation is always a good first place to look for a solution.</p>
 <div class="callout-content">
 <ul>
 <li>OpenRefine organizes your work in projects</li>
-<li>You can import data from different formats in OpenRefine</li>
+<li>You can import data from different sources and in different formats
+into OpenRefine</li>
 <li>Adjust import settings to ensure your data is read correctly and
 preview the results before starting</li>
 <li>The main components of the user interface are the grid, the grid
@@ -1478,7 +1524,7 @@ resolve these data items.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You can separate the data at the string <code>) (</code>.</p>
 </div>
