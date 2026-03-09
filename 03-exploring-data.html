@@ -238,7 +238,7 @@
         <ul><li><a href="#facets">Facets</a></li>
 <li><a href="#text-facet">Text Facet</a></li>
 <li><a href="#other-facet-types">Other facet types</a></li>
-<li><a href="#detect-blank-values">Detect blank values</a></li>
+<li><a href="#detect-blank-values">Detect Blank Values</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -348,7 +348,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exploring Data</h1>
-        <p>Last updated on 2026-02-24 |
+        <p>Last updated on 2026-03-09 |
 
         <a href="https://github.com/HERMES-DKZ/OpenRefine-humanities/edit/main/episodes/03-exploring-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -404,77 +404,44 @@ data: it lists all unique values in a column and shows how many times
 each one appears.</p>
 </section><section><h2 class="section-heading" id="text-facet">Text Facet<a class="anchor" aria-label="anchor" href="#text-facet"></a></h2>
 <hr class="half-width"><p>The most commonly used facet type is called <strong>Text
-facet</strong>. This facet type applies to all string values. Wir werden
-gemeinsam unsere erste Text facet erstellen und zwar für die Spalte
-Department. Open the column menu with the small arrow next to the column
-name and choose <code>Facet → Text facet</code>. A new panel will appear
-on the left side of the screen with the unique values inside the column
-and the count how often they appear. You can sort the values
-alphabetically or by frequency. You can also hover over values to edit
-them directly. This simple step immediately transforms a spreadsheet
-with hundreds of rows into a clear summary of categories and also helps
-to detect first inconsistencies.</p>
-<p>The numbers will vary depending on your sample, but the idea is
-always the same: OpenRefine has grouped all artworks by their department
-and counted them. You can now click on one department to see only those
-rows in the table, or select multiple values to combine them by clicking
-<strong>include</strong>.</p>
-<div id="exercise-first-insights-to-your-dataset-correct-errors" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<span class="callout-header">Discussion</span>
-<div id="exercise-first-insights-to-your-dataset-correct-errors" class="callout-inner">
-<h3 class="callout-title">Exercise: First insights to your dataset &amp;
-correct errors</h3>
-<div class="callout-content">
-<p>Create a <code>text facet</code> on the columns: - <strong>Is Public
-Domain</strong> - <strong>Object Name</strong> -
-<strong>City</strong>.</p>
-<ol style="list-style-type: decimal"><li><p>How many unique values are listed in each column?</p></li>
-<li><p>What is the most common value and how often does it
-appear?</p></li>
-<li><p>Can you spot problems in the <strong>Is Public Domain</strong>
-column and can you fix them? :::::::::::::::: solution</p></li>
-<li>
-</li>
-<li>
-</li>
-<li>
-</li>
-</ol></div>
-</div>
-</div>
-<p>::::::::::::::::::::::::::::::::::::::::::::::::</p>
-<div class="section level3">
-<h3 id="the-difference-between-facet-and-filters">The difference between Facet and Filters<a class="anchor" aria-label="anchor" href="#the-difference-between-facet-and-filters"></a></h3>
-<p>It is useful to distinguish between <strong>facets</strong> and
-<strong>filters</strong>. Both are ways of focusing on a subset of the
-data, but they work differently. A filter is like a search box: you type
-in a word or part of a word, and OpenRefine hides all rows that do not
-match. A facet, by contrast, gives you an overview of <em>all</em> the
-distinct values in a column and lets you select them interactively.</p>
-<p>For example, in the Met dataset, the column <code>Department</code>
-might contain categories such as “Architecture &amp; Design,” “Painting
-&amp; Sculpture,” or “Drawings &amp; Prints.” A <strong>text
-facet</strong> on this column will immediately show you how many
-artworks belong to each department. By clicking on one or several values
-in the facet, you can quickly restrict your view to only those artworks,
-and then easily switch back to the full dataset.</p>
-<p>When you choose <code>Filter → Text filter</code>, a search field
-appears on the left side. You can type a term to restrict the dataset to
-matching rows.</p>
-<div id="exercise-filter-and-editing-a-subset-of-data" class="callout challenge">
+facet</strong>. This facet type applies to all string values. We will
+create our first text facet together for the column ‘Department’. Open
+the column menu with the small arrow next to the column name and choose
+<code>Facet → Text facet</code>. A new panel will appear on the left
+side of the screen with the unique values inside the column and the
+count how often they appear. You can sort the values alphabetically or
+by frequency. You can also hover over values to edit them directly. This
+simple step immediately transforms a spreadsheet with hundreds of rows
+into a clear summary of categories and also helps to detect first
+inconsistencies.</p>
+<p>Both “Arts of Africa Oceania and the Americas” and “Arts of Africa,
+Oceania and the Americas” appear in the panel. Since these values most
+likely refer to the same department, the version without the comma is
+probably a data entry error. To correct this, identify the incorrect
+value in the facet list, hover over it, click edit, and change it. This
+merges all records under the correct spelling by just one action.</p>
+<p>You can also click on one department to see only those rows in the
+table, or select multiple values to combine them by clicking
+<strong>include</strong>. Ensure that you undo your selection by
+pressing <strong>exclude</strong>, otherwise you will only continue
+working with a small subset of the data.</p>
+<div id="exercise-first-insights-to-your-dataset-correct-errors" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="exercise-filter-and-editing-a-subset-of-data" class="callout-inner">
-<h3 class="callout-title">Exercise: Filter and Editing a subset of
-data</h3>
+<div id="exercise-first-insights-to-your-dataset-correct-errors" class="callout-inner">
+<h3 class="callout-title">Exercise: First insights to your dataset &amp;
+correct errors</h3>
 <div class="callout-content">
-
-</div>
+<p>Create a <code>text facet</code> on the columns: - ‘Is Public Domain’
+- ‘Object Name’ - ‘City’.</p>
+<ol style="list-style-type: decimal"><li>How many unique values are listed in each column?</li>
+<li>What is the most common value in ‘Object Name’ and how often does it
+appear?</li>
+<li>Can you spot problems in the ‘Is Public Domain’ column and can you
+fix them?</li>
+</ol></div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
@@ -482,13 +449,62 @@ data</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-
+<ol style="list-style-type: decimal"><li>4 / 389 / 321 different values.</li>
+<li>The most frequent value is Book with 493 counts.</li>
+<li>There are different spellings: “False”, “false” and “true”, “True”.
+You can decide for one spelling and edit the others with the edit
+button.</li>
+</ol></div>
 </div>
 </div>
 </div>
+<div class="section level3">
+<h3 id="the-difference-between-facet-and-filters">The difference between Facet and Filters<a class="anchor" aria-label="anchor" href="#the-difference-between-facet-and-filters"></a></h3>
+<p>It is useful to distinguish between <strong>facets</strong> and
+<strong>filters</strong>. Both are ways of focusing on a subset of the
+data, but they work differently. A filter is like a search box: you type
+in a word or part of a word, and OpenRefine hides all rows that do not
+match. A facet, by contrast, gives you an overview of <em>all</em> the
+distinct values in a column (as you seen in the Challenge above) and
+lets you select them interactively.</p>
+<p>For example, in the Met dataset, the column <code>Department</code>
+might contain categories such as “Medieval Art”, “Islamic Arts,” or
+“Drawings &amp; Prints.” A <strong>text facet</strong> on this column
+will immediately show you how many artworks belong to each department.
+By clicking on one or several values in the facet, you can quickly
+restrict your view to only those artworks, and then easily switch back
+to the full dataset. So with this functionality you can filter your data
+with the help of facet.</p>
+<p>Another way of filtering in a distint column is a text filter. When
+you choose <code>Filter → Text filter</code>, a search field appears on
+the left side. You can type a term to restrict the dataset to matching
+rows.</p>
+<div id="exercise-combining-facets-and-text-filters" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
 </div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-combining-facets-and-text-filters" class="callout-inner">
+<h3 class="callout-title">Exercise: Combining Facets and Text
+Filters</h3>
+<div class="callout-content">
+<p>How many prints are in the department “Drawings and Prints”? What
+difficulties arise when you only use filtering via the include function
+of the facet? :::::::::::::::: solution</p>
+<p>First, you use a text facet on the column <code>Departments</code>
+and filter for the department “Drawings and Prints” via include. Then
+you can use a text facet on the column ‘Object Name’. When you include
+the facet “Print”, you find 281 matching records. However, as you can
+see, there are not only “Print”, but also entries such as “Album Print
+Ornament”, etc.</p>
+<p>To filter for all prints in the department, you can use a text filter
+and type “print”. There are 665 prints in the department.</p>
+</div>
+</div>
+</div>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::</p>
 </div>
 <div class="section level3">
 <h3 id="rows-records-and-multi-valued-cells">Rows, Records, and Multi-Valued Cells<a class="anchor" aria-label="anchor" href="#rows-records-and-multi-valued-cells"></a></h3>
@@ -574,8 +590,7 @@ even though they look like numbers in the table.</p>
 stored as <strong>strings</strong> (that is, as text), so OpenRefine
 does not treat them as numeric values. We need to convert them
 first.</p>
-<p>To fix this, open the column menu for <code>Height (cm)</code> again
-and choose:<br><strong>Edit cells → Common transforms → To number</strong>.</p>
+<p>To fix this, open the column menu for `` again and choose:<br><strong>Edit cells → Common transforms → To number</strong>.</p>
 <p>OpenRefine now attempts to parse each cell in that column as a
 number. If the value is a valid number, the cell is converted; if not
 (for example, if the cell is empty or contains text like “unknown”), it
@@ -586,7 +601,7 @@ are numeric rather than text.</p>
 <p>With the column properly converted, repeat the earlier step:<br><strong>Facet → Numeric facet</strong>.</p>
 <p>This time, OpenRefine shows a histogram with a slider. The histogram
 groups all the height values into ranges, giving you an overview of how
-artworks are distributed by size.</p>
+artworks are distributed by year of their accession.</p>
 <p>By dragging the slider handles, you can focus on particular ranges.
 For example, you might restrict the view to artworks shorter than 20 cm,
 or zoom in on those taller than 300 cm. This is especially helpful for
@@ -613,14 +628,37 @@ collection. You might see peaks in certain decades, which may correspond
 to acquisition campaigns or curatorial trends. By selecting a particular
 time range, you can then explore only those artworks acquired during
 that period.</p>
-</section><section><h2 class="section-heading" id="detect-blank-values">Detect blank values<a class="anchor" aria-label="anchor" href="#detect-blank-values"></a></h2>
-<hr class="half-width"><p>Not every object has information in all columns. Often, the data is
-incomplete. Knowing how incomplete the data is can often be important
+<div id="exercise-numeric-facet" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-numeric-facet" class="callout-inner">
+<h3 class="callout-title">Exercise: Numeric Facet</h3>
+<div class="callout-content">
+<p>Turn the vallues in the column ‘Accession Year’ into a numeric facet.
+In which decade did the Met collection acquire the most artworks? Why
+are there non-numeric values? Can you spot the error? ::::::::::::::::
+solution</p>
+<div class="section level3">
+<h3 id="solution">Solution<a class="anchor" aria-label="anchor" href="#solution"></a></h3>
+<p>In the 1940s. There are X non-numeric values. You can take a look at
+them by ticking Non-numeric. It looks like someone wrote an “O” instead
+of a “0”.</p>
+</div>
+</div>
+</div>
+</div>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::</p>
+</section><section><h2 class="section-heading" id="detect-blank-values">Detect Blank Values<a class="anchor" aria-label="anchor" href="#detect-blank-values"></a></h2>
+<hr class="half-width"><p>Not every object contains information in all columns. Often, the data
+is incomplete. Knowing how incomplete the data is can often be important
 for planning a later analysis. We can quickly identify the gaps by
 selecting <code>Facet → Customised facets → Facet by blank</code>. This
-gives us an output with true and false on the left. By selecting false,
-we exclude empty data series from the subset. If we do this for all
-columns, we only get the data records that are complete.</p>
+gives us an output with “true” and “false” on the left. By selecting
+“false”, we exclude empty data series from the subset. If we do this for
+all columns, we only get the data records that are complete.</p>
+
 <div id="exercise-identify-complete-records" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -639,13 +677,13 @@ columns, we only get the data records that are complete.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>First apply <code>Facet by blank</code> to <code>Culture</code> and
-select <code>false</code>. Then apply <code>Facet by blank</code> to
-<code>Tags</code> and select <code>false</code>. Only the remaining 175
-record contain values in both columns. This are quite few keeping in
-mind, that our whole dataset encompass 2076 records.</p>
+select “false”. Then apply <code>Facet by blank</code> to
+<code>Tags</code> and select “false”. Only the remaining 175 record
+contain values in both columns. This are quite few keeping in mind, that
+our whole dataset encompass 2076 records.</p>
 </div>
 </div>
 </div>
@@ -730,8 +768,8 @@ any links that you are not going to use.
   "url": "https://HERMES-DKZ.github.io/OpenRefine-humanities/03-exploring-data.html",
   "identifier": "https://HERMES-DKZ.github.io/OpenRefine-humanities/03-exploring-data.html",
   "dateCreated": "2024-04-05",
-  "dateModified": "2026-02-24",
-  "datePublished": "2026-03-03"
+  "dateModified": "2026-03-09",
+  "datePublished": "2026-03-09"
 }
 
   </script><script>
