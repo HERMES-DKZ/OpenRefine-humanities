@@ -24,11 +24,6 @@ exercises: 0
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-
-
-
-
-
 ## Facets
 
 When we work with data in OpenRefine, one of the first challenges is to make sense of the information that has been imported. Looking at rows of raw data rarely gives us much insight, especially if the dataset is large. What we need is a way of quickly summarizing values, spotting patterns, and finding potential problems such as inconsistent spellings or unexpected categories. 
@@ -37,9 +32,11 @@ OpenRefine provides a set of tools for this under the name **facets**. Faceting 
 
 ## Text Facet
 
-The most commonly used facet type is called **Text facet**. This facet type applies to all string values. Wir werden gemeinsam unsere erste Text facet erstellen und zwar für die Spalte Department. Open the column menu with the small arrow next to the column name and choose `Facet → Text facet`. A new panel will appear on the left side of the screen with the unique values inside the column and the count how often they appear. You can sort the values alphabetically or by frequency. You can also hover over values to edit them directly. This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
+The most commonly used facet type is called **Text facet**. This facet type applies to all string values. We will create our first text facet together for the column 'Department'. Open the column menu with the small arrow next to the column name and choose `Facet → Text facet`. A new panel will appear on the left side of the screen with the unique values inside the column and the count how often they appear. You can sort the values alphabetically or by frequency. You can also hover over values to edit them directly. This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
 
-The numbers will vary depending on your sample, but the idea is always the same: OpenRefine has grouped all artworks by their department and counted them. You can now click on one department to see only those rows in the table, or select multiple values to combine them by clicking **include**. 
+Both “Arts of Africa Oceania and the Americas” and “Arts of Africa, Oceania and the Americas” appear in the panel. Since these values most likely refer to the same department, the version without the comma is probably a data entry error. To correct this, identify the incorrect value in the facet list, hover over it, click edit, and change it. This merges all records under the correct spelling by just one action.
+
+You can also click on one department to see only those rows in the table, or select multiple values to combine them by clicking **include**. Ensure that you undo your selection by pressing **exclude**, otherwise you will only continue working with a small subset of the data.
 
 
 ::::::::::::::::::::::::::::::::::::: challenge
@@ -47,19 +44,19 @@ The numbers will vary depending on your sample, but the idea is always the same:
 ### Exercise: First insights to your dataset & correct errors 
 
 Create  a `text facet` on the columns:
-- **Is Public Domain**
-- **Object Name** 
-- **City**.
+- 'Is Public Domain'
+- 'Object Name' 
+- 'City'.
 
 1. How many unique values are listed in each column?
-2. What is the most common value and how often does it appear?
-3. Can you spot problems in the **Is Public Domain** column and can you fix them?
+2. What is the most common value in 'Object Name' and how often does it appear?
+3. Can you spot problems in the 'Is Public Domain' column and can you fix them?
+
 :::::::::::::::: solution
+1. 4 / 389 / 321 different values. 
+2. The most frequent value is Book with 493 counts.
+3. There are different spellings: "False", "false" and "true", "True". You can decide for one spelling and edit the others with the edit button.
 
-
-1.
-2. 
-3.
 ::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -69,20 +66,24 @@ Create  a `text facet` on the columns:
 ### The difference between Facet and Filters
 
 
-It is useful to distinguish between **facets** and **filters**. Both are ways of focusing on a subset of the data, but they work differently. A filter is like a search box: you type in a word or part of a word, and OpenRefine hides all rows that do not match. A facet, by contrast, gives you an overview of *all* the distinct values in a column and lets you select them interactively. 
+It is useful to distinguish between **facets** and **filters**. Both are ways of focusing on a subset of the data, but they work differently. A filter is like a search box: you type in a word or part of a word, and OpenRefine hides all rows that do not match. A facet, by contrast, gives you an overview of *all* the distinct values in a column (as you seen in the Challenge above) and lets you select them interactively. 
 
-For example, in the Met dataset, the column `Department` might contain categories such as “Architecture & Design,” “Painting & Sculpture,” or “Drawings & Prints.” A **text facet** on this column will immediately show you how many artworks belong to each department. By clicking on one or several values in the facet, you can quickly restrict your view to only those artworks, and then easily switch back to the full dataset.
+For example, in the Met dataset, the column `Department` might contain categories such as “Medieval Art”, “Islamic Arts,” or “Drawings & Prints.” A **text facet** on this column will immediately show you how many artworks belong to each department. By clicking on one or several values in the facet, you can quickly restrict your view to only those artworks, and then easily switch back to the full dataset. So with this functionality you can filter your data with the help of facet.
 
-When you choose `Filter → Text filter`, a search field appears on the left side. You can type a term to restrict the dataset to matching rows.
+Another way of filtering in a distint column is a text filter. When you choose `Filter → Text filter`, a search field appears on the left side. You can type a term to restrict the dataset to matching rows.
 
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-### Exercise: Filter and Editing a subset of data
+### Exercise: Combining Facets and Text Filters
 
-
+How many prints are in the department "Drawings and Prints"?
+What difficulties arise when you only use filtering via the include function of the facet?
 :::::::::::::::: solution
 
+First, you use a text facet on the column `Departments` and filter for the department "Drawings and Prints" via include. Then you can use a text facet on the column 'Object Name'. When you include the facet "Print", you find 281 matching records. However, as you can see, there are not only "Print", but also entries such as "Album Print Ornament", etc.
+
+To filter for all prints in the department, you can use a text filter and type "print". There are 665 prints in the department.
 ::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -131,7 +132,7 @@ Let us try this out with the `Height (cm)` column from the Met dataset. Open the
 
 This situation is common when importing data: numbers are often stored as **strings** (that is, as text), so OpenRefine does not treat them as numeric values. We need to convert them first.
 
-To fix this, open the column menu for `Height (cm)` again and choose:  
+To fix this, open the column menu for `` again and choose:  
 **Edit cells → Common transforms → To number**.  
 
 OpenRefine now attempts to parse each cell in that column as a number. If the value is a valid number, the cell is converted; if not (for example, if the cell is empty or contains text like “unknown”), it becomes a blank cell.  
@@ -141,7 +142,7 @@ You will see a small change in the formatting of the numbers: they are now right
 With the column properly converted, repeat the earlier step:  
 **Facet → Numeric facet**.  
 
-This time, OpenRefine shows a histogram with a slider. The histogram groups all the height values into ranges, giving you an overview of how artworks are distributed by size.  
+This time, OpenRefine shows a histogram with a slider. The histogram groups all the height values into ranges, giving you an overview of how artworks are distributed by year of their accession.  
 
 By dragging the slider handles, you can focus on particular ranges. For example, you might restrict the view to artworks shorter than 20 cm, or zoom in on those taller than 300 cm. This is especially helpful for spotting unusual values. If you see a very high number, such as “20000 cm,” that might indicate a data entry error.  
 
@@ -156,11 +157,28 @@ The result looks similar to the numeric facet but with dates on the horizontal a
 
 For example, a timeline facet on `DateAcquired` could reveal when most of the artworks in your sample entered the MoMA collection. You might see peaks in certain decades, which may correspond to acquisition campaigns or curatorial trends. By selecting a particular time range, you can then explore only those artworks acquired during that period.
 
+::::::::::::::::::::::::::::::::::::: challenge
 
-## Detect blank values
+### Exercise: Numeric Facet
 
-Not every object has information in all columns. Often, the data is incomplete. Knowing how incomplete the data is can often be important for planning a later analysis. We can quickly identify the gaps by selecting `Facet → Customised facets → Facet by blank`. This gives us an output with true and false on the left. By selecting false, we exclude empty data series from the subset. If we do this for all columns, we only get the data records that are complete.
+Turn the vallues in the column 'Accession Year' into a numeric facet. In which decade did the Met collection acquire the most artworks? Why are there non-numeric values? Can you spot the error?
+:::::::::::::::: solution
 
+### Solution
+
+In the 1940s. There are X non-numeric values. You can take a look at them by ticking Non-numeric. It looks like someone wrote an “O” instead of a “0”.
+
+::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Detect Blank Values
+
+Not every object contains information in all columns. Often, the data is incomplete. Knowing how incomplete the data is can often be important for planning a later analysis. We can quickly identify the gaps by selecting `Facet → Customised facets → Facet by blank`. This gives us an output with "true" and "false" on the left. By selecting "false", we exclude empty data series from the subset. If we do this for all columns, we only get the data records that are complete.
+
+
+::: instructor
+There are often diffent way to do things in OpenRefine. In this case its also possible to create a text facet and then search for "blank".
+::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -170,7 +188,7 @@ How many records in the dataset contain information on both `Culture` and `Tags`
 :::::::::::::::: solution
 
 ### Solution
-First apply `Facet by blank` to `Culture` and select `false`. Then apply `Facet by blank` to `Tags` and select `false`. Only the remaining 175 record contain values in both columns. This are quite few keeping in mind, that our whole dataset encompass 2076 records.
+First apply `Facet by blank` to `Culture` and select "false". Then apply `Facet by blank` to `Tags` and select "false". Only the remaining 175 record contain values in both columns. This are quite few keeping in mind, that our whole dataset encompass 2076 records.
 
 ::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
