@@ -68,12 +68,13 @@ Identify anything that might cause problems during analysis.
 4. Why might these issues matter later in OpenRefine?
 
 :::::::::::::: solution
+
 * Missing data are sometimes represented by blank cells, N/A or 0. 
 * Is the title the same as the object name? In some rows they differ in others they are the same.
 * The Artist Display Name sometimes contains more people.
 * Object dates are often not given as a specific year.
 * The cities in the table could be ambiguous, is it Chelsea in the UK or Chelsea in the US? Maybe you can derive a unique location from information about the artist.
-* Paris and Paris, France refer to the same place, but are recorded differently..
+* Paris and Paris, France refer to the same place, but are recorded differently.
 * Some titles are enclosed in quotation marks, while others are not.
 ::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
