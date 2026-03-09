@@ -32,7 +32,7 @@ OpenRefine provides a set of tools for this under the name **facets**. Faceting 
 
 ## Text Facet
 
-The most commonly used facet type is called **Text facet**. This facet type applies to all string values. We will create our first text facet together for the column `Department`. Open the column menu with the small arrow next to the column name and choose `Facet → Text facet`. A new panel will appear on the left side of the screen with the unique values inside the column and the count how often they appear. You can sort the values alphabetically or by frequency. You can also hover over values to edit them directly. This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
+The most commonly used facet type is called **text facet**. This facet type applies to all string values. We will create our first text facet together for the column `Department`. Open the column menu with the small arrow next to the column name and choose `Facet → Text facet`. A new panel will appear on the left side of the screen with the unique values inside the column and the count how often they appear. You can sort the values alphabetically or by frequency. You can also hover over values to edit them directly. This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
 
 Both “Arts of Africa Oceania and the Americas” and “Arts of Africa, Oceania and the Americas” appear in the panel. Since these values most likely refer to the same department, the version without the comma is probably a data entry error. To correct this, identify the incorrect value in the facet list, hover over it, click edit, and change it. This merges all records under the correct spelling by just one action.
 
@@ -91,38 +91,53 @@ To filter for all prints in the department, you can use a text filter and type "
 
 ### Rows, Records, and Multi-Valued Cells
 
-Up to this point, we have assumed that every cell in a column contains only a single value. In real-world data, however, that is often not the case. In the Met dataset, the `Artist Display Name` column sometimes contains two or more names, separated by a `;` .
+Up to this point, we have assumed that every cell in a column contains only a single value. In real-world data, however, that is often not the case. In the Met dataset, the `Artist Display Name` column sometimes contains two or more names, separated by a `;` like
+`Horace Harral; Joseph Wolf`.
+This is problematic for faceting. If we want to find out which artist appears most frequently in the dataset, this structure makes it difficult. That's because if we apply a text facet to the `Artist Display Name` column as it stands, OpenRefine will treat the entire string as one value. The facet will then list the artists as if it were a single artist, which is clearly not what we want. What we need instead is to treat every artist as separate values: `Horace Harral` and `Joseph Wolf`.
 
-This is problematic for faceting. If we apply a text facet to the `Artist Display Name` column as it stands, OpenRefine will treat the entire string above as one value. The facet will then list “Pablo Picasso; Georges Braque” as if it were a single artist, which is clearly not what we want. What we need instead is to treat `Pablo Picasso` and `Georges Braque` as separate values, each counted individually.
-
-To understand what happens when we correct this, it helps to know about the distinction between **Rows** and **Records** in OpenRefine. By default, data is displayed as rows, one after the other. But OpenRefine can also treat a group of rows as belonging to the same **record**. When we split a cell that contains multiple values, OpenRefine creates additional rows within the same record. That means the number of rows goes up, but the number of records stays the same.
-
-Let us now prepare the `Artist` column for faceting by splitting its multi-valued cells.
-
-1. First, look through a few rows in the `Artist` column and identify whether any cells contain more than one artist. These are usually separated by a comma (`,`) in the Met dataset.
-2. Switch to **Records view** (at the top left of the grid, choose “Show as: Records”). This makes it easier to see what happens after the split.
-3. Open the column menu for `Artist`, choose **Edit cells → Split multi-valued cells…**. Enter the separator `,` in the box, and click OK. Ignore the other options.
-4. OpenRefine now divides each cell containing multiple artists into separate rows. The total number of rows increases, but the record count stays constant.
-5. Create a **Text facet** on `Artist` again. This time you will see the names of individual artists listed separately. Each can now be counted and selected on its own.
+To understand what happens when we correct this, it helps to know about the distinction between **Rows** and **Records** in OpenRefine. By default, data is displayed as rows, one after the other. But OpenRefine can also treat a group of rows as belonging to the same record. When we split a cell that contains multiple values, OpenRefine creates additional rows within the same record. That means the number of rows goes up, but the number of records stays the same.
 
 
+
+1. Switch to **Records view** (at the top left of the grid, choose “Show as: Records”). This makes it easier to see what happens after the split.
+2. Open the column menu for `Artist Display Name`, choose `Edit cells → Split multi-valued cells…`. Enter the separator `;` in the box, and click `OK`.
+3. Create a text facet on `Artist Display Name` again. This time you will see the names of individual artists listed separately. Each can now be counted and selected on its own.
+
+If you now switch back to the `rows` view you will see that the number of rows rose to 4,644.
 ::::::::::::::::::::::::::::::::::::: challenge
 
 ### Exercise: Split multi-valued cells
 
-It is important to note that OpenRefine only splits the column you apply the function to. Other columns are left untouched. This means that if another column also contains multiple values that correspond to those in `Artist`, you need to split that column separately, for example `Nationality`. 
-Look in the data and split the other columns if needed.
+The column `Tags` also contains multiple values in some cells. 
+Split the cells for this column and create a text facet.
+
+* Which separator do you need?
+
+* Which tag appears most frequently in the dataset?
+
+* Do you notice duplicate values in the facet list?
+ 
+
+:::::::::::::::: solution
+
+### Solution
+
+* When splitting the cells, you should use "," as the separator.
+
+* After splitting the values and creating a text facet, the most frequent tag in the dataset is "Men".
+
+* The facet may show duplicate values. These appear as separate values because some tags contain leading whitespace.
+To fix this you can `Edit cells → Common transforms → Trim leading and trailing whitespace`. This removes spaces at the beginning or end of the cells. After trimming the whitespace, the duplicate values merge into a single tag.
+
+::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-This small step has a big impact: it ensures that our summaries and analysis represent the data correctly. Instead of hiding two names inside one cell, we now see each artist clearly and can identify patterns such as which artists appear most often in the dataset.
 
 
 
 ### Rejoining Values
 
-Sometimes you may want to put the data back into its original form. After cleaning or analyzing, OpenRefine allows you to join split rows back into a single cell. To do this, return to the column menu, select **Edit cells → Join multi-valued cells…**, and specify a separator such as a comma character again (`,`). This is useful if you need to export the data in a more compact form later.
+Sometimes you may want to put the data back into its original form. After cleaning or analyzing, OpenRefine allows you to join split rows back into a single cell. To do this, return to the column menu, select `Edit cells → Join multi-valued cells…`, and specify a separator again. This is useful if you need to export the data in a more compact form later.
 
 
 
