@@ -32,7 +32,7 @@ OpenRefine provides a set of tools for this under the name **facets**. Faceting 
 
 ## Text Facet
 
-The most commonly used facet type is called **Text facet**. This facet type applies to all string values. We will create our first text facet together for the column 'Department'. Open the column menu with the small arrow next to the column name and choose `Facet → Text facet`. A new panel will appear on the left side of the screen with the unique values inside the column and the count how often they appear. You can sort the values alphabetically or by frequency. You can also hover over values to edit them directly. This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
+The most commonly used facet type is called **Text facet**. This facet type applies to all string values. We will create our first text facet together for the column `Department`. Open the column menu with the small arrow next to the column name and choose `Facet → Text facet`. A new panel will appear on the left side of the screen with the unique values inside the column and the count how often they appear. You can sort the values alphabetically or by frequency. You can also hover over values to edit them directly. This simple step immediately transforms a spreadsheet with hundreds of rows into a clear summary of categories and also helps to detect first inconsistencies. 
 
 Both “Arts of Africa Oceania and the Americas” and “Arts of Africa, Oceania and the Americas” appear in the panel. Since these values most likely refer to the same department, the version without the comma is probably a data entry error. To correct this, identify the incorrect value in the facet list, hover over it, click edit, and change it. This merges all records under the correct spelling by just one action.
 
@@ -44,13 +44,13 @@ You can also click on one department to see only those rows in the table, or sel
 ### Exercise: First insights to your dataset & correct errors 
 
 Create  a `text facet` on the columns:
-- 'Is Public Domain'
-- 'Object Name' 
-- 'City'.
+- `Is Public Domain`
+- `Object Name` 
+- `City`.
 
 1. How many unique values are listed in each column?
-2. What is the most common value in 'Object Name' and how often does it appear?
-3. Can you spot problems in the 'Is Public Domain' column and can you fix them?
+2. What is the most common value in `Object Name` and how often does it appear?
+3. Can you spot problems in the `Is Public Domain` column and can you fix them?
 
 :::::::::::::::: solution
 1. 4 / 389 / 321 different values. 
@@ -79,12 +79,14 @@ Another way of filtering in a distint column is a text filter. When you choose `
 
 How many prints are in the department "Drawings and Prints"?
 What difficulties arise when you only use filtering via the include function of the facet?
+
 :::::::::::::::: solution
 
-First, you use a text facet on the column `Departments` and filter for the department "Drawings and Prints" via include. Then you can use a text facet on the column 'Object Name'. When you include the facet "Print", you find 281 matching records. However, as you can see, there are not only "Print", but also entries such as "Album Print Ornament", etc.
+First, you use a text facet on the column `Departments` and filter for the department "Drawings and Prints" via include. Then you can use a text facet on the column `Object Name`. When you include the facet "Print", you find 281 matching records. However, as you can see, there are not only "Print", but also entries such as "Album Print Ornament", etc.
 
 To filter for all prints in the department, you can use a text filter and type "print". There are 665 prints in the department.
 ::::::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Rows, Records, and Multi-Valued Cells
@@ -161,7 +163,8 @@ For example, a timeline facet on `DateAcquired` could reveal when most of the ar
 
 ### Exercise: Numeric Facet
 
-Turn the vallues in the column 'Accession Year' into a numeric facet. In which decade did the Met collection acquire the most artworks? Why are there non-numeric values? Can you spot the error?
+Turn the vallues in the column `Accession Year` into a numeric facet. In which decade did the Met collection acquire the most artworks? Why are there non-numeric values? Can you spot the error?
+
 :::::::::::::::: solution
 
 ### Solution
@@ -169,6 +172,7 @@ Turn the vallues in the column 'Accession Year' into a numeric facet. In which d
 In the 1940s. There are X non-numeric values. You can take a look at them by ticking Non-numeric. It looks like someone wrote an “O” instead of a “0”.
 
 ::::::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Detect Blank Values
@@ -191,6 +195,7 @@ How many records in the dataset contain information on both `Culture` and `Tags`
 First apply `Facet by blank` to `Culture` and select "false". Then apply `Facet by blank` to `Tags` and select "false". Only the remaining 175 record contain values in both columns. This are quite few keeping in mind, that our whole dataset encompass 2076 records.
 
 ::::::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
