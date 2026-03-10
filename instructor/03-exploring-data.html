@@ -237,7 +237,7 @@
       <div class="accordion-body">
         <ul><li><a href="#facets">Facets</a></li>
 <li><a href="#text-facet">Text Facet</a></li>
-<li><a href="#other-facet-types">Other facet types</a></li>
+<li><a href="#other-facet-types">Other Facet Types</a></li>
 <li><a href="#detect-blank-values">Detect Blank Values</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -600,21 +600,23 @@ back into a single cell. To do this, return to the column menu, select
 separator again. This is useful if you need to export the data in a more
 compact form later.</p>
 </div>
-</section><section><h2 class="section-heading" id="other-facet-types">Other facet types<a class="anchor" aria-label="anchor" href="#other-facet-types"></a></h2>
-<hr class="half-width"><p>Numeric facets are designed for columns that contain numbers, such as
-dimensions of artworks. They let you interactively explore ranges of
-values with a histogram and slider.</p>
-<p>Let us try this out with the <code>Height (cm)</code> column from the
-Met dataset. Open the column menu and choose <strong>Facet → Numeric
-facet</strong>. You might expect to see a histogram, but instead,
-OpenRefine shows only a message such as “No numeric values.” This tells
-us that the values in the column are not actually recognized as numbers,
-even though they look like numbers in the table.</p>
+</section><section><h2 class="section-heading" id="other-facet-types">Other Facet Types<a class="anchor" aria-label="anchor" href="#other-facet-types"></a></h2>
+<hr class="half-width"><p>So far we have used text facets to explore categorical values such as
+departments or object types. OpenRefine also offers other facet types
+that help explore numeric values like creation year of an artwork.</p>
+<p>Let us try this out with the <code>Object Begin Date</code> column
+from the Met dataset which contains the year an artwork was created.
+Open the column menu and choose <code>Facet → Numeric facet</code>. You
+might expect to see the different values, but instead, OpenRefine shows
+only a message such as “No numeric values.” This tells us that the
+values in the column are not actually recognized as numbers, even though
+they look like numbers in the table.</p>
 <p>This situation is common when importing data: numbers are often
 stored as <strong>strings</strong> (that is, as text), so OpenRefine
-does not treat them as numeric values. We need to convert them
+does not treat them as numeric values. We need to transform them
 first.</p>
-<p>To fix this, open the column menu for `` again and choose:<br><strong>Edit cells → Common transforms → To number</strong>.</p>
+<p>To fix this, open the column menu for <code>Object Begin Date</code>
+again and choose:<br><code>Edit cells → Common transforms → To number</code>.</p>
 <p>OpenRefine now attempts to parse each cell in that column as a
 number. If the value is a valid number, the cell is converted; if not
 (for example, if the cell is empty or contains text like “unknown”), it
@@ -622,36 +624,39 @@ becomes a blank cell.</p>
 <p>You will see a small change in the formatting of the numbers: they
 are now right-aligned, which is OpenRefine’s way of indicating that they
 are numeric rather than text.</p>
-<p>With the column properly converted, repeat the earlier step:<br><strong>Facet → Numeric facet</strong>.</p>
-<p>This time, OpenRefine shows a histogram with a slider. The histogram
-groups all the height values into ranges, giving you an overview of how
-artworks are distributed by year of their accession.</p>
+<p>With the column properly converted, repeat the earlier step:<br><code>Facet → Numeric facet</code>.</p>
+<p>This time, OpenRefine shows a histogram with a slider to explore
+ranges of values from year 0 up to year 2100. The histogram groups all
+the year values into ranges of “100”, giving you an overview of how
+artworks are distributed by year of their creation.</p>
 <p>By dragging the slider handles, you can focus on particular ranges.
-For example, you might restrict the view to artworks shorter than 20 cm,
-or zoom in on those taller than 300 cm. This is especially helpful for
-spotting unusual values. If you see a very high number, such as “20000
-cm,” that might indicate a data entry error.</p>
+For example, you might restrict the view to artworks before 1,500. You
+will see that the dataset contains only 42 matching objects. Most
+artworks therefore date from after the 15th century; this is evident at
+a glance.</p>
 <p>Numeric facets therefore serve two purposes at once: they help you
 explore distributions, and they highlight anomalies that need
 cleaning.</p>
-<p>Some columns represent dates, such as <code>DateAcquired</code> or
-the year of creation of the artwork. For these, OpenRefine offers the
-<strong>Timeline facet</strong>.</p>
-<p>Before you can use a timeline facet, you need to ensure that the
-column is stored as a <strong>date type</strong>. You can do this by
-choosing <strong>Edit cells → Common transforms → To date</strong> from
-the column menu. Once converted, you can create a <strong>Timeline
-facet</strong>.</p>
-<p>The result looks similar to the numeric facet but with dates on the
-horizontal axis. OpenRefine displays a histogram showing how many rows
-fall into each time period. You can then drag the slider handles to
-focus on a specific date range.</p>
-<p>For example, a timeline facet on <code>DateAcquired</code> could
-reveal when most of the artworks in your sample entered the MoMA
-collection. You might see peaks in certain decades, which may correspond
-to acquisition campaigns or curatorial trends. By selecting a particular
-time range, you can then explore only those artworks acquired during
-that period.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>OpenRefine also offers other facet types such as a
+<code>timeline facet</code> for date values or a
+<code>scatterplot facet</code> for exploring the relationship between
+two numeric columns. In addition there is a facet type that helps you
+identfy duplicate in a column
+<code>Facet → Customized facets → Duplicate facet</code>. Duplicate
+facets can be useful, for example, when working with columns that are
+expected to contain unique identifiers.</p>
+<p>The best way to understand these facets is simply to experiment with
+them.</p>
+</div>
+</div>
+</div>
 <div id="exercise-numeric-facet" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -660,7 +665,7 @@ that period.</p>
 <div id="exercise-numeric-facet" class="callout-inner">
 <h3 class="callout-title">Exercise: Numeric Facet</h3>
 <div class="callout-content">
-<p>Turn the vallues in the column <code>Accession Year</code> into a
+<p>Turn the values in the column <code>Accession Year</code> into a
 numeric facet. In which decade did the Met collection acquire the most
 artworks? Why are there non-numeric values? Can you spot the error?</p>
 </div>
