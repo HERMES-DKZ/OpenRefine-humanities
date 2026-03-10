@@ -15,16 +15,11 @@ exercises: 0
 
 - Understand what a custom facet is and how it differs from standard facets.  
 - Learn to write simple GREL expressions for filtering and transformation.  
-- Apply a custom facet on the **Artist** column to distinguish between single and multiple creators.  
+- Apply a custom facet on the `Artist Display Name` column to distinguish between single and multiple creators.  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-So far, we have explored facets that you can create by clicking through the menu—text, numeric, and timeline facets. These are powerful, but sometimes our exploration or cleaning task needs a rule that isn’t built in. In those cases, OpenRefine lets us define our own facets using **GREL** (*General Refine Expression Language*).
-
-GREL looks like code, but many useful expressions are short and readable. You can think of them as tiny instructions that tell OpenRefine how to interpret or transform the value currently in a cell (that value is referred to as `value` inside GREL). Every function we already used could be written in GREL as well, but to make things easier the most common functions are already built in. The menu, we are using, simply provides shortcuts for the most common actions.
-
-If, for example, we now want to examine our data set to see which works of art were created by only one or by more than one person, we could create a custom facet to filter by this criteria.
 
 ::::::::::::: discussion
 
@@ -34,7 +29,11 @@ Look at the column and consider how cells that contain one or more values differ
 
 ::::::::::::::::::::
 
+So far, we have explored facets that you can create by clicking through the menu—text, numeric, and timeline facets. These are powerful, but sometimes our exploration or cleaning task needs a rule that isn’t built in. In those cases, OpenRefine lets us define our own facets using `GREL` (*General Refine Expression Language*).
 
+GREL looks like code, but many useful expressions are short and readable. You can think of them as tiny instructions that tell OpenRefine how to interpret or transform the value currently in a cell (that value is referred to as `value` inside GREL). Every function we already used could be written in GREL as well, but to make things easier the most common functions are already built in. The menu, we are using, simply provides shortcuts for the most common actions.
+
+If, for example, we now want to examine our data set to see which works of art were created by only one or by more than one person, we could create a custom facet to filter by this criteria.
 
 ## What Is GREL?
 
@@ -55,19 +54,19 @@ Every transformation available in the menu is ultimately powered by GREL
 
 ## Creating a Custom Facet with GREL
 
-1. **Open the column menu** for **`Artist`**.
+1. `Open the column menu` for `Artist Display Name`.
 
-2. Choose **Facet → Custom text facet…**
+2. Choose `Facet → Custom text facet…`
 
 3. In the dialog, type the following GREL expression:
 
    ```grel
-   value.contains(",")
+   value.contains(";")
    ```
 
    This asks, “Does the cell contain a comma?” For each row, OpenRefine evaluates the expression and returns either `true` or `false`.
 
-4. Click **OK**. In the left panel, you now see a facet with two buckets: `true` and `false`.
+4. Click `OK`. In the left panel, you now see a facet with two buckets: `true` and `false`.
 
 This creates a logic-based facet that is not available as a built-in option
 
@@ -88,8 +87,8 @@ Another common task during data exploration is to identify values that *might* n
 We can create a custom facet to group titles into “short” and “long” categories.
 
 
-1. Open the column menu for **`Title`**  
-2. Choose **Facet → Custom text facet…**  
+1. Open the column menu for `Title`  
+2. Choose **Facet → Custom text facet…`  
 3. Enter this GREL expression:
 
    ```grel
@@ -143,8 +142,11 @@ That is why the expression in this example includes more than just `value`. We a
 
 ### Callout: GREL-Functions
 
+Good places to look up your problem and the corresponding GREL function are [OpenRefine's GitHub wiki](https://github.com/OpenRefine/OpenRefine/wiki/Recipes) or the [OpenRefine Documentation](https://openrefine.org/docs/manual/grelfunctions). 
+
+Some useful GREL functions:
+
 * `value.toLowercase()` – lowercase the text.
-* `value.toUppercase()` – uppercase the text.
 * `value.trim()` – remove spaces at start/end.
 * `value.length()` – number of characters.
 * `value.contains("text")` – `true` if "text" occurs.
@@ -153,14 +155,8 @@ That is why the expression in this example includes more than just `value`. We a
 * `value.replace(/\s+/," ")` – regex replace (collapse multiple spaces).
 * `value.split(";")` – split into an array on `;`.
 * `array.join("|")` – join array back to a string.
-* `value.toNumber()` – parse numbers (non-numeric becomes blank).
-* `value.toString()` – convert back to text.
-* `isBlank(value)` – `true` for empty/whitespace-only.
-* `isNull(value)` – `true` for null values (missing).
-* `type(value)` – returns "string", "number", "date", etc.
-* `value.toDate()` – parse a date (from strings like `1954-05-01`).
-* `value.toDate().toString("yyyy")` – format the date to year.
-* `now()` – current date/time (useful for comparisons).
+
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
