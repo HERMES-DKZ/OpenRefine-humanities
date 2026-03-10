@@ -76,7 +76,9 @@ Identify anything that might cause problems during analysis.
 * The cities in the table could be ambiguous, is it Chelsea in the UK or Chelsea in the US? Maybe you can derive a unique location from information about the artist.
 * Paris and Paris, France refer to the same place, but are recorded differently.
 * Some titles are enclosed in quotation marks, while others are not.
+
 ::::::
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
