@@ -44,8 +44,11 @@ You can also click on one department to see only those rows in the table, or sel
 ### Exercise: First insights to your dataset & correct errors 
 
 Create  a `text facet` on the columns:
+
 - `Is Public Domain`
+
 - `Object Name` 
+
 - `City`.
 
 1. How many unique values are listed in each column?
@@ -104,6 +107,7 @@ To understand what happens when we correct this, it helps to know about the dist
 3. Create a text facet on `Artist Display Name` again. This time you will see the names of individual artists listed separately. Each can now be counted and selected on its own.
 
 If you now switch back to the `rows` view you will see that the number of rows rose to 4,644.
+
 ::::::::::::::::::::::::::::::::::::: challenge
 
 ### Exercise: Split multi-valued cells
