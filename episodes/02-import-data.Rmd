@@ -1,7 +1,7 @@
 ---
 title: "Importing Data and Getting to Know the OpenRefine User Interface"
 teaching: 15
-exercises: 0
+exercises: 5
 ---
 
 ::::::::::::::::::::::::::::::::::::: questions
@@ -89,6 +89,7 @@ In the import preview, change the column separator from comma to semicolon and o
 4. What would happen if you created the project without correcting this setting?
 
 ::::::::::::::::::: solution
+
 ### Solution
 1. The table structure collapses.
 2. Most or all values appear in a single column.

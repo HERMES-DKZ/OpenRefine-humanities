@@ -1,7 +1,7 @@
 ---
 title: "Introduction to OpenRefine"
-teaching: 0
-exercises: 0
+teaching: 10
+exercises: 5
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

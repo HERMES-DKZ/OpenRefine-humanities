@@ -1,7 +1,7 @@
 ---
 title: "Custom Facets and GREL"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 15
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -67,8 +67,9 @@ Tip: You need to escape the quatation mark in the expression using a backslash (
 The expression is:
 ```grel
 value.contains("\"")
-````
+```
 It returns 79 rows with the value "true", meaning that 79 titles contain quotation marks.
+
 :::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::
