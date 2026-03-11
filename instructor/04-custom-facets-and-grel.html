@@ -489,9 +489,9 @@ titles stored in one cell or comments included in the title field.</p>
 <p>Create a custom text facet on the column <code>Title</code> using the
 following GREL expression:</p>
 <pre class="grel"><code>if(value.length() &gt; 40, "long title", "short title")</code></pre>
-<p>What does this expression do in your own words?</p>
-<p>How many long titles are there in the dataset?</p>
-</div>
+<ul><li><p>What does this expression do in your own words?</p></li>
+<li><p>How many long titles are there in the dataset?</p></li>
+</ul></div>
 </div>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
@@ -501,10 +501,11 @@ following GREL expression:</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<p>The expression works as follows: 1. <strong>Inspect the cell</strong>
-with <code>value.length()</code> and calculates how many characters the
-title contains.</p>
-<ol start="2" style="list-style-type: decimal"><li><p>The if() function checks whether the title has more than 40
+<p>The expression works as follows:</p>
+<ol style="list-style-type: decimal"><li><p><strong>Inspect the cell</strong> with
+<code>value.length()</code> and calculates how many characters the title
+contains.</p></li>
+<li><p>The if() function checks whether the title has more than 40
 characters (<code>value.length() &gt; 40</code>).</p></li>
 <li><p><strong>Produce a new output</strong>. If the condition is true,
 the expression returns “long title”, otherwise it returns “short title”.
@@ -542,10 +543,12 @@ GREL.</p>
 <h3 class="callout-title">Callout: GREL-Functions</h3>
 <div class="callout-content">
 <p>Good places to look up your problem and the corresponding GREL
-function are: * <a href="https://github.com/OpenRefine/OpenRefine/wiki/Recipes" class="external-link">OpenRefine’s
-GitHub wiki</a> * <a href="https://openrefine.org/docs/manual/grelfunctions" class="external-link">OpenRefine
-Documentation</a></p>
-<p>Some useful functions include:</p>
+function are:</p>
+<ul><li><a href="https://github.com/OpenRefine/OpenRefine/wiki/Recipes" class="external-link">OpenRefine’s
+GitHub wiki</a></li>
+<li><a href="https://openrefine.org/docs/manual/grelfunctions" class="external-link">OpenRefine
+Documentation</a></li>
+</ul><p>Some useful functions include:</p>
 <ul><li>
 <code>value.toLowercase()</code> – lowercase the text.</li>
 <li>
