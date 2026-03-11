@@ -39,11 +39,9 @@ So far, we have explored facets that you can create by clicking through the menu
 2. Choose `Facet → Custom text facet…`
 
 3. Enter the following expression:
-
    ```grel
    value.contains(";")
    ```
-
    This expression asks, “Does the cell contain a semicolon?” For each row, OpenRefine evaluates the expression and returns either `true` or `false`.
 
 4. Click `OK`. In the left panel, you now see a facet with two categories: `true` and `false`.
@@ -99,9 +97,9 @@ Create a custom text facet on the column `Title` using the following GREL expres
 if(value.length() > 40, "long title", "short title")
 ```
 
-What does this expression do in your own words?
+* What does this expression do in your own words?
 
-How many long titles are there in the dataset?
+* How many long titles are there in the dataset?
 
 ::::::::::::::::::: solution
 
@@ -109,6 +107,7 @@ How many long titles are there in the dataset?
 
 
 The expression works as follows:
+
 1. **Inspect the cell** with `value.length()` and calculates how many characters the title contains.
 
 2. The if() function checks whether the title has more than 40 characters (`value.length() > 40`). 
@@ -132,6 +131,7 @@ This example in the challenge illustrates an important idea about custom facets.
 ### Callout: GREL-Functions
 
 Good places to look up your problem and the corresponding GREL function are:
+
 * [OpenRefine's GitHub wiki](https://github.com/OpenRefine/OpenRefine/wiki/Recipes)
 * [OpenRefine Documentation](https://openrefine.org/docs/manual/grelfunctions)
 
