@@ -15,104 +15,118 @@ exercises: 15
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand the concept of data reconciliation.
-- Reconcile names and places.
-- Add stable identifiers (IDs).
+- Reconcile artist names with an authority database.
+- Add stable identifiers to the dataset.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Why use reconciliation?
 
+Up to this point we have cleaned and explored our dataset. We standardized values, split columns, and corrected inconsistencies. However, the values in the table are still plain text labels. For example in the column `Artist Display Name` we find values such as "Frank Lloyd Wright" and "Jean Le Pautre".
 
-So far, we have used OpenRefine to *look at* and *clean* our dataset: splitting columns, removing unwanted characters, and clustering values. These steps improve the quality of our data, but our values are still **just strings**, plain text without a deeper connection to knowledge outside our file.
+For a human reader these values clearly represent names. For a computer they are simply character strings. The name alone does not tell us which exact person is meant, and the same person might appear under slightly different spellings in other datasets, like (F. L. Wright or Jean Lepautre).
 
-**Reconciliation** is the process of linking these strings to **stable, external identifiers** in authority databases such as **Wikidata**, the **Getty vocabularies**, or other domain-specific repositories. Instead of simply having the text `Pablo Picasso`, reconciliation can connect our cell to the unique Wikidata item [`Q5593`](https://www.wikidata.org/wiki/Q5593). This turns our dataset into something that can be connected and compared with other datasets and research around the world.
+Reconciliation connects these text labels to authority records. Instead of working only with the name written in the dataset, we link the value to a stable identifier in an authority database.
 
-You can think of reconciliation as asking a librarian: *“I have this name written here – which exact person in your catalog does it refer to?”* The librarian might return a short stack of cards with possible matches, and you confirm the right one. Once linked, the reference is unambiguous and stable.
+For example, the artists in our dataset can be linked to the Union List of Artist Names (ULAN): http://vocab.getty.edu/page/ulan/500020307 or http://vocab.getty.edu/page/ulan/500000036.
 
+When a name in our dataset is reconciled with an authority record, we are essentially answering the question:
+> Which exact person in this authority database corresponds to the name written in our dataset?
 
-In humanities datasets, names and places are central. But names are often ambiguous:
+::::::::::::::::::::::::::::::::::::: challenge
 
-- **Variant spellings**: `Shakespeare`, `Shakespear`, `Shakspeare`
-- **Common names**: `John Smith`
-- **Different languages**: `Munich` vs. `München`
+### Quick check
 
-If we keep these as plain text, any comparison across collections or projects becomes unreliable. But if we reconcile to shared identifiers (like Wikidata QIDs), we can:
+Open the Union List of Artist Names (https://www.getty.edu/research/tools/vocabularies/ulan/) and search for "Frank Lloyd Wright" and "Jean Le Pautre".
 
-- Connect our dataset to others, regardless of spelling differences.
-- Enrich our data with structured information (e.g., dates of birth, countries, occupations).
-- Support reproducible analysis by referring to stable, citable identifiers rather than local labels.
+* What problem do you run into?
 
-Reconciliation therefore transforms a local, isolated dataset into part of a larger *knowledge graph*.
+* What kinds of information do you find there that are not included in our dataset?
 
+:::::::::::::::: solution
 
+There are several search results for both. You have to check exactly which result is the right.
+ULAN records often contains additional structured information such as birth and death dates, occupations, as well as different spelling of names.
+
+Authority searches may return multiple results like in these cases. To identify the correct person you need to compare additional information such as life dates, occupations, or alternative spellings in the authority data and your dataset.
+::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Reconciling with OpenRefine
 
-OpenRefine makes reconciliation simple and interactive:
+Because reconciliation can be computationally expensive, we will first work with a subset of the dataset.
+Make a text facet in the column `Department`and form a subset from the department "Drawings and Prints".
 
-- It provides built-in or addable reconciliation services (such as Wikidata).
-- It lets you review and confirm matches cell by cell, or accept high-confidence matches in bulk.
-- It allows you to pull in identifiers, labels, and even additional properties as new columns.
+1. Open the menu on the column `Artist Display Name` and select `Reconcile → Start reconciling…`
+2. It appears a new window, where you select `Discover services...` and a new browser tab opens with all the possible reconciliation services in OpenRefine. Search for "Getty" and copy the URL "https://services.getty.edu/vocab/reconcile/".
+3. Now return to your other browser tab, select `Add standard service...` and paste the copied URL into the appearing field. Select `Add service`.
 
-This combination of automation and human oversight is powerful: the machine proposes matches, but the researcher remains in control of what is accepted.
+4. Select the service and click on `Next`.
+5. Select `ULAN search` this is the part of getty where we find right data. And click `Start reconciling...`.
 
-We will reconcile two columns in our dataset:
+OpenRefine now sends each name in the column to the Getty database and suggests possible matches.
 
-1. **`Artist`** – the name of the artist.
-2. **`Nationality`** – the country information we previously separated from the biography.
 
-### Reconciling the `Artist` column
+::::::::::::: challenge
 
-1. Open the menu on **`Artist`** → **Reconcile → Start reconciling…**
-2. Select **Wikidata** as the reconciliation service. If it does not appear, add it via *Add Standard Service…* and paste the URL: `https://wikidata.reconci.link/en/api`.
-3. In the type field, type and select **Human (Q5)**. This tells Wikidata we are looking specifically for people.
-4. Click **Start reconciling**.
+### Challenge: Add another reconciliation service
 
-OpenRefine now sends each name in the column to Wikidata and retrieves possible matches.
+Wikidata, VIAF or the Integrated Authority File
 
+::::::::::::::::: solution
+
+### Solution
+
+
+:::::::
+
+::::::::::::::::::::::::::
 
 ### Reviewing the matches
 
-If the assignment is clear the reconciliation is complete. However, it is often the case that it is not clear and requires manual checking.
-If there are several candidates to choose from and OpenRefine is unsure which one is correct, all options are displayed in the respective cell. Hovering over one of the names will display some information to help you decide which person is correct. You can also go directly to the entire database page to obtain even more information. Once you have found the correct person, you can either reconcile all cells with this name or just this one.
+If OpenRefine finds a clear match, the reconciliation is applied automatically. If several possible matches exist, OpenRefine shows multiple candidates. Hovering over one of the names will display some information to help you decide which person is correct. You can also go directly to the entire database page to obtain even more information. Once you have found the correct person, you can either reconcile all cells with this name or just this one.
 
-This is like being handed several possible business cards for the same name. Your task is to select the one that fits the person in your dataset.
 
-::::::::::::::::: callout
+::::::::::::: challenge
 
-Use birth/death dates and occupations in the description to disambiguate common names.
+### Challenge: Matchmaking
 
-:::::::::::::::::::::::::
+Find names in the column `Artist Display Name` where OpenRefine suggests multiple matches.
 
+Look carefully at the candidate entries.
+
+* What information helps you choose the correct match?
+
+* What might make a match ambiguous?
+
+::::::::::::::::: solution
+
+### Solution
+
+Helpful clues include life dates, nationality, occupations, or alternative spellings.  
+Ambiguity often occurs when several people share the same name or when the dataset contains little contextual information.
+
+:::::::
+
+::::::::::::::::::::::::::
 
 ### Adding identifiers
 
-The links now looks very good and can already be used in OpenRefine. However, if we export the file, the reconciliation disappears again, as in its current state it only works in OpenRefine itself. We therefore need to add another column with the assigned ID so that it can also be used outside of OpenRefine. We do this as follows:
 
-1. Column menu → **`Artist` → Reconcile → Add entry identifiers column**.
-2. Give it a name, for example **Artist_ID**.
-3. Click **OK**.
+Reconciliation links are stored inside OpenRefine but are not automatically included when exporting the dataset. To preserve them we add an identifier column.
 
-Now, every artist is linked to a stable identifier. 
+1. Open the column menu `Artist Display Name` and choose `Reconcile → Add entity identifiers column`
+3. Name the column something like "Artist_ULAN_ID"
 
-
-### Reconciling the `Nationality` column (countries)
-
-Now we can reconcile these values as well:
-
-1. Column menu → **`Nationality` → Reconcile → Start reconciling…**
-2. Choose **Wikidata**.
-3. Set the type to **Country (Q6256)**.
-4. Start reconciliation.
-
-This ensures that different spellings or forms like `USA`, `United States`, and `United States of America` all link to the same stable identifier: [United States of America (Q30)](https://www.wikidata.org/wiki/Q30).
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - Reconciliation links text strings to unique identifiers in external databases.
 - This makes your dataset more precise, reusable, and comparable across projects.
-- OpenRefine provides a structured workflow for reconciliation: propose → review → confirm → enrich.
-- The human researcher stays in control: machines suggest, but you decide.
+- OpenRefine suggests matches, but users should always review and confirm them.
+- Identifier columns preserve these links when exporting the dataset.
 
 ::::::::::::::::::::::::::::::::::::::::::::::
 
