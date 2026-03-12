@@ -1,44 +1,44 @@
 ---
 title: "Transforming Data"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How can we clean and standardize the **ArtistBio** values in OpenRefine?
+- How can we clean and standardize the `Artist Display Bio` values in OpenRefine?
 - What is the difference between *finding* issues (facets) and *fixing* them (transformations & clustering)?
+- What is clustering and when to use it?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Remove literal characters with GREL replacements.
-- Split **ArtistBio** into nationality and life-dates.
+- Split `Artist Display Bio` into nationality and life-dates.
 - Inspect and normalize a column.
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-Facets help us *find* patterns; transformations and clustering help us *fix* them consistently.  
-In the MoMA sample, the column **ArtistBio** stores nationality plus life information in a compact string. Typical examples look like:
+In the previous episodes we used build in and custom facets to explore the dataset, identify potential issues and correcting small errors. In this episode we move to the next stage of the workflow: cleaning and restructuring the data.  
+We will use transformations, column operations, and clustering to make the information easier to analyse.
+Without explicitly stating it, you have already used transformations in previous episodes: splitting multi-valued cells, rejoining them, transforming a string to a number. 
+
+
+In the Met dataset, the column `Artist Display Bio` stores information on nationality and biographaphy of artists. Typical examples look like:
 
 ```
-(American, born 1936)
-(American, born Italy. 1919–2013)
-(American, born Germany. 1886–1969)
-(French, 1857–1927)
-(Ivorian, 1923–2014)
+British, Ipswich 1817–1905 Hastings|German, Moers 1820–1899 London
+Italian, active 16th century|Italian, active Venice 1530–1573
 ```
-
-This is a fairly typical situation in cultural data: multiple pieces of information are packed into a single field, sometimes with inconsistent separators or formatting.
-
-As mentioned before, some rows contain information about **multiple artists**, so we must ensure the rows are split correctly before working with this column.
+So multiple pieces of information are packed into a single field, sometimes with inconsistent separators or formatting and as mentioned before some cell contain information about multiple artists, so we must ensure the rows are split correctly before working with this column.
 
 ::::::::::::: discussion
 
-### Discussion: By which separator can we split the ArtistBio column?
+### Discussion: By which separator can we split the `Artist Display Bio` column?
 
-It may happen that different data items are not separated by a comma or a semicolon, in which case creativity is required to determine how to resolve these data items.
+
 
 ::::::::::::::::::::
 
@@ -46,9 +46,11 @@ It may happen that different data items are not separated by a comma or a semico
 
 ### Solution
 
-You can separate the data at the string `) (`.
+
 
 ::::::::::::::::::::::::::
+
+:::::::::::::::::::
 
 Next, we will simplify the text, then split nationality from the remaining details, and finally use clustering to review and standardize the results.
 
@@ -56,16 +58,14 @@ Next, we will simplify the text, then split nationality from the remaining detai
 
 We start with a literal replacement to remove parentheses. This is a very common first step in cleaning, because parentheses, brackets, or punctuation often only serve visual use, not analytical use.
 
-1. Open the column menu for **ArtistBio**.
-2. Choose **Edit cells → Transform…**.
+1. Open the column menu for `Artist Display Bio`.
+2. Choose `Edit cells → Transform…`.
 3. Enter:
 
 ```grel
 value.replace("(", "").replace(")", "")
 ```
-4. Click **OK**.
-
-#### What this does
+4. Click `OK`.
 
 The expression consists of two chained `replace()` calls. Each `replace(old, new)` looks for a specific character or substring and replaces it with something else. Because the second argument is an empty string, the character is completely removed.
 
@@ -77,23 +77,7 @@ OpenRefine processes the expression for **each cell**:
 
 This kind of literal replacement is safe because parentheses are *not* meaningful content—they only frame the information.
 
-After this step, values change from:
 
-```
-(American, born 1936)
-```
-
-to:
-
-```
-American, born 1936
-```
-
-::::::::::::::::: callout
-
-Add a quick **Text facet** on *ArtistBio* to confirm that parentheses are gone.
-
-::::::::::::::::::::::::::
 
 
 
@@ -107,12 +91,12 @@ The current pattern is:
 <Nationality>, <rest>
 ```
 
-To isolate the nationality, we split at the comma. This is good practice: each column ideally contains **one type of information** (a principle often called “tidy data”).
+To isolate the nationality, we split at the comma. This is good practice: each column ideally contains one type of information (a principle often called “tidy data”).
 
-1. Open the column menu: ArtistBio → **Edit column → Split into several columns…**
+1. Open the column menu: ArtistBio → `Edit column → Split into several columns…`
 2. Separator: `,`
 3. Split into: *leave the default*
-4. Confirm with **OK**
+4. Confirm with `OK`
 
 Afterward you get:
 
@@ -121,21 +105,27 @@ Afterward you get:
 
 If a cell contains more than one comma, OpenRefine will generate more columns (ArtistBio 3, ArtistBio 4, …). This shows how splitting is both powerful and potentially revealing—sometimes extra commas indicate noise or irregular formatting.
 
+:::::::::::::::::::::::::::::::::::::::::::: challenge
+
+## 
+
+
+::::::::::::::::::: solution
+
+### Solution
+
+:::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Clustering
 
-Even after splitting, the remaining biographical information still varies greatly:
-
-- `born 1936`
-- `born Italy. 1919–2013`
-- `1857–1927`
-- `1923–2014`
-- variations in punctuation and spacing  
-- different types of dash characters  
+  
 
 These inconsistencies make it hard to analyze the data reliably.
 
-Clustering is one of OpenRefine’s most powerful tools for identifying and normalizing such variations—especially when the inconsistencies appear similar but not identical.
+Clustering is one of OpenRefine’s most powerful tools for identifying and normalizing such variations — especially when the inconsistencies appear similar but not identical.
 
 ### What is clustering?
 
@@ -154,29 +144,11 @@ A “keying function” transforms two strings that *should* be the same into th
 
 OpenRefine uses this idea to suggest groups of values you may want to merge.
 
-#### How to use it here
 
-1. Open: ArtistBio 2 → **Edit cells → Cluster and edit…**
-2. Method: **Key collision**
-3. Keying function: **Metaphone 3**
+1. Open: ArtistBio 2 → `Edit cells → Cluster and edit…`
+2. Method: `Key collision`
+3. Keying function: `Metaphone 3`
 
-#### More detailed explanation
-
-- **Key collision** compares transformed keys. If two values produce the same key, they fall into the same cluster.
-- **Metaphone 3** is a phonetic algorithm—it groups text based on how it sounds rather than how it is spelled.
-  This is useful for cases like:  
-  `born Germany. 1886–1969`  
-  `born Germany 1886-1969`  
-  → punctuation differs, but the core phrase is the same.
-
-For numeric ranges (like dates), clustering won’t combine values with different numbers—e.g., `1857–1927` and `1923–2014` remain separate.  
-But clustering will show you repeated structures, such as:
-
-- “born Italy”
-- “born Germany”
-- “born 19XX”
-
-This helps you spot repeated phrases and standardize them if needed.
 
 ### What you'll see
 
@@ -195,6 +167,18 @@ Clustering never changes anything automatically. **You are in control**—OpenRe
 
 This makes clustering extremely effective for cleaning humanities datasets, where controlled vocabulary is uncommon and metadata comes from diverse sources.
 
+:::::::::::::::::::::::::::::::::::::::::::: discussion
+
+## 
+
+
+::::::::::::::::::: solution
+
+### Solution
+
+:::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
