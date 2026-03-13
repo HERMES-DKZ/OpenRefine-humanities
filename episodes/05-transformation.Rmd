@@ -176,7 +176,6 @@ This makes clustering extremely effective for cleaning humanities datasets, wher
 
 ### Solution
 
-:::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::
 
