@@ -40,7 +40,6 @@ So multiple pieces of information are packed into a single field, sometimes with
 
 
 
-::::::::::::::::::::
 
 ::::::::::::::::: solution
 
@@ -176,6 +175,7 @@ This makes clustering extremely effective for cleaning humanities datasets, wher
 
 ### Solution
 
+:::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::
 
